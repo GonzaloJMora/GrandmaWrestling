@@ -1,0 +1,281 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+//Wating - 
+enum VotingState { Waiting, Voting, Voted, Chaos}
+//Waiting -waiting to start the next round of voting
+//Voting - in the process of voting for the next chaos
+//Voted - chaos is chosen
+//Chaos - chaos is currently doing its thing
+
+public class Voting : MonoBehaviour
+{
+    [Header("Vote Slider Related")]
+    [SerializeField] private GameObject votePanel; //canvas with all the sliders
+    private int numSliders; //the number of sliders
+    private List<Slider> sliders; //the sliders themselves
+    private VotingState state; //the current state of voting
+    
+
+    [Header("Chaos Related")]
+    [SerializeField] private GameObject chaosSystem; //object with all the chaos types
+    private Chaos[] ch;
+    private int maxChaosSize;
+    private int currChaosSize;
+    private int[] usedChaosListIndex; //list of already chosen chaos
+
+    [Header("Voting Related")] //See Enum for more details
+    [SerializeField] private float waitTime = 15f;
+    [SerializeField] private int MaxNumberOfVoteRounds = 15; //Max number of rounds per voting
+    [SerializeField] private float votingInterval = 1f; //how long between votes
+    [SerializeField] private float chaosTime = 15f;
+    private int currVoteRound = 0;
+    private int[] votingChaosIndex;
+    private int chosenChaosIndex;
+    private float currTime = 0f;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+        //Voting Related
+        Slider[] sd = votePanel.GetComponentsInChildren<Slider>();
+        numSliders = sd.Length;
+        sliders = new List<Slider>(sd);
+        //Debug.Log("numSliders " + numSliders);
+
+        //Chaos Related
+        Debug.Log(chaosSystem.GetComponent<A>());
+        Debug.Log(chaosSystem.GetComponents(typeof(Chaos)));
+        Debug.Log(chaosSystem.GetComponents(typeof(Chaos)).Length);
+
+        Component[] comp = chaosSystem.GetComponents(typeof(Chaos));
+        ch = new Chaos[comp.Length];
+        for(int i = 0; i < comp.Length; i += 1)
+        {
+            ch[i] = (Chaos)comp[i];
+            Debug.Log(ch[i].GetType());
+        }
+        maxChaosSize = ch.Length;
+        currChaosSize = maxChaosSize;
+        usedChaosListIndex = new int[maxChaosSize];
+        ResetArray(usedChaosListIndex);
+
+        //Voting Related
+        votingChaosIndex = new int[numSliders];
+        ResetArray(votingChaosIndex);
+}
+
+    private void ResetArray(int[] a)
+    {
+        for(int i = 0; i < a.Length; i += 1)
+        {
+            a[i] = -1;
+        }
+    }
+
+    private void PrintUsedChaosIndex()
+    {
+        for (int i = 0; i < usedChaosListIndex.Length; i += 1)
+        {
+            if(usedChaosListIndex[i] == -1) { continue; }
+            Debug.Log(ch[usedChaosListIndex[i]]);
+        }
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        currTime += Time.deltaTime;
+        if(state == VotingState.Waiting)
+        {
+            if(currTime >= waitTime)
+            {
+                currTime = 0f;
+                ChooseVotingChaos();
+                ChangeSliderName();
+                ChangeState(VotingState.Voting);
+
+            }
+
+        }
+        else if(state == VotingState.Voting)
+        {
+            if(currVoteRound < MaxNumberOfVoteRounds)
+            {
+                //Debug.Log("currVoteRound" + currVoteRound);
+                if(currTime > votingInterval)
+                {
+                    VoteOnChaos();
+                    currVoteRound += 1;
+                    currTime = 0f;
+                }
+            }
+            else
+            {
+                int index = GetHighestRatedChaos();
+
+                chosenChaosIndex = votingChaosIndex[index];
+                currVoteRound = 0;
+                ChangeState(VotingState.Voted);
+                currTime = 0f;
+            }
+
+            
+
+
+        }
+        else if(state == VotingState.Voted)
+        {
+            AddIndex(usedChaosListIndex, chosenChaosIndex);
+            
+            currChaosSize -= 1;
+            
+            ResetSliders();
+            PrintUsedChaosIndex();
+            ResetArray(votingChaosIndex);
+
+            ch[chosenChaosIndex].Trigger();
+            ChangeState(VotingState.Chaos);
+            currTime = 0f;
+        }
+        else if (state == VotingState.Chaos)
+        {
+            if(currTime >= chaosTime)
+            {
+                currTime = 0f;
+                
+                ChangeState(VotingState.Waiting);
+               
+            }
+        }
+
+    }
+
+    private void ChangeSliderName()
+    {
+        for (int i = 0; i < numSliders; i += 1)
+        {
+            TMP_Text sd = sliders[i].GetComponentInChildren<TMP_Text>();
+            sd.text = ch[votingChaosIndex[i]].GetType().ToString();
+        }
+    }
+
+    private void ResetSliders()
+    {
+        for(int i = 0; i < numSliders; i += 1)
+        {
+            sliders[i].value = 0;
+            sliders[i].maxValue = 1;
+        }
+    }
+
+    private void ChooseVotingChaos()
+    {
+        //Debug.Log("Inside of ChooseVotingChaos");
+        //if number of chaos left is < the numbers of sliders
+        if(currChaosSize < numSliders)
+        {
+            Debug.Log("Reseting");
+            //reset them
+            ResetArray(usedChaosListIndex);
+        }
+        //Debug.Log("Picking random index");
+        //pick random chaos
+        for (int i = 0; i < numSliders; i += 1)
+        {
+            int chaosIndex = Random.Range(0, maxChaosSize);
+            //Debug.Log("index: " + chaosIndex);
+            //Debug.Log("Element: " + ch[chaosIndex]);
+            //redo if chaos was already chosen
+            if(FindIndexof(votingChaosIndex, chaosIndex) != -1) { i -= 1; continue; }
+            if(FindIndexof(usedChaosListIndex, chaosIndex) != -1) { i -= 1; continue; }
+            
+
+            AddIndex(votingChaosIndex, chaosIndex);
+        }
+    }
+
+    private int FindIndexof(int[] a, int index)
+    {
+        for(int i = 0; i < a.Length; i += 1)
+        {
+            if(a[i] == index)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    private void AddIndex(int[] a, int index)
+    {
+        for (int i = 0; i < a.Length; i += 1)
+        {
+            if (a[i] == -1)
+            {
+                a[i] = index;
+                return;
+            }
+        }
+    }
+
+    private void VoteOnChaos()
+    {
+        //Debug.Log("inside of VoteOnChaos");
+        //generate a random number of votes;
+        int currVotes = Random.Range(5, 20);
+        //Debug.Log("votes to add: " + currVotes);
+        //randomly pick a slider to add votes to
+        int sliderIndex = Random.Range(0, numSliders);
+        //Debug.Log("slider to add to: " + sliderIndex);
+        //change the values of the sliders
+        for (int i = 0; i < numSliders; i += 1)
+        {
+            if (sliderIndex == i)
+            {
+                sliders[i].value += currVotes;
+            }
+            else
+            {
+                sliders[i].value += currVotes / Random.Range(2, 4);
+            }
+            sliders[i].maxValue += currVotes;
+        }
+    }
+
+    private int GetHighestRatedChaos()
+    {
+        //Debug.Log("Inside of GetHighestRatedChaos");
+        //find highest voted chaos
+        int index = -1;
+        float max = 0;
+        //set that as the chosen chaos
+        for (int i = 0; i < numSliders; i += 1)
+        {
+            //Debug.Log("i: " + i + " value: " + sliders[i].value);
+            if (sliders[i].value > max)
+            {
+                max = sliders[i].value;
+                index = i;
+            }
+        }
+
+        //Debug.Log("Index is" + index);
+
+        return index;
+    }
+
+    private void ChangeState(VotingState state)
+    {
+        Debug.Log("Switching from " + this.state + " to " + state);
+        this.state = state;
+    }
+
+    
+}
