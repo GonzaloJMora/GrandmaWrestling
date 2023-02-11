@@ -37,6 +37,9 @@ public class Voting : MonoBehaviour
     private int[] votingChaosIndex;
     private int chosenChaosIndex;
     private float currTime = 0f;
+
+    [Header("Announcer Related")]
+    [SerializeField] private GameObject AnnouncerPanel;
     
 
 
@@ -66,7 +69,10 @@ public class Voting : MonoBehaviour
         //Voting Related
         votingChaosIndex = new int[numSliders];
         ResetArray(votingChaosIndex);
-}
+
+        //Announcer Related
+        ToggleAnnouncer(false);
+    }
 
     private void ResetArray(int[] a)
     {
@@ -123,8 +129,10 @@ public class Voting : MonoBehaviour
                 int index = GetHighestRatedChaos();
                 
                 ChangeChosenChaosColor(index);
-
+                
                 chosenChaosIndex = votingChaosIndex[index];
+                ToggleAnnouncer(true);
+
                 currVoteRound = 0;
                 ChangeState(VotingState.Voted);
                 currTime = 0f;
@@ -150,6 +158,7 @@ public class Voting : MonoBehaviour
             {
                 ToggleSliderPanel(false);
                 ResetSliders();
+                ToggleAnnouncer(false);
             }
 
             if(currTime >= chaosTime)
@@ -319,5 +328,16 @@ public class Voting : MonoBehaviour
         votePanel.SetActive(isVisble);
     }
 
+    private void ToggleAnnouncer(bool isVisible)
+    {
+        if(isVisible)
+        {
+            TMP_Text mp = AnnouncerPanel.GetComponentInChildren<TMP_Text>();
+            mp.text = ch[chosenChaosIndex].GetOneliner();
+            //ch[chosenChaosIndex].PlayAnnouncerClip();
+        }
+        AnnouncerPanel.SetActive(isVisible);
+
+    }
     
 }

@@ -8,7 +8,7 @@ public abstract class Chaos : MonoBehaviour
 
     [Tooltip("Clip for the Announcer Voiceline")]
     [SerializeField] private AudioSource announcerClip;
-    [SerializeField] private string announcerOneLiner;
+    [SerializeField] protected string announcerOneLiner;
     
     
     //Trigger The Chaos Event
@@ -18,8 +18,13 @@ public abstract class Chaos : MonoBehaviour
     public abstract void Stop();
     //
     //plays the audio clip
-    protected void PlayAnnouncerClip()
+    public virtual void PlayAnnouncerClip()
     {
         announcerClip.Play();
+    }
+
+    public virtual string GetOneliner()
+    {
+        return announcerOneLiner;
     }
 }
