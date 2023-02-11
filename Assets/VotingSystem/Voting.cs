@@ -32,10 +32,12 @@ public class Voting : MonoBehaviour
     [SerializeField] private int MaxNumberOfVoteRounds = 15; //Max number of rounds per voting
     [SerializeField] private float votingInterval = 1f; //how long between votes
     [SerializeField] private float chaosTime = 15f;
+    [SerializeField] private Color WinninngChaosColor;
     private int currVoteRound = 0;
     private int[] votingChaosIndex;
     private int chosenChaosIndex;
     private float currTime = 0f;
+    
 
 
     // Start is called before the first frame update
@@ -46,6 +48,7 @@ public class Voting : MonoBehaviour
         Slider[] sd = votePanel.GetComponentsInChildren<Slider>();
         numSliders = sd.Length;
         sliders = new List<Slider>(sd);
+        ResetSliders();
         //Debug.Log("numSliders " + numSliders);
 
         //Chaos Related
@@ -95,19 +98,21 @@ public class Voting : MonoBehaviour
         currTime += Time.deltaTime;
         if(state == VotingState.Waiting)
         {
-            if(currTime >= waitTime)
+            ToggleSliderPanel(false);
+            if (currTime >= waitTime)
             {
                 currTime = 0f;
                 ChooseVotingChaos();
                 ChangeSliderName();
                 ChangeState(VotingState.Voting);
-
             }
+            
 
         }
         else if(state == VotingState.Voting)
         {
-            if(currVoteRound < MaxNumberOfVoteRounds)
+            ToggleSliderPanel(true);
+            if (currVoteRound < MaxNumberOfVoteRounds)
             {
                 //Debug.Log("currVoteRound" + currVoteRound);
                 if(currTime > votingInterval)
@@ -119,16 +124,16 @@ public class Voting : MonoBehaviour
             }
             else
             {
+                //returns the index of sliders with the highest value
                 int index = GetHighestRatedChaos();
+                
+                ChangeChosenChaosColor(index);
 
                 chosenChaosIndex = votingChaosIndex[index];
                 currVoteRound = 0;
                 ChangeState(VotingState.Voted);
                 currTime = 0f;
             }
-
-            
-
 
         }
         else if(state == VotingState.Voted)
@@ -137,7 +142,6 @@ public class Voting : MonoBehaviour
             
             currChaosSize -= 1;
             
-            ResetSliders();
             PrintUsedChaosIndex();
             ResetArray(votingChaosIndex);
 
@@ -147,6 +151,12 @@ public class Voting : MonoBehaviour
         }
         else if (state == VotingState.Chaos)
         {
+            if(currTime > chaosTime/4f)
+            {
+                ToggleSliderPanel(false);
+                ResetSliders();
+            }
+
             if(currTime >= chaosTime)
             {
                 currTime = 0f;
@@ -167,37 +177,61 @@ public class Voting : MonoBehaviour
         }
     }
 
+    private void ChangeChosenChaosColor(int index)
+    {
+        Image[] a = sliders[index].gameObject.GetComponentsInChildren<Image>();
+        for(int i = 0; i < a.Length; i += 1)
+        {
+            GameObject obj = a[i].gameObject;
+            Debug.Log(obj.name + " " + i);
+            a[i].color = WinninngChaosColor;
+        }
+    }    
     private void ResetSliders()
     {
         for(int i = 0; i < numSliders; i += 1)
         {
             sliders[i].value = 0;
             sliders[i].maxValue = 1;
+            
+            TMP_Text sd = sliders[i].GetComponentInChildren<TMP_Text>();
+            sd.text = "";
+            Image[] a = sliders[i].gameObject.GetComponentsInChildren<Image>();
+            for(int j = 0; j < a.Length; j += 1)
+            {
+                a[j].color = Color.white;
+            }
         }
     }
 
     private void ChooseVotingChaos()
     {
         //Debug.Log("Inside of ChooseVotingChaos");
+        
         //if number of chaos left is < the numbers of sliders
         if(currChaosSize < numSliders)
         {
-            Debug.Log("Reseting");
+            //Debug.Log("Reseting");
+        
             //reset them
             ResetArray(usedChaosListIndex);
         }
+        
         //Debug.Log("Picking random index");
+        
         //pick random chaos
         for (int i = 0; i < numSliders; i += 1)
         {
             int chaosIndex = Random.Range(0, maxChaosSize);
+            
             //Debug.Log("index: " + chaosIndex);
             //Debug.Log("Element: " + ch[chaosIndex]);
+            
             //redo if chaos was already chosen
             if(FindIndexof(votingChaosIndex, chaosIndex) != -1) { i -= 1; continue; }
             if(FindIndexof(usedChaosListIndex, chaosIndex) != -1) { i -= 1; continue; }
             
-
+            //add if index is valid
             AddIndex(votingChaosIndex, chaosIndex);
         }
     }
@@ -228,12 +262,17 @@ public class Voting : MonoBehaviour
     private void VoteOnChaos()
     {
         //Debug.Log("inside of VoteOnChaos");
+        
         //generate a random number of votes;
         int currVotes = Random.Range(5, 20);
+        
         //Debug.Log("votes to add: " + currVotes);
+        
         //randomly pick a slider to add votes to
         int sliderIndex = Random.Range(0, numSliders);
+        
         //Debug.Log("slider to add to: " + sliderIndex);
+        
         //change the values of the sliders
         for (int i = 0; i < numSliders; i += 1)
         {
@@ -252,13 +291,16 @@ public class Voting : MonoBehaviour
     private int GetHighestRatedChaos()
     {
         //Debug.Log("Inside of GetHighestRatedChaos");
+        
         //find highest voted chaos
         int index = -1;
         float max = 0;
+        
         //set that as the chosen chaos
         for (int i = 0; i < numSliders; i += 1)
         {
             //Debug.Log("i: " + i + " value: " + sliders[i].value);
+            
             if (sliders[i].value > max)
             {
                 max = sliders[i].value;
@@ -275,6 +317,11 @@ public class Voting : MonoBehaviour
     {
         Debug.Log("Switching from " + this.state + " to " + state);
         this.state = state;
+    }
+
+    private void ToggleSliderPanel(bool isVisble)
+    {
+        votePanel.SetActive(isVisble);
     }
 
     
