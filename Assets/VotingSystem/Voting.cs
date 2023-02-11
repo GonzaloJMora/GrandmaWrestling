@@ -6,7 +6,7 @@ using TMPro;
 
 //Wating - 
 enum VotingState { Waiting, Voting, Voted, Chaos}
-//Waiting -waiting to start the next round of voting
+//Waiting - waiting to start the next round of voting
 //Voting - in the process of voting for the next chaos
 //Voted - chaos is chosen
 //Chaos - chaos is currently doing its thing
@@ -52,16 +52,11 @@ public class Voting : MonoBehaviour
         //Debug.Log("numSliders " + numSliders);
 
         //Chaos Related
-        Debug.Log(chaosSystem.GetComponent<A>());
-        Debug.Log(chaosSystem.GetComponents(typeof(Chaos)));
-        Debug.Log(chaosSystem.GetComponents(typeof(Chaos)).Length);
-
         Component[] comp = chaosSystem.GetComponents(typeof(Chaos));
         ch = new Chaos[comp.Length];
         for(int i = 0; i < comp.Length; i += 1)
         {
             ch[i] = (Chaos)comp[i];
-            Debug.Log(ch[i].GetType());
         }
         maxChaosSize = ch.Length;
         currChaosSize = maxChaosSize;
@@ -160,7 +155,7 @@ public class Voting : MonoBehaviour
             if(currTime >= chaosTime)
             {
                 currTime = 0f;
-                
+                ch[chosenChaosIndex].Stop();
                 ChangeState(VotingState.Waiting);
                
             }

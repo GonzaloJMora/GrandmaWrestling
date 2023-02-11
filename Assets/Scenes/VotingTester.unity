@@ -492,7 +492,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafea6d9205b8c04e826ca08eea0ba38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: F
   announcerClip: {fileID: 0}
+  announcerOneLiner: 
 --- !u!114 &653359945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5106789653055e141b49bf5dce65c5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: E
   announcerClip: {fileID: 0}
+  announcerOneLiner: 
 --- !u!114 &653359946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7bf2db7fcb16e245b4d0c01bdbd0366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: D
   announcerClip: {fileID: 0}
+  announcerOneLiner: 
 --- !u!114 &653359947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,7 +537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4accd77f627aed24288f0d2734bde9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: C
   announcerClip: {fileID: 0}
+  announcerOneLiner: 
 --- !u!114 &653359948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078e0e0d816392146ad812fb8cf79713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: B
   announcerClip: {fileID: 0}
+  announcerOneLiner: 
 --- !u!114 &653359949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f902542cbb6993b4b9a0f0aa960e7f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: A
   announcerClip: {fileID: 0}
+  announcerOneLiner: 
 --- !u!1 &830367691
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,8 +619,8 @@ MonoBehaviour:
   waitTime: 3
   MaxNumberOfVoteRounds: 15
   votingInterval: 1
-  chaosTime: 40
-  WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 0}
+  chaosTime: 10
+  WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
 --- !u!1001 &1322985107
 PrefabInstance:
   m_ObjectHideFlags: 0

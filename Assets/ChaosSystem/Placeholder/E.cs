@@ -6,6 +6,11 @@ public class E : Chaos
 {
     public override void Trigger()
     {
-        Debug.Log("E Triggered");
+        Debug.Log(chaosName + " Triggered");
+    }
+
+    public override void Stop()
+    {
+        Debug.Log(chaosName + " Stopped");
     }
 }

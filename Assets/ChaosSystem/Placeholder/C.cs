@@ -7,7 +7,12 @@ public class C : Chaos
 
     public override void Trigger()
     {
-        Debug.Log("C Triggered");
+        Debug.Log(chaosName + " Triggered");
+    }
+
+    public override void Stop()
+    {
+        Debug.Log(chaosName + " Stopped");
     }
 
 }
