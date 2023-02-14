@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
-    private GrandmaActions playerActions;
+    //private GrandmaActions playerActions;
+    private InputActionAsset inputAsset;
     private InputAction movement;
+    private InputActionMap player;
 
     private Rigidbody rb;
     [SerializeField]
@@ -23,20 +25,27 @@ public class Controller : MonoBehaviour
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
-        playerActions = new GrandmaActions();
+        //playerActions = new GrandmaActions();
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        player = inputAsset.FindActionMap("Player");
     }
 
     private void OnEnable()
     {
-        //playerActions.Player.Jump.started += doJump;
-        movement = playerActions.Player.Movement;
-        playerActions.Player.Enable();
+        //playerActions.Player.Jump.started += DoJump;
+        //movement = playerActions.Player.Movement;
+        //playerActions.Player.Enable();
+        player.FindAction("Jump").started += DoJump;
+        movement = player.FindAction("Movement");
+        player.Enable();
     }
 
     private void OnDisable()
     {
-        //playerActions.Player.Jump.started -= doJump;
-        playerActions.Player.Disable();
+        //playerActions.Player.Jump.started -= DoJump;
+        //playerActions.Player.Disable();
+        player.FindAction("Jump").started -= DoJump;
+        player.Disable();
     }
 
     private void FixedUpdate()
@@ -47,7 +56,7 @@ public class Controller : MonoBehaviour
         rb.AddForce(forceDir, ForceMode.Impulse);
         forceDir = Vector3.zero;
 
-        if (rb.velocity.y < 0f)
+        if (rb.velocity.y < 0f || !isGrounded())
         {
             rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
         }
@@ -92,7 +101,7 @@ public class Controller : MonoBehaviour
         return forward.normalized;
     }
 
-    /*private void doJump(InputAction.CallbackContext obj)
+    private void DoJump(InputAction.CallbackContext obj)
     {
         if (isGrounded())
         {
@@ -110,5 +119,5 @@ public class Controller : MonoBehaviour
         }
 
         return false;
-    }*/
+    }
 }
