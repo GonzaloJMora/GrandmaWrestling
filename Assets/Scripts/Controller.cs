@@ -11,6 +11,11 @@ public class Controller : MonoBehaviour
     private InputActionMap player;
     private Rigidbody rb;
 
+    //references to hitboxes
+    public GameObject swipeBox;
+    public GameObject jabBox;
+    public GameObject blockBox;
+
     //movement values
     [SerializeField]
     public float movementForce = 1f;
@@ -52,9 +57,9 @@ public class Controller : MonoBehaviour
     private void OnDisable()
     {
         player.FindAction("Jump").started -= DoJump;
-        player.FindAction("Jump").started -= DoJump;
-        player.FindAction("Jump").started -= DoJump;
-        player.FindAction("Jump").started -= DoJump;
+        player.FindAction("Block").started -= DoBlock;
+        player.FindAction("Swipe").started -= DoSwipe;
+        player.FindAction("Jab").started -= DoJab;
         player.Disable();
     }
 
@@ -141,19 +146,25 @@ public class Controller : MonoBehaviour
     //callback that handles the block action
     private void DoBlock(InputAction.CallbackContext obj)
     {
+        blockBox.SetActive(true);
         Debug.Log("Block");
+        Invoke("deactivateBlock", 1);
     }
 
     //callback that handles the swipe action
     private void DoSwipe(InputAction.CallbackContext obj)
     {
+        swipeBox.SetActive(true);
         Debug.Log("Swipe");
+        Invoke("deactivateSwipe", 1);
     }
 
     //callback that handles the jab action
     private void DoJab(InputAction.CallbackContext obj)
     {
+        jabBox.SetActive(true);
         Debug.Log("Jab");
+        Invoke("deactivateJab", 1);
     }
 
     //check for if the player is currently on the ground
@@ -181,5 +192,26 @@ public class Controller : MonoBehaviour
         }
 
         return true;
+    }
+
+    //method that will deactivate block hitbox called after a small delay
+    private void deactivateBlock()
+    {
+        Debug.Log("Deactivating block");
+        blockBox.SetActive(false);
+    }
+
+    //method that will deactivate jab hitbox called after a small delay
+    private void deactivateJab()
+    {
+        Debug.Log("Deactivating jab");
+        jabBox.SetActive(false);
+    }
+
+    //method that will deactivate swipe hitbox called after a small delay
+    private void deactivateSwipe()
+    {
+        Debug.Log("Deactivating swipe");
+        swipeBox.SetActive(false);
     }
 }
