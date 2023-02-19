@@ -19,7 +19,15 @@ public class SwipeAttack : MonoBehaviour
 
         else if (other.tag == "Player")
         {
+            if (other.gameObject.GetComponent<Controller>().isBlocking)
+            {
+                gameObject.transform.parent.GetComponent<Controller>().getHit(50, other.gameObject.transform.position);
+                return;
+            }
+            
             Debug.Log("Player has taken a hit!");
+            //other.gameObject.GetComponent<Controller>().getHit(10, other.gameObject.transform.rotation.eulerAngles);
+            other.gameObject.GetComponent<Controller>().getHit(10, gameObject.transform.position);
         }
     }
 }

@@ -27,6 +27,10 @@ public class Controller : MonoBehaviour
     //force to be applied onto player's rigidbody
     private Vector3 forceDir = Vector3.zero;
 
+    //will be force applied when hit, is a placeholder
+    private Vector3 hitVec = Vector3.zero;
+    public bool isBlocking = false;
+
     //used when player is off map to not allow them to stick on walls
     private Vector3 lastForce = Vector3.zero;
 
@@ -61,6 +65,19 @@ public class Controller : MonoBehaviour
         player.FindAction("Swipe").started -= DoSwipe;
         player.FindAction("Jab").started -= DoJab;
         player.Disable();
+    }
+
+    public void getHit(int force, Vector3 attacker_pos)
+    {
+        //hitDir = Vector3.zero;
+        if (isBlocking)
+        {
+            return;
+        }
+
+        hitVec = Vector3.Normalize(gameObject.transform.position - attacker_pos);
+        hitVec *= force;
+        rb.AddForce(hitVec, ForceMode.Impulse);
     }
 
     private void FixedUpdate()
@@ -110,6 +127,7 @@ public class Controller : MonoBehaviour
         if (movement.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
         {
             this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            //gameObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
 
         else
@@ -147,6 +165,7 @@ public class Controller : MonoBehaviour
     private void DoBlock(InputAction.CallbackContext obj)
     {
         blockBox.SetActive(true);
+        isBlocking = true;
         Debug.Log("Block");
         Invoke("deactivateBlock", 1);
     }
@@ -198,6 +217,7 @@ public class Controller : MonoBehaviour
     private void deactivateBlock()
     {
         Debug.Log("Deactivating block");
+        isBlocking = false;
         blockBox.SetActive(false);
     }
 

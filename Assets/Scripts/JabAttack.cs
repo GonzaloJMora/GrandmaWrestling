@@ -6,6 +6,7 @@ public class JabAttack : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.tag == "Block")
         {
             Debug.Log("Attack has been blocked!");
@@ -19,7 +20,13 @@ public class JabAttack : MonoBehaviour
 
         else if (other.tag == "Player")
         {
+            if (other.gameObject.GetComponent<Controller>().isBlocking)
+            {
+                gameObject.transform.parent.GetComponent<Controller>().getHit(50, other.gameObject.transform.position);
+                return;
+            }
             Debug.Log("Player has taken a hit!");
+            other.gameObject.GetComponent<Controller>().getHit(40, gameObject.transform.position);
         }
     }
 }
