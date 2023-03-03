@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Data.Common;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +41,12 @@ public class Voting : MonoBehaviour
 
     [Header("Announcer Related")]
     [SerializeField] private GameObject AnnouncerPanel;
-    
+
+
+    [Header("Testing")]
+    [SerializeField] private bool OverrideVote = false;
+    [SerializeField] private int ChaosOverride;
+
 
 
     // Start is called before the first frame update
@@ -211,6 +217,14 @@ public class Voting : MonoBehaviour
     private void ChooseVotingChaos()
     {
         //Debug.Log("Inside of ChooseVotingChaos");
+        if(OverrideVote)
+        {
+            AddIndex(votingChaosIndex, ChaosOverride);
+            AddIndex(votingChaosIndex, ChaosOverride);
+            AddIndex(votingChaosIndex, ChaosOverride);
+            AddIndex(votingChaosIndex, ChaosOverride);
+            return;
+        }
         
         //if number of chaos left is < the numbers of sliders
         if(currChaosSize < numSliders)
