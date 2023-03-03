@@ -102,6 +102,17 @@ public class Voting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Debug.Log("Inside of ChooseVotingChaos");
+        if (OverrideVote && state == VotingState.Voted)
+        {
+            chosenChaosIndex = ChaosOverride;
+            //state = VotingState.Chaos;
+            ch[chosenChaosIndex].Trigger();
+            state = VotingState.Chaos;
+            return;
+        }
+
         currTime += Time.deltaTime;
         if(state == VotingState.Waiting)
         {
@@ -216,15 +227,7 @@ public class Voting : MonoBehaviour
 
     private void ChooseVotingChaos()
     {
-        //Debug.Log("Inside of ChooseVotingChaos");
-        if(OverrideVote)
-        {
-            AddIndex(votingChaosIndex, ChaosOverride);
-            AddIndex(votingChaosIndex, ChaosOverride);
-            AddIndex(votingChaosIndex, ChaosOverride);
-            AddIndex(votingChaosIndex, ChaosOverride);
-            return;
-        }
+
         
         //if number of chaos left is < the numbers of sliders
         if(currChaosSize < numSliders)

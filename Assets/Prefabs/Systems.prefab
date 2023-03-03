@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4560614081498238430}
   - component: {fileID: 4048744832753389940}
+  - component: {fileID: 3315793446952898412}
   - component: {fileID: 4560614081498238420}
   - component: {fileID: 4560614081498238421}
   - component: {fileID: 4560614081498238418}
@@ -53,13 +54,32 @@ MonoBehaviour:
   chaosName: Mines
   announcerClip: {fileID: 0}
   announcerOneLiner: Kaboom
-  minePrefab: {fileID: 0}
+  minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
+    type: 3}
   radius: 1.98
   force: 20
   Upforce: 0.05
-  spawnRadius: 5.28
-  MinMaxMineAmount: {x: 0, y: 0}
-  mineSpawnDelay: 0
+  spawnRadius: 2.99
+  MinMaxMineAmount: {x: 4, y: 10}
+  mineSpawnDelay: 1
+--- !u!114 &3315793446952898412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: 
+  announcerClip: {fileID: 0}
+  announcerOneLiner: 
+  camera: {fileID: 0}
+  minMaxRotateAmount: {x: 0, y: 0}
+  minMaxRotateSpeed: {x: 0, y: 0}
 --- !u!114 &4560614081498238420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,4 +256,4 @@ MonoBehaviour:
   WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
   AnnouncerPanel: {fileID: 0}
   OverrideVote: 0
-  ChaosOverride: {fileID: 0}
+  ChaosOverride: 0

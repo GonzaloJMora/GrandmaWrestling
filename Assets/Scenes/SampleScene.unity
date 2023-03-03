@@ -130,31 +130,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 475479852}
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: chaosName
+      value: CameraSpin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: cameraAxis
+      value: 
+      objectReference: {fileID: 475479852}
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: announcerOneLiner
+      value: SpinLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: minMaxRotateSpeed.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: minMaxRotateSpeed.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: minMaxRotateAmount.x
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
-      propertyPath: minePrefab
-      value: 
-      objectReference: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
+      propertyPath: force
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
+      propertyPath: Upforce
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: spawnRadius
-      value: 2.99
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: mineSpawnDelay
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: MinMaxMineAmount.x
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: MinMaxMineAmount.y
-      value: 10
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081519077150, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
@@ -218,6 +257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
+      propertyPath: chaosTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
       propertyPath: votePanel
       value: 
       objectReference: {fileID: 1382271714}
@@ -228,11 +272,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
+      propertyPath: ChaosOverride
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
       propertyPath: AnnouncerPanel
       value: 
       objectReference: {fileID: 517225435}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+--- !u!1 &475479852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475479853}
+  m_Layer: 0
+  m_Name: CameraAxis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475479853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475479852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1950266258}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &517225434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -983,7 +1064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685487211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000039934, y: -0.32, z: 0.00000079868}
+  m_LocalPosition: {x: 0, y: -0.32, z: 0}
   m_LocalScale: {x: 7.6998, y: 0.3271414, z: 7.6998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1145,12 +1226,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950266254}
-  m_LocalRotation: {x: 0.32964748, y: -0.010590553, z: -0.003698105, w: 0.94403744}
-  m_LocalPosition: {x: 0.18, y: 3.57, z: -5.56}
+  m_LocalRotation: {x: 0.3296475, y: -0.010590554, z: -0.0036981052, w: 0.9440375}
+  m_LocalPosition: {x: 0.18, y: 0, z: -5.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 475479853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 38.486, y: -1.642, z: -1.022}
 --- !u!1 &1957151980

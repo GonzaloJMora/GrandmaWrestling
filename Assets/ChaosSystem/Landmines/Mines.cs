@@ -21,6 +21,7 @@ public class Mines : Chaos
 
     public override void Stop()
     {
+        Debug.Log("STOP FRO MINES");
         StartCoroutine(ResetParent());
 
     }
@@ -33,11 +34,13 @@ public class Mines : Chaos
 
     IEnumerator ExplodeChildren(GameObject p)
     {
-        for(int i = 0; i < p.transform.childCount; i += 1)
+        for(int i = 0; i<p.transform.childCount; i += 1)//while (p.transform.childCount != 0)
         {
-            MinesExplosion me = p.transform.GetChild(i).GetComponent<MinesExplosion>();
+            MinesExplosion me = p.transform.GetChild(i).gameObject.GetComponent<MinesExplosion>();
+            Debug.Log("About to explode");
             me.Explode();
-            yield return new WaitForSeconds(0.25f);
+
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -64,6 +67,7 @@ public class Mines : Chaos
             me.Radius = radius;
             me.Force = force;
             me.UpForce = Upforce;
+            me.count = i;
 
 
             i += 1;

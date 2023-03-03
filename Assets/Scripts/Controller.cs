@@ -19,6 +19,7 @@ public class Controller : MonoBehaviour
     //movement values
     [SerializeField]
     public float movementForce = 1f;
+    private const float cmovementForce = 1f;
     [SerializeField]
     public float jumpForce = 5f;
     [SerializeField]
@@ -233,5 +234,16 @@ public class Controller : MonoBehaviour
     {
         Debug.Log("Deactivating swipe");
         swipeBox.SetActive(false);
+    }
+
+    public IEnumerator PauseMovementForce(float time, int count)
+    {
+        Debug.Log("START PAUSING: " + count);
+        if (this.movementForce == 0f) { Debug.Log("BREAKING EARLY " + count); yield break; }
+        float temp = this.movementForce;
+        this.movementForce = 0f;
+        yield return new WaitForSeconds(0.5f);
+        this.movementForce = 1f;
+        Debug.Log("STOPPED PAUSING: " + count);
     }
 }

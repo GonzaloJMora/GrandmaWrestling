@@ -12,6 +12,8 @@ public class MinesExplosion : MonoBehaviour
     [SerializeField] private float force = 10f;
     [SerializeField] private float radius = 10f;
     [SerializeField] private float upForce = 10f;
+    private bool exploded = false;
+    public int count = 0;
 
     private void OnDrawGizmosSelected()
     {
@@ -30,6 +32,10 @@ public class MinesExplosion : MonoBehaviour
 
     public void Explode()
     {
+        if(exploded)
+        {
+            return;
+        }
         this.GetComponent<MeshRenderer>().enabled = false;
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
@@ -44,13 +50,18 @@ public class MinesExplosion : MonoBehaviour
                 Controller c = hit.GetComponent<Controller>();
                 if (c != null)
                 {
-                    StartCoroutine(TempPausePlayerMovement(c));
+                    StartCoroutine(c.PauseMovementForce(0.25f, count));
                 }
                 rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
             }
         }
 
-        Destroy(this);
+        Collider[] col = GetComponents<Collider>();
+        foreach (Collider c in col)
+        {
+            c.enabled = false;
+        }
+        exploded = true;
     }
 
     IEnumerator TempPausePlayerMovement(Controller c)
