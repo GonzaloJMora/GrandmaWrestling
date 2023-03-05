@@ -16,6 +16,12 @@ public class Controller : MonoBehaviour
     public GameObject jabBox;
     public GameObject blockBox;
 
+    //lock to keep players from activating block, jab, and swipe at the same time
+    private bool attLock = true;
+
+    //lock used to keep the player from indefinitely sticking to the wall outside the stage
+    private bool fallLock = false;
+
     //movement values
     [SerializeField]
     public float movementForce = 1f;
@@ -92,13 +98,22 @@ public class Controller : MonoBehaviour
             rb.AddForce(forceDir, ForceMode.Impulse);
             lastForce = forceDir;
             forceDir = Vector3.zero;
+            fallLock = true;
         }
 
         //if player is off the map, the previous force will be constantly applied
         else
         {
-            lastForce.y = -0.1f;
+            //Debug.Log(rb.velocity.y);
+            if (fallLock && lastForce.x == 0 && lastForce.z == 0) {
+                lastForce.x = -rb.position.x; 
+                lastForce.z = -rb.position.z;
+                fallLock = false;
+            } 
+
             rb.AddForce(lastForce, ForceMode.Impulse);
+
+            lastForce = Vector3.zero;
         }
 
         //player will fall faster and faster if they are not grounded
@@ -164,26 +179,38 @@ public class Controller : MonoBehaviour
     //callback that handles the block action
     private void DoBlock(InputAction.CallbackContext obj)
     {
-        blockBox.SetActive(true);
-        isBlocking = true;
-        Debug.Log("Block");
-        Invoke("deactivateBlock", 1);
+        if (attLock) {
+            attLock = false;
+            blockBox.SetActive(true);
+            isBlocking = true;
+            Debug.Log("Block");
+            Invoke("deactivateBlock", 1);
+            Invoke("releaseLock", 1);
+        }
     }
 
     //callback that handles the swipe action
     private void DoSwipe(InputAction.CallbackContext obj)
     {
-        swipeBox.SetActive(true);
-        Debug.Log("Swipe");
-        Invoke("deactivateSwipe", 1);
+        if (attLock) {
+            attLock = false;
+            swipeBox.SetActive(true);
+            Debug.Log("Swipe");
+            Invoke("deactivateSwipe", 1);
+            Invoke("releaseLock", 1);
+        }
     }
 
     //callback that handles the jab action
     private void DoJab(InputAction.CallbackContext obj)
     {
-        jabBox.SetActive(true);
-        Debug.Log("Jab");
-        Invoke("deactivateJab", 1);
+        if (attLock) {
+            attLock = false;
+            jabBox.SetActive(true);
+            Debug.Log("Jab");
+            Invoke("deactivateJab", 1);
+            Invoke("releaseLock", 1);
+        }
     }
 
     //check for if the player is currently on the ground
@@ -233,5 +260,10 @@ public class Controller : MonoBehaviour
     {
         Debug.Log("Deactivating swipe");
         swipeBox.SetActive(false);
+    }
+
+    private void releaseLock() 
+    {
+        attLock = true;
     }
 }
