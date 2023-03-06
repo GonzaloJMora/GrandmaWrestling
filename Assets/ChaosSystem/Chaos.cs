@@ -28,4 +28,9 @@ public abstract class Chaos : MonoBehaviour
     {
         return announcerOneLiner;
     }
+
+    public virtual string GetName()
+    {
+        return chaosName;
+    }
 }

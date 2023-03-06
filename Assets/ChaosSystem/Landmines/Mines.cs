@@ -71,7 +71,7 @@ public class Mines : Chaos
 
 
             i += 1;
-            Debug.Log("i: " + i);
+            //Debug.Log("i: " + i);
             yield return new WaitForSeconds(mineSpawnDelay);
         }
     }
