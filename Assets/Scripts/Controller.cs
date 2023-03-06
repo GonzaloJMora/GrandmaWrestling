@@ -27,10 +27,14 @@ public class Controller : MonoBehaviour
     //force to be applied onto player's rigidbody
     private Vector3 forceDir = Vector3.zero;
 
-    //will be force applied when hit, is a placeholder
+    //stuff for fighting
     private Vector3 hitVec = Vector3.zero;
+    private Vector3 bounceVec = new Vector3(0, 5, 0);
     public bool isBlocking = false;
     public bool canAct = true;
+    public bool inAirStun = false;
+    public int hitCount = 0;
+    public int hitNorm = 3;
 
     //used when player is off map to not allow them to stick on walls
     private Vector3 lastForce = Vector3.zero;
@@ -76,8 +80,13 @@ public class Controller : MonoBehaviour
             return;
         }
 
+        hitCount++;
+
         hitVec = Vector3.Normalize(gameObject.transform.position - attacker_pos);
-        hitVec *= force;
+        hitVec *= force * (hitCount/hitNorm);
+        hitVec.y = 0;
+        rb.AddForce(bounceVec, ForceMode.Impulse);
+        //rb.velocity = hitVec * 5;
         rb.AddForce(hitVec, ForceMode.Impulse);
     }
 

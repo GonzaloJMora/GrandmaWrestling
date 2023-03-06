@@ -26,7 +26,7 @@ public class JabAttack : MonoBehaviour
                 return;
             }
             Debug.Log("Player has taken a hit!");
-            other.gameObject.GetComponent<Controller>().getHit(40, gameObject.transform.position);
+            other.gameObject.GetComponent<Controller>().getHit(25, gameObject.transform.position);
         }
     }
 }
