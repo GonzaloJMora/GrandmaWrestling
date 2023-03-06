@@ -16,9 +16,16 @@ public class Controller : MonoBehaviour
     public GameObject jabBox;
     public GameObject blockBox;
 
+    //lock to keep players from activating block, jab, and swipe at the same time
+    private bool attLock = true;
+
+    //lock used to keep the player from indefinitely sticking to the wall outside the stage
+    private bool fallLock = false;
+
     //movement values
     [SerializeField]
     public float movementForce = 1f;
+    private const float cmovementForce = 1f;
     [SerializeField]
     public float jumpForce = 5f;
     [SerializeField]
@@ -43,12 +50,24 @@ public class Controller : MonoBehaviour
     [SerializeField]
     public Camera cam;
 
+    //access to lastCollision
+    private PlayerManager playerManager;
+    [SerializeField] private GameObject o;
+
+    //what player are we
+    private Color c;
+
     //initialization
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
         inputAsset = this.GetComponent<PlayerInput>().actions;
         player = inputAsset.FindActionMap("Player");
+        playerManager = o.GetComponent<PlayerManager>();
+    }
+
+    private void Start() {
+        c = GetComponent<MeshRenderer>().material.color;
     }
 
     //also initialization but only when object becomes active
@@ -102,13 +121,22 @@ public class Controller : MonoBehaviour
             rb.AddForce(forceDir, ForceMode.Impulse);
             lastForce = forceDir;
             forceDir = Vector3.zero;
+            fallLock = true;
         }
 
         //if player is off the map, the previous force will be constantly applied
         else
         {
-            lastForce.y = -0.1f;
+            //Debug.Log(rb.velocity.y);
+            if (fallLock && lastForce.x == 0 && lastForce.z == 0) {
+                lastForce.x = -rb.position.x; 
+                lastForce.z = -rb.position.z;
+                fallLock = false;
+            } 
+
             rb.AddForce(lastForce, ForceMode.Impulse);
+
+            lastForce = Vector3.zero;
         }
 
         //player will fall faster and faster if they are not grounded
@@ -168,19 +196,50 @@ public class Controller : MonoBehaviour
         if (isGrounded())
         {
             forceDir += Vector3.up * jumpForce;
+            Invoke("resetLastCollision", 0.75f);
+        }
+    }
+
+    //last collision is reset if the player jumps
+    private void resetLastCollision() {
+        if (c == Color.blue) {
+            playerManager.lastCollision[0] = -1;
+        }
+
+        else if (c == Color.red) {
+            playerManager.lastCollision[1] = -1;
+        }
+
+        else if (c == Color.green) {
+            playerManager.lastCollision[2] = -1;
+        }
+
+        else if (c == Color.yellow) {
+            playerManager.lastCollision[3] = -1;
         }
     }
 
     //callback that handles the block action
     private void DoBlock(InputAction.CallbackContext obj)
     {
-        if (canAct)
+
+        /*if (canAct)
         {
             canAct = false;
             blockBox.SetActive(true);
             isBlocking = true;
             Debug.Log("Block");
             Invoke("deactivateBlock", 1);            
+        }*/
+
+
+        if (attLock) {
+            attLock = false;
+            blockBox.SetActive(true);
+            isBlocking = true;
+            Debug.Log("Block");
+            Invoke("deactivateBlock", 1);
+            Invoke("releaseLock", 1);
         }
 
     }
@@ -188,27 +247,43 @@ public class Controller : MonoBehaviour
     //callback that handles the swipe action
     private void DoSwipe(InputAction.CallbackContext obj)
     {
-        if (canAct)
+
+        /*if (canAct)
         {
             canAct = false;
             swipeBox.SetActive(true);
             Debug.Log("Swipe");
             Invoke("deactivateSwipe", 1);
-        }
+        }*/
 
+        if (attLock) {
+            attLock = false;
+            swipeBox.SetActive(true);
+            Debug.Log("Swipe");
+            Invoke("deactivateSwipe", 1);
+            Invoke("releaseLock", 1);
+        }
     }
 
     //callback that handles the jab action
     private void DoJab(InputAction.CallbackContext obj)
     {
-        if (canAct)
+
+        /*if (canAct)
         {
             canAct = false;
             jabBox.SetActive(true);
             Debug.Log("Jab");
             Invoke("deactivateJab", 1);
+        }*/
+
+        if (attLock) {
+            attLock = false;
+            jabBox.SetActive(true);
+            Debug.Log("Jab");
+            Invoke("deactivateJab", 1);
+            Invoke("releaseLock", 1);
         }
-;
     }
 
     //check for if the player is currently on the ground
@@ -261,5 +336,21 @@ public class Controller : MonoBehaviour
         Debug.Log("Deactivating swipe");
         swipeBox.SetActive(false);
         canAct = true;
+    }
+
+    private void releaseLock() 
+    {
+        attLock = true;
+    }
+    
+    public IEnumerator PauseMovementForce(float time, int count)
+    {
+        Debug.Log("START PAUSING: " + count);
+        if (this.movementForce == 0f) { Debug.Log("BREAKING EARLY " + count); yield break; }
+        float temp = this.movementForce;
+        this.movementForce = 0f;
+        yield return new WaitForSeconds(0.5f);
+        this.movementForce = 1f;
+        Debug.Log("STOPPED PAUSING: " + count);
     }
 }
