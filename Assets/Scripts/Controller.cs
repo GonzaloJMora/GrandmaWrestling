@@ -44,12 +44,24 @@ public class Controller : MonoBehaviour
     [SerializeField]
     public Camera cam;
 
+    //access to lastCollision
+    private PlayerManager playerManager;
+    [SerializeField] private GameObject o;
+
+    //what player are we
+    private Color c;
+
     //initialization
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
         inputAsset = this.GetComponent<PlayerInput>().actions;
         player = inputAsset.FindActionMap("Player");
+        playerManager = o.GetComponent<PlayerManager>();
+    }
+
+    private void Start() {
+        c = GetComponent<MeshRenderer>().material.color;
     }
 
     //also initialization but only when object becomes active
@@ -173,6 +185,26 @@ public class Controller : MonoBehaviour
         if (isGrounded())
         {
             forceDir += Vector3.up * jumpForce;
+            Invoke("resetLastCollision", 0.75f);
+        }
+    }
+
+    //last collision is reset if the player jumps
+    private void resetLastCollision() {
+        if (c == Color.blue) {
+            playerManager.lastCollision[0] = -1;
+        }
+
+        else if (c == Color.red) {
+            playerManager.lastCollision[1] = -1;
+        }
+
+        else if (c == Color.green) {
+            playerManager.lastCollision[2] = -1;
+        }
+
+        else if (c == Color.yellow) {
+            playerManager.lastCollision[3] = -1;
         }
     }
 

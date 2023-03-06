@@ -26,10 +26,19 @@ public class PlayerManager : MonoBehaviour
     //reference to our input manager
     private PlayerInputManager playerInputManager;
 
+    //handles score changes to the ui
+    private elimGameMode uiRef;
+    [SerializeField]
+    private GameObject gameMode;
+
+    //keeps track of the last collision that ocurred (-1 for none, 0-3 for P1-P4 respectively) (used for point incrementation)
+    public int[] lastCollision = {-1, -1, -1, -1};
+
     //initialization
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
+        uiRef = gameMode.GetComponent<elimGameMode>();
     }
 
     //initialization
@@ -70,29 +79,69 @@ public class PlayerManager : MonoBehaviour
     //used by the plane this script is attached to
     private void OnTriggerEnter(Collider other)
     {
-        //use the color to figure out which player got destroyed
+        //use the color to figure out which player fell
         Color color = other.gameObject.GetComponent<MeshRenderer>().material.color;
 
-        //set the corresponding player to available
+        //respawn player in appropriate spot
         if (color == Color.blue)
         {
-            availablePlayers[0] = true;
+            //availablePlayers[0] = true;
+            other.transform.position = startingPoints[0].position;
+
+            //update score
+            if (lastCollision[0] == -1) {
+                uiRef.scores[0] -= 1;
+            }
+            else {
+                uiRef.scores[lastCollision[0]] += 1;
+            }
+            lastCollision[0] = -1;
         }
         else if (color == Color.red)
         {
-            availablePlayers[1] = true;
+            //availablePlayers[1] = true;
+            other.transform.position = startingPoints[1].position;
+
+            //update score
+            if (lastCollision[1] == -1) {
+                uiRef.scores[1] -= 1;
+            }
+            else {
+                uiRef.scores[lastCollision[1]] += 1;
+            }
+            lastCollision[1] = -1;
         }
         else if (color == Color.green)
         {
-            availablePlayers[2] = true;
+            //availablePlayers[2] = true;
+            other.transform.position = startingPoints[2].position;
+
+            //update score
+            if (lastCollision[2] == -1) {
+                uiRef.scores[2] -= 1;
+            }
+            else {
+                uiRef.scores[lastCollision[2]] += 1;
+            }
+            lastCollision[2] = -1;
         }
         else if (color == Color.yellow)
         {
-            availablePlayers[3] = true;
+            //availablePlayers[3] = true;
+            other.transform.position = startingPoints[3].position;
+
+            //update score
+            if (lastCollision[3] == -1) {
+                uiRef.scores[3] -= 1;
+            }
+            else {
+                uiRef.scores[lastCollision[3]] += 1;
+            }
+            lastCollision[3] = -1;
         }
 
-        //remove player from list and finally destroy object
+        /*//remove player from list and finally destroy object
         players.Remove(other.gameObject.GetComponent<PlayerInput>());
-        Destroy(other.gameObject);
+        Destroy(other.gameObject);*/
     }
 }
