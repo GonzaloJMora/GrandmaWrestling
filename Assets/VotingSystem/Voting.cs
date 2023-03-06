@@ -194,7 +194,7 @@ public class Voting : MonoBehaviour
         for (int i = 0; i < numSliders; i += 1)
         {
             TMP_Text sd = sliders[i].GetComponentInChildren<TMP_Text>();
-            sd.text = ch[votingChaosIndex[i]].GetType().ToString();
+            sd.text = ch[votingChaosIndex[i]].GetName();
         }
     }
 
@@ -204,7 +204,7 @@ public class Voting : MonoBehaviour
         for(int i = 0; i < a.Length; i += 1)
         {
             GameObject obj = a[i].gameObject;
-            Debug.Log(obj.name + " " + i);
+            //Debug.Log(obj.name + " " + i);
             a[i].color = WinninngChaosColor;
         }
     }    
@@ -227,8 +227,7 @@ public class Voting : MonoBehaviour
 
     private void ChooseVotingChaos()
     {
-
-        
+        currChaosSize -= 1;
         //if number of chaos left is < the numbers of sliders
         if(currChaosSize < numSliders)
         {
