@@ -30,6 +30,7 @@ public class Controller : MonoBehaviour
     //will be force applied when hit, is a placeholder
     private Vector3 hitVec = Vector3.zero;
     public bool isBlocking = false;
+    public bool canAct = true;
 
     //used when player is off map to not allow them to stick on walls
     private Vector3 lastForce = Vector3.zero;
@@ -164,26 +165,41 @@ public class Controller : MonoBehaviour
     //callback that handles the block action
     private void DoBlock(InputAction.CallbackContext obj)
     {
-        blockBox.SetActive(true);
-        isBlocking = true;
-        Debug.Log("Block");
-        Invoke("deactivateBlock", 1);
+        if (canAct)
+        {
+            canAct = false;
+            blockBox.SetActive(true);
+            isBlocking = true;
+            Debug.Log("Block");
+            Invoke("deactivateBlock", 1);            
+        }
+
     }
 
     //callback that handles the swipe action
     private void DoSwipe(InputAction.CallbackContext obj)
     {
-        swipeBox.SetActive(true);
-        Debug.Log("Swipe");
-        Invoke("deactivateSwipe", 1);
+        if (canAct)
+        {
+            canAct = false;
+            swipeBox.SetActive(true);
+            Debug.Log("Swipe");
+            Invoke("deactivateSwipe", 1);
+        }
+
     }
 
     //callback that handles the jab action
     private void DoJab(InputAction.CallbackContext obj)
     {
-        jabBox.SetActive(true);
-        Debug.Log("Jab");
-        Invoke("deactivateJab", 1);
+        if (canAct)
+        {
+            canAct = false;
+            jabBox.SetActive(true);
+            Debug.Log("Jab");
+            Invoke("deactivateJab", 1);
+        }
+;
     }
 
     //check for if the player is currently on the ground
@@ -219,6 +235,7 @@ public class Controller : MonoBehaviour
         Debug.Log("Deactivating block");
         isBlocking = false;
         blockBox.SetActive(false);
+        canAct = true;
     }
 
     //method that will deactivate jab hitbox called after a small delay
@@ -226,6 +243,7 @@ public class Controller : MonoBehaviour
     {
         Debug.Log("Deactivating jab");
         jabBox.SetActive(false);
+        canAct = true;
     }
 
     //method that will deactivate swipe hitbox called after a small delay
@@ -233,5 +251,6 @@ public class Controller : MonoBehaviour
     {
         Debug.Log("Deactivating swipe");
         swipeBox.SetActive(false);
+        canAct = true;
     }
 }
