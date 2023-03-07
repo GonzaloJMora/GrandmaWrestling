@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &813839367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813839368}
+  - component: {fileID: 813839369}
+  m_Layer: 0
+  m_Name: GameMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &813839368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813839367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4560614081519077150}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813839369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813839367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d60af3fcbf7c7f459716f1ae2f7c304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLen: 60
+  gameModeCanvas: {fileID: 0}
+  win: {fileID: 0}
+  scores: 00000000000000000000000000000000
 --- !u!1 &4560614081498238431
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,14 +59,10 @@ GameObject:
   - component: {fileID: 4560614081498238430}
   - component: {fileID: 4048744832753389940}
   - component: {fileID: 3315793446952898412}
-  - component: {fileID: 4560614081498238420}
-  - component: {fileID: 4560614081498238421}
-  - component: {fileID: 4560614081498238418}
-  - component: {fileID: 4560614081498238419}
-  - component: {fileID: 4560614081498238416}
-  - component: {fileID: 4560614081498238417}
+  - component: {fileID: 280073972}
+  - component: {fileID: 280073973}
   m_Layer: 0
-  m_Name: Choas
+  m_Name: Chaos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,17 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321be8d75646a644296cfb103f984546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: Mines
+  chaosName: MiniMines
   announcerClip: {fileID: 0}
-  announcerOneLiner: Kaboom
+  announcerOneLiner: Mini Kaboom
   minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
     type: 3}
   radius: 1.98
-  force: 20
-  Upforce: 0.05
-  spawnRadius: 2.99
+  force: 40
+  Upforce: 0.1
+  spawnRadius: 3.6
   MinMaxMineAmount: {x: 4, y: 10}
-  mineSpawnDelay: 1
+  mineSpawnDelay: 0.1
 --- !u!114 &3315793446952898412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,13 +118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: 
+  chaosName: CameraSpin FAST
   announcerClip: {fileID: 0}
-  announcerOneLiner: 
-  camera: {fileID: 0}
-  minMaxRotateAmount: {x: 0, y: 0}
-  minMaxRotateSpeed: {x: 0, y: 0}
---- !u!114 &4560614081498238420
+  announcerOneLiner: SpinLock FAST
+  cameraAxis: {fileID: 0}
+  minMaxRotateSpeed: {x: 50, y: 100}
+  waitTime: 0
+--- !u!114 &280073972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,13 +133,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4560614081498238431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f902542cbb6993b4b9a0f0aa960e7f1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 321be8d75646a644296cfb103f984546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: A
+  chaosName: MegaMine
   announcerClip: {fileID: 0}
-  announcerOneLiner: A
---- !u!114 &4560614081498238421
+  announcerOneLiner: Mega Kaboom
+  minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
+    type: 3}
+  radius: 1.98
+  force: 40
+  Upforce: 0.1
+  spawnRadius: 3.6
+  MinMaxMineAmount: {x: 100, y: 200}
+  mineSpawnDelay: 0.1
+--- !u!114 &280073973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,72 +156,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4560614081498238431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078e0e0d816392146ad812fb8cf79713, type: 3}
+  m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: B
+  chaosName: CameraSpin FAST
   announcerClip: {fileID: 0}
-  announcerOneLiner: B
---- !u!114 &4560614081498238418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4accd77f627aed24288f0d2734bde9e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: C
-  announcerClip: {fileID: 0}
-  announcerOneLiner: C
---- !u!114 &4560614081498238419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7bf2db7fcb16e245b4d0c01bdbd0366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: D
-  announcerClip: {fileID: 0}
-  announcerOneLiner: D
---- !u!114 &4560614081498238416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5106789653055e141b49bf5dce65c5d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: E
-  announcerClip: {fileID: 0}
-  announcerOneLiner: E
---- !u!114 &4560614081498238417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafea6d9205b8c04e826ca08eea0ba38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: F
-  announcerClip: {fileID: 0}
-  announcerOneLiner: F
+  announcerOneLiner: SpinLock Slow
+  cameraAxis: {fileID: 0}
+  minMaxRotateSpeed: {x: 50, y: 100}
+  waitTime: 0
 --- !u!1 &4560614081519077151
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +195,7 @@ Transform:
   m_Children:
   - {fileID: 4560614081724666197}
   - {fileID: 4560614081498238430}
+  - {fileID: 813839368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
