@@ -205,6 +205,11 @@ PrefabInstance:
       propertyPath: MinMaxMineAmount.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4560614081498238431, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_Name
+      value: Chaos
+      objectReference: {fileID: 0}
     - target: {fileID: 4560614081519077150, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: m_RootOrder
@@ -655,6 +660,8 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  gameMode: {fileID: 0}
+  lastCollision: ffffffffffffffffffffffffffffffff
 --- !u!1 &1021583019
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +833,7 @@ PrefabInstance:
     - target: {fileID: 8636606766178771660, guid: 78b1697676959df4ca7af086c7f51d90,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8636606766178771660, guid: 78b1697676959df4ca7af086c7f51d90,
         type: 3}
