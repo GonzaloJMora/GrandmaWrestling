@@ -345,12 +345,12 @@ public class Controller : MonoBehaviour
     
     public IEnumerator PauseMovementForce(float time, int count)
     {
-        Debug.Log("START PAUSING: " + count);
-        if (this.movementForce == 0f) { Debug.Log("BREAKING EARLY " + count); yield break; }
+        //Debug.Log("START PAUSING: " + count);
+        if (this.movementForce == 0f) { /*Debug.Log("BREAKING EARLY " + count);*/ yield break; }
         float temp = this.movementForce;
         this.movementForce = 0f;
         yield return new WaitForSeconds(0.5f);
         this.movementForce = 1f;
-        Debug.Log("STOPPED PAUSING: " + count);
+        //Debug.Log("STOPPED PAUSING: " + count);
     }
 }

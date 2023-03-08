@@ -78,6 +78,7 @@ public class Voting : MonoBehaviour
 
         //Announcer Related
         ToggleAnnouncer(false);
+        Debug.Log("currChaosSize: " + currChaosSize);
     }
 
     private void ResetArray(int[] a)
@@ -102,7 +103,7 @@ public class Voting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log("currChaosSize: " + currChaosSize);
         //Debug.Log("Inside of ChooseVotingChaos");
         if (OverrideVote && state == VotingState.Voted)
         {
@@ -231,10 +232,12 @@ public class Voting : MonoBehaviour
         //if number of chaos left is < the numbers of sliders
         if(currChaosSize < numSliders)
         {
-            //Debug.Log("Reseting");
-        
+            //Debug.Log("Reseting - size" + currChaosSize);
+            
             //reset them
             ResetArray(usedChaosListIndex);
+            AddIndex(usedChaosListIndex, chosenChaosIndex);
+            currChaosSize = maxChaosSize - 1;
         }
         
         //Debug.Log("Picking random index");
@@ -265,7 +268,7 @@ public class Voting : MonoBehaviour
                 return i;
             }
         }
-        return -1;
+        return -1; //did not find
     }
     private void AddIndex(int[] a, int index)
     {
