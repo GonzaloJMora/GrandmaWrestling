@@ -130,81 +130,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: camera
+    - target: {fileID: 280073973, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 475479852}
-    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
+    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
       propertyPath: chaosName
-      value: CameraSpin FAST
+      value: Ads
+      objectReference: {fileID: 0}
+    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: spawnDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: announcerOneLiner
+      value: Let's Make Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: minMaxSpawnAmount.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: minMaxSpawnAmount.y
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 475479852}
-    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: announcerOneLiner
-      value: SpinLock FAST
-      objectReference: {fileID: 0}
-    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: minMaxRotateSpeed.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: minMaxRotateSpeed.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: minMaxRotateAmount.x
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: force
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: Upforce
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: chaosName
-      value: MiniMines
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: spawnRadius
-      value: 3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: mineSpawnDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: announcerOneLiner
-      value: Mini Kaboom
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: MinMaxMineAmount.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048744832753389940, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: MinMaxMineAmount.y
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4560614081519077150, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: m_RootOrder
@@ -267,11 +221,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
-      propertyPath: chaosTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
       propertyPath: votePanel
       value: 
       objectReference: {fileID: 1382271714}
@@ -283,68 +232,15 @@ PrefabInstance:
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: ChaosOverride
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: AnnouncerPanel
       value: 
       objectReference: {fileID: 517225435}
-    m_RemovedComponents:
-    - {fileID: 4560614081498238417, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-    - {fileID: 4560614081498238416, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-    - {fileID: 4560614081498238419, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-    - {fileID: 4560614081498238418, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-    - {fileID: 4560614081498238421, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-    - {fileID: 4560614081498238420, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
---- !u!1 &280073971 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4560614081498238431, guid: ed65046a9985c724d9e53dd12124df6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 280073970}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &280073972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280073971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 321be8d75646a644296cfb103f984546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: MegaMine
-  announcerClip: {fileID: 0}
-  announcerOneLiner: Mega Kaboom
-  minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
-    type: 3}
-  radius: 1.98
-  force: 40
-  Upforce: 0.1
-  spawnRadius: 3.6
-  MinMaxMineAmount: {x: 100, y: 200}
-  mineSpawnDelay: 0.1
---- !u!114 &280073973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280073971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: CameraSpin FAST
-  announcerClip: {fileID: 0}
-  announcerOneLiner: SpinLock Slow
-  cameraAxis: {fileID: 475479852}
-  minMaxRotateSpeed: {x: 50, y: 100}
-  waitTime: 0
 --- !u!1 &475479852
 GameObject:
   m_ObjectHideFlags: 0

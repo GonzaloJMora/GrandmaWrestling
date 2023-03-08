@@ -11,12 +11,9 @@ GameObject:
   - component: {fileID: 4560614081498238430}
   - component: {fileID: 4048744832753389940}
   - component: {fileID: 3315793446952898412}
-  - component: {fileID: 4560614081498238420}
-  - component: {fileID: 4560614081498238421}
-  - component: {fileID: 4560614081498238418}
-  - component: {fileID: 4560614081498238419}
-  - component: {fileID: 4560614081498238416}
-  - component: {fileID: 4560614081498238417}
+  - component: {fileID: 280073972}
+  - component: {fileID: 280073973}
+  - component: {fileID: 280073974}
   m_Layer: 0
   m_Name: Choas
   m_TagString: Untagged
@@ -51,17 +48,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321be8d75646a644296cfb103f984546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: Mines
+  chaosName: MiniMines
   announcerClip: {fileID: 0}
-  announcerOneLiner: Kaboom
+  announcerOneLiner: Mini Kaboom
   minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
     type: 3}
   radius: 1.98
-  force: 20
-  Upforce: 0.05
-  spawnRadius: 2.99
+  force: 40
+  Upforce: 0.1
+  spawnRadius: 3.6
   MinMaxMineAmount: {x: 4, y: 10}
-  mineSpawnDelay: 1
+  mineSpawnDelay: 0.1
 --- !u!114 &3315793446952898412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,102 +71,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chaosName: CameraSpin FAST
+  announcerClip: {fileID: 0}
+  announcerOneLiner: SpinLock FAST
+  cameraAxis: {fileID: 0}
+  minMaxRotateSpeed: {x: 50, y: 100}
+  waitTime: 0
+--- !u!114 &280073972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321be8d75646a644296cfb103f984546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: MegaMine
+  announcerClip: {fileID: 0}
+  announcerOneLiner: Mega Kaboom
+  minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
+    type: 3}
+  radius: 1.98
+  force: 40
+  Upforce: 0.1
+  spawnRadius: 3.6
+  MinMaxMineAmount: {x: 100, y: 200}
+  mineSpawnDelay: 0.1
+--- !u!114 &280073973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: CameraSpin FAST
+  announcerClip: {fileID: 0}
+  announcerOneLiner: SpinLock Slow
+  cameraAxis: {fileID: 0}
+  minMaxRotateSpeed: {x: 50, y: 100}
+  waitTime: 0
+--- !u!114 &280073974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1439abb85159587448bc511a676b5ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   chaosName: 
   announcerClip: {fileID: 0}
   announcerOneLiner: 
-  camera: {fileID: 0}
-  minMaxRotateAmount: {x: 0, y: 0}
-  minMaxRotateSpeed: {x: 0, y: 0}
---- !u!114 &4560614081498238420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f902542cbb6993b4b9a0f0aa960e7f1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: A
-  announcerClip: {fileID: 0}
-  announcerOneLiner: A
---- !u!114 &4560614081498238421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078e0e0d816392146ad812fb8cf79713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: B
-  announcerClip: {fileID: 0}
-  announcerOneLiner: B
---- !u!114 &4560614081498238418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4accd77f627aed24288f0d2734bde9e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: C
-  announcerClip: {fileID: 0}
-  announcerOneLiner: C
---- !u!114 &4560614081498238419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7bf2db7fcb16e245b4d0c01bdbd0366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: D
-  announcerClip: {fileID: 0}
-  announcerOneLiner: D
---- !u!114 &4560614081498238416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5106789653055e141b49bf5dce65c5d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: E
-  announcerClip: {fileID: 0}
-  announcerOneLiner: E
---- !u!114 &4560614081498238417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafea6d9205b8c04e826ca08eea0ba38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: F
-  announcerClip: {fileID: 0}
-  announcerOneLiner: F
+  spawnRadius: 26.48
+  spawnDelay: 0
+  minMaxSpawnAmount: {x: 0, y: 0}
+  canvas: {fileID: 4961547644838338635, guid: d2acbd10300d278499d2758bd3a93cb7, type: 3}
+  ads:
+  - {fileID: 1114259057058086119, guid: 91ce1bffdbb3f2e448b4bb427c350540, type: 3}
+  - {fileID: 4438291920795420323, guid: fa861eda4582257448aa6bdf019efcd7, type: 3}
+  - {fileID: 810849296733903803, guid: 08206bb504d40644195785d379a8eb23, type: 3}
+  - {fileID: 8705402960204065640, guid: 0f25f112341f1f24ca4276149bd2c79b, type: 3}
+  - {fileID: 5156710927810085422, guid: 451b7013e8a2e874292b445af09fc60e, type: 3}
+  - {fileID: 2598949787925622427, guid: 094938e53f41c1d42adae5fb664c1562, type: 3}
+  - {fileID: 5912600367075091309, guid: 70d4b6adeb5c4dc40834fba87350681f, type: 3}
+  - {fileID: 7148068294877059448, guid: 9aea6dd5b683dd74bb9b17d7b129aac7, type: 3}
+  - {fileID: 6832760927618253242, guid: 967828e9604e7024199116954acb7d8c, type: 3}
+  - {fileID: 7366850597795605785, guid: 72c35fc674a800045acc2c17cd8f69eb, type: 3}
+  - {fileID: 3179274698518577068, guid: ecd3c3a842eb9e54cb040d529cc77f05, type: 3}
+  - {fileID: 4914213052713505040, guid: 77eecc187a9a4454b810f322639eac17, type: 3}
+  - {fileID: 5120253207792341411, guid: 1da4a3a5da2de7c429de15a9c181dc67, type: 3}
+  - {fileID: 9034822355504475789, guid: 066525baa3ee51540beed4c86cabcbe2, type: 3}
+  - {fileID: 3922146897851804483, guid: 51fcd8e4357b93742b01f70c7d1d956e, type: 3}
 --- !u!1 &4560614081519077151
 GameObject:
   m_ObjectHideFlags: 0
