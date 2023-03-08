@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 280073973}
   - component: {fileID: 280073974}
   m_Layer: 0
-  m_Name: Choas
+  m_Name: Chaos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,6 +248,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4560614081519077150}
     m_Modifications:
+    - target: {fileID: 7369829327359169049, guid: f270759846cf57047a9de39b1a781595,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7369829327359169049, guid: f270759846cf57047a9de39b1a781595,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7369829327359169049, guid: f270759846cf57047a9de39b1a781595,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7369829327359169051, guid: f270759846cf57047a9de39b1a781595,
         type: 3}
       propertyPath: m_Name

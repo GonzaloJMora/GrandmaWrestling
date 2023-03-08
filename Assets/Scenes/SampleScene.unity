@@ -179,9 +179,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 280073973, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: chaosName
+      value: CameraSpin SLOW
+      objectReference: {fileID: 0}
+    - target: {fileID: 280073973, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 475479852}
+    - target: {fileID: 280073973, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: minMaxRotateSpeed.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 280073973, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: minMaxRotateSpeed.y
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 405950628997686026, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: m_UiScaleMode
