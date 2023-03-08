@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29090041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29090043}
+  - component: {fileID: 29090042}
+  m_Layer: 0
+  m_Name: GameMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &29090042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29090041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d60af3fcbf7c7f459716f1ae2f7c304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLen: 60
+  gameModeCanvas: {fileID: 280073972}
+  win: {fileID: 280073971}
+  scores: 00000000000000000000000000000000
+--- !u!4 &29090043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29090041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -172.64566, y: 276.3027, z: -601.793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &280073970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,31 +182,36 @@ PrefabInstance:
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 475479852}
-    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-      propertyPath: chaosName
-      value: Ads
+    - target: {fileID: 405950628997686026, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-      propertyPath: spawnDelay
-      value: 0.1
+    - target: {fileID: 405950628997686026, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
       objectReference: {fileID: 0}
-    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-      propertyPath: announcerOneLiner
-      value: Let's Make Money
+    - target: {fileID: 405950628997686026, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
-    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-      propertyPath: minMaxSpawnAmount.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 280073974, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
-      propertyPath: minMaxSpawnAmount.y
-      value: 40
+    - target: {fileID: 405950629765214641, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 475479852}
+    - target: {fileID: 4560614081498238431, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_Name
+      value: Chaos
+      objectReference: {fileID: 0}
     - target: {fileID: 4560614081519077150, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: m_RootOrder
@@ -226,21 +279,23 @@ PrefabInstance:
       objectReference: {fileID: 1382271714}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
-      propertyPath: OverrideVote
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: ChaosOverride
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
       propertyPath: AnnouncerPanel
       value: 
       objectReference: {fileID: 517225435}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+--- !u!1 &280073971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 405950629765214641, guid: ed65046a9985c724d9e53dd12124df6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 280073970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &280073972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 405950628997686024, guid: ed65046a9985c724d9e53dd12124df6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 280073970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &475479852
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +606,8 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  gameMode: {fileID: 29090041}
+  lastCollision: ffffffffffffffffffffffffffffffff
 --- !u!1 &1021583019
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +766,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1377972349, guid: 78b1697676959df4ca7af086c7f51d90, type: 3}
+      propertyPath: o
+      value: 
+      objectReference: {fileID: 1002970415}
+    - target: {fileID: 1377972353, guid: 78b1697676959df4ca7af086c7f51d90, type: 3}
+      propertyPath: o
+      value: 
+      objectReference: {fileID: 1002970415}
+    - target: {fileID: 1377972357, guid: 78b1697676959df4ca7af086c7f51d90, type: 3}
+      propertyPath: o
+      value: 
+      objectReference: {fileID: 1002970415}
+    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
+        type: 3}
+      propertyPath: o
+      value: 
+      objectReference: {fileID: 1002970415}
     - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
         type: 3}
       propertyPath: cam
