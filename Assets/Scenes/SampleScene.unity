@@ -286,9 +286,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
+      propertyPath: chaosTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
       propertyPath: votePanel
       value: 
       objectReference: {fileID: 1382271714}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: OverrideVote
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: ChaosOverride
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: AnnouncerPanel
@@ -509,6 +524,7 @@ GameObject:
   - component: {fileID: 1002970418}
   - component: {fileID: 1002970417}
   - component: {fileID: 1002970421}
+  - component: {fileID: 1002970422}
   m_Layer: 0
   m_Name: Respawn Plane
   m_TagString: Untagged
@@ -620,6 +636,19 @@ MonoBehaviour:
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   gameMode: {fileID: 29090041}
   lastCollision: ffffffffffffffffffffffffffffffff
+--- !u!135 &1002970422
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002970415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: -5.82}
 --- !u!1 &1021583019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1152,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685487211}
-  m_Material: {fileID: 13400000, guid: 63486c5c57f431c468f404753b85f216, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -1161,6 +1190,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1892200289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4560614081498238431, guid: ed65046a9985c724d9e53dd12124df6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 280073970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1892200291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892200289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed5489e557d9464eae2183daf69bc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: Chris
+  announcerClip: {fileID: 0}
+  announcerOneLiner: Wallllllll
+  minMaxSpawnAmount: {x: 5, y: 10}
+  speed: 10
+  distance: 20
+  walls:
+  - {fileID: 6757806337840801303, guid: 723d6604246c48346a18a7dd239703a9, type: 3}
+  - {fileID: 4303304556563375604, guid: 39f6a6b1487d68446995d616fa313b42, type: 3}
+  - {fileID: 4375957831617393486, guid: 2d19683172b9f034b8228ba8d8202f8c, type: 3}
+  - {fileID: 4096624583374475232, guid: 2a0aadcd1608dd0439cb8c361be5a91a, type: 3}
+  - {fileID: 8280071420171877931, guid: 51b347c451387924a91d0db71adb35f7, type: 3}
+  intialDistance: 10
 --- !u!1 &1950266254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,14 +1331,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950266254}
-  m_LocalRotation: {x: 0.3296475, y: -0.010590554, z: -0.0036981052, w: 0.9440375}
+  m_LocalRotation: {x: 0.3295753, y: 0, z: 0, w: 0.9441293}
   m_LocalPosition: {x: 0.18, y: 0, z: -5.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 475479853}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 38.486, y: -1.642, z: -1.022}
+  m_LocalEulerAnglesHint: {x: 38.486, y: 0, z: 0}
 --- !u!1 &1957151980
 GameObject:
   m_ObjectHideFlags: 0

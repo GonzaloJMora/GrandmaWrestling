@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 280073972}
   - component: {fileID: 280073973}
   - component: {fileID: 280073974}
+  - component: {fileID: 1892200291}
   m_Layer: 0
   m_Name: Chaos
   m_TagString: Untagged
@@ -112,11 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: CameraSpin FAST
+  chaosName: CameraSpin SLOW
   announcerClip: {fileID: 0}
   announcerOneLiner: SpinLock Slow
   cameraAxis: {fileID: 0}
-  minMaxRotateSpeed: {x: 50, y: 100}
+  minMaxRotateSpeed: {x: 100, y: 300}
   waitTime: 0
 --- !u!114 &280073974
 MonoBehaviour:
@@ -153,6 +154,31 @@ MonoBehaviour:
   - {fileID: 5120253207792341411, guid: 1da4a3a5da2de7c429de15a9c181dc67, type: 3}
   - {fileID: 9034822355504475789, guid: 066525baa3ee51540beed4c86cabcbe2, type: 3}
   - {fileID: 3922146897851804483, guid: 51fcd8e4357b93742b01f70c7d1d956e, type: 3}
+--- !u!114 &1892200291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed5489e557d9464eae2183daf69bc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: Chris
+  announcerClip: {fileID: 0}
+  announcerOneLiner: Wallllllll
+  minMaxSpawnAmount: {x: 5, y: 10}
+  speed: 10
+  distance: 20
+  walls:
+  - {fileID: 6757806337840801303, guid: 723d6604246c48346a18a7dd239703a9, type: 3}
+  - {fileID: 4303304556563375604, guid: 39f6a6b1487d68446995d616fa313b42, type: 3}
+  - {fileID: 4375957831617393486, guid: 2d19683172b9f034b8228ba8d8202f8c, type: 3}
+  - {fileID: 4096624583374475232, guid: 2a0aadcd1608dd0439cb8c361be5a91a, type: 3}
+  - {fileID: 8280071420171877931, guid: 51b347c451387924a91d0db71adb35f7, type: 3}
+  intialDistance: 10
 --- !u!1 &4560614081519077151
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,11 +262,11 @@ MonoBehaviour:
   waitTime: 3
   MaxNumberOfVoteRounds: 15
   votingInterval: 1
-  chaosTime: 10
+  chaosTime: 15
   WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
   AnnouncerPanel: {fileID: 0}
   OverrideVote: 0
-  ChaosOverride: 4
+  ChaosOverride: 5
 --- !u!1001 &7198121422223257875
 PrefabInstance:
   m_ObjectHideFlags: 0
