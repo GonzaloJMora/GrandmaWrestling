@@ -16,6 +16,7 @@ public class Wall : MonoBehaviour
     private Vector3 startPos;
 
     private float currTime = 0f;
+    private float spaTime = 0f;
     [SerializeField] private Vector2 freq = new Vector2(1f, 4f);
     [SerializeField] private Vector2 peak = new Vector2(1, 3f);
     public bool isUseless;
@@ -35,7 +36,7 @@ public class Wall : MonoBehaviour
 
         if(wallMovement == WallMovement.Any)
         {
-            wallMovement = (WallMovement)Random.Range(1, 2 + 1);
+            wallMovement = (WallMovement)Random.Range(1, System.Enum.GetNames(typeof(WallAmount)).Length+1);
         }
         
         startPos = transform.localPosition;
@@ -46,6 +47,7 @@ public class Wall : MonoBehaviour
     {
         if(isUseless) { return; }
         currTime += Time.fixedDeltaTime;
+        spaTime += Time.fixedDeltaTime;
         if (wallMovement == WallMovement.Sin)
         {
             transform.localPosition = startPos + new Vector3(Mathf.Sin(currTime * currFreq),0,0) * currPeak;
@@ -56,7 +58,12 @@ public class Wall : MonoBehaviour
         }
         else if(wallMovement == WallMovement.SparaticSin)
         {
-
+            if(spaTime > 1f)
+            {
+                transform.localPosition = startPos + new Vector3(Mathf.Sin(currTime * currFreq), 0, 0) * currPeak;
+                spaTime = 0f;
+            }
+            
         }
 
 

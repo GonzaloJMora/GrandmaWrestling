@@ -50,7 +50,7 @@ public class HoleInWall : Chaos
             }
             if(thing == WallAmount.Multiple)
             {
-                int x = Random.Range(1, 4);
+                int x = Random.Range(1, 3);
                 for(int j = 0; j < x; j += 1)
                 {
                     GameObject wc = Instantiate(walls[index], w.transform, true);

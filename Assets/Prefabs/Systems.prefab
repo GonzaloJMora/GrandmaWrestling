@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 4375957831617393486, guid: 2d19683172b9f034b8228ba8d8202f8c, type: 3}
   - {fileID: 4096624583374475232, guid: 2a0aadcd1608dd0439cb8c361be5a91a, type: 3}
   - {fileID: 8280071420171877931, guid: 51b347c451387924a91d0db71adb35f7, type: 3}
+  - {fileID: 1906596990649557483, guid: e15a3d36b161b3c4786677bcc21d04cd, type: 3}
   intialDistance: 10
 --- !u!1 &4560614081519077151
 GameObject:
@@ -265,7 +266,7 @@ MonoBehaviour:
   chaosTime: 15
   WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
   AnnouncerPanel: {fileID: 0}
-  OverrideVote: 0
+  OverrideVote: 1
   ChaosOverride: 5
 --- !u!1001 &7198121422223257875
 PrefabInstance:
