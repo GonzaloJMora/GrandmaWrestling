@@ -29,8 +29,6 @@ public class ThwompMovement : MonoBehaviour
         minFallHeight = gameObject.transform.localScale.y / 2;        
         NewTargetPos();
         state = ThwompStates.Moving;
-        
-        
     }
 
     // Update is called once per frame
