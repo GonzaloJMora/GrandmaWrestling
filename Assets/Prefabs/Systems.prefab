@@ -55,10 +55,9 @@ MonoBehaviour:
   announcerOneLiner: Mini Kaboom
   minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
     type: 3}
-  radius: 1.98
+  mineRadius: 1.98
   force: 40
   Upforce: 0.1
-  spawnRadius: 3.6
   MinMaxMineAmount: {x: 4, y: 10}
   mineSpawnDelay: 0.1
 --- !u!114 &3315793446952898412
@@ -96,10 +95,9 @@ MonoBehaviour:
   announcerOneLiner: Mega Kaboom
   minePrefab: {fileID: 4482581113939995467, guid: acb23037e47b955439c9a5878d54cc2d,
     type: 3}
-  radius: 1.98
+  mineRadius: 1.98
   force: 40
   Upforce: 0.1
-  spawnRadius: 3.6
   MinMaxMineAmount: {x: 100, y: 200}
   mineSpawnDelay: 0.1
 --- !u!114 &280073973
@@ -199,7 +197,6 @@ MonoBehaviour:
   minMaxSpawnAnoumt: {x: 2, y: 5}
   spawnDelay: 1
   prefab: {fileID: 2419559627912604930, guid: 05c53d2790dc0eb46b360a6c9e94a66d, type: 3}
-  spawnRadius: 1.98
   maxHeight: 3.32
 --- !u!1 &4560614081519077151
 GameObject:
@@ -288,7 +285,7 @@ MonoBehaviour:
   WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
   AnnouncerPanel: {fileID: 0}
   OverrideVote: 1
-  ChaosOverride: 6
+  ChaosOverride: 7
 --- !u!1001 &7198121422223257875
 PrefabInstance:
   m_ObjectHideFlags: 0

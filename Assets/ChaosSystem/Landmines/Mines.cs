@@ -5,19 +5,13 @@ using UnityEngine;
 public class Mines : Chaos
 {
     [SerializeField] private GameObject minePrefab;
-    [SerializeField] private float radius;
+    [SerializeField] private float mineRadius;
     [SerializeField] private float force;
     [SerializeField] private float Upforce;
-    [SerializeField] private float spawnRadius = 20f;
     [SerializeField] private Vector2Int MinMaxMineAmount;
     [SerializeField] private float mineSpawnDelay;
 
     private GameObject par;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(new Vector3(0f, 0f, 0f), spawnRadius);
-    }
 
     public override void Stop()
     {
@@ -58,13 +52,13 @@ public class Mines : Chaos
         int i = 0;
         while (i < spawnAmount)
         { 
-            Vector2 sph = Random.insideUnitCircle * spawnRadius;
+            Vector2 sph = Random.insideUnitCircle * radius;
             Vector3 pos = new Vector3(sph.x, p.transform.position.y, sph.y);
             GameObject mine = Instantiate(minePrefab, p.transform, true);
             mine.transform.position = pos;
             
             MinesExplosion me = mine.GetComponent<MinesExplosion>();
-            me.Radius = radius;
+            me.Radius = mineRadius;
             me.Force = force;
             me.UpForce = Upforce;
             me.count = i;

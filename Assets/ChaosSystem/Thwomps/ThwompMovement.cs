@@ -13,7 +13,6 @@ public class ThwompMovement : MonoBehaviour
     [SerializeField] private float shakeTime;
     [SerializeField] private float fallSpeed;
     [SerializeField] private float recoveryTime;
-    private float radius;
 
     [SerializeField] private Vector3 targetPos;
 
@@ -109,11 +108,6 @@ public class ThwompMovement : MonoBehaviour
         int targetIndex = Random.Range(0, players.Length);
         Vector3 t = players[targetIndex].transform.position;
         targetPos = new Vector3(t.x, maxHeight, t.z);
-    }
-
-    public void SetRadius(float rad)
-    {
-        radius = rad;
     }
 
     public void SetHeight(float height)

@@ -47,7 +47,10 @@ public class Voting : MonoBehaviour
     [SerializeField] private bool OverrideVote = false;
     [SerializeField] private int ChaosOverride;
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(new Vector3(0f, 0f, 0f), Chaos.radius);
+    }
 
     // Start is called before the first frame update
     void Start()

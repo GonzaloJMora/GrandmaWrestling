@@ -247,6 +247,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Systems
       objectReference: {fileID: 0}
+    - target: {fileID: 4560614081519077151, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: chaosTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: votePanel
@@ -254,8 +264,8 @@ PrefabInstance:
       objectReference: {fileID: 1382271714}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
-      propertyPath: ChaosOverride
-      value: 7
+      propertyPath: OverrideVote
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
@@ -291,14 +301,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 280073973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4870ee004d9bd0042ba14356d2dcdc4a, type: 3}
+  m_Script: {fileID: 11500000, guid: adf63888026206b4f924f0cad1b289ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaosName: Nothing
+  chaosName: Popcorn
   announcerClip: {fileID: 0}
-  announcerOneLiner: No?
-  waitTime: 5
-  canvas: {fileID: 326670497887740645, guid: 758281e884ba5cb49b866894680505c8, type: 3}
+  announcerOneLiner: Skiddy Bop Bop
+  force: 25
+  speed: 150
+  waitTime: 0.5
+  minMaxAngle: {x: 15, y: 45}
   platform: {fileID: 1685487211}
 --- !u!1 &475479852
 GameObject:

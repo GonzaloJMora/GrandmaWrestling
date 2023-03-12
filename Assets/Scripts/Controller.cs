@@ -287,7 +287,7 @@ public class Controller : MonoBehaviour
     }
 
     //check for if the player is currently on the ground
-    private bool isGrounded()
+    public bool isGrounded()
     {
 
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.00025f, Vector3.down);

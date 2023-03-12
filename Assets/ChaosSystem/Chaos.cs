@@ -11,6 +11,7 @@ public abstract class Chaos : MonoBehaviour
     [SerializeField] private AudioSource announcerClip;
     [SerializeField] protected string announcerOneLiner;
     
+    public static float radius = 3.98f;
     
     //Trigger The Chaos Event
     public abstract void Trigger();
