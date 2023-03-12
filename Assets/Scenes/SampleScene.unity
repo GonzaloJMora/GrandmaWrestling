@@ -249,14 +249,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
+      propertyPath: waitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: chaosTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
       propertyPath: votePanel
       value: 
       objectReference: {fileID: 1382271714}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
+      propertyPath: OverrideVote
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: ChaosOverride
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
       propertyPath: AnnouncerPanel
       value: 
       objectReference: {fileID: 517225435}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: MaxNumberOfVoteRounds
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
 --- !u!1 &280073971 stripped
@@ -271,6 +296,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 280073970}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &280073973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4560614081498238431, guid: ed65046a9985c724d9e53dd12124df6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 280073970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &280073974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280073973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c9a23a459b2dd43af685fd71fd87c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: Thwomp
+  announcerClip: {fileID: 0}
+  announcerOneLiner: 
+  minMaxSpawnAnoumt: {x: 2, y: 5}
+  spawnDelay: 1
+  prefab: {fileID: 2419559627912604930, guid: 05c53d2790dc0eb46b360a6c9e94a66d, type: 3}
+  spawnRadius: 1.98
+  maxHeight: 3.32
 --- !u!1 &475479852
 GameObject:
   m_ObjectHideFlags: 0

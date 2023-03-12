@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 280073973}
   - component: {fileID: 280073974}
   - component: {fileID: 1892200291}
+  - component: {fileID: 4898207824006510025}
   m_Layer: 0
   m_Name: Chaos
   m_TagString: Untagged
@@ -180,6 +181,26 @@ MonoBehaviour:
   - {fileID: 8280071420171877931, guid: 51b347c451387924a91d0db71adb35f7, type: 3}
   - {fileID: 1906596990649557483, guid: e15a3d36b161b3c4786677bcc21d04cd, type: 3}
   intialDistance: 10
+--- !u!114 &4898207824006510025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c9a23a459b2dd43af685fd71fd87c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: Thwomp
+  announcerClip: {fileID: 0}
+  announcerOneLiner: 
+  minMaxSpawnAnoumt: {x: 2, y: 5}
+  spawnDelay: 1
+  prefab: {fileID: 2419559627912604930, guid: 05c53d2790dc0eb46b360a6c9e94a66d, type: 3}
+  spawnRadius: 1.98
+  maxHeight: 3.32
 --- !u!1 &4560614081519077151
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,13 +282,13 @@ MonoBehaviour:
   votePanel: {fileID: 0}
   chaosSystem: {fileID: 4560614081498238431}
   waitTime: 3
-  MaxNumberOfVoteRounds: 15
+  MaxNumberOfVoteRounds: 1
   votingInterval: 1
-  chaosTime: 15
+  chaosTime: 30
   WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
   AnnouncerPanel: {fileID: 0}
   OverrideVote: 1
-  ChaosOverride: 5
+  ChaosOverride: 6
 --- !u!1001 &7198121422223257875
 PrefabInstance:
   m_ObjectHideFlags: 0
