@@ -12,10 +12,13 @@ GameObject:
   - component: {fileID: 4048744832753389940}
   - component: {fileID: 3315793446952898412}
   - component: {fileID: 280073972}
-  - component: {fileID: 280073973}
   - component: {fileID: 280073974}
   - component: {fileID: 1892200291}
   - component: {fileID: 4898207824006510025}
+  - component: {fileID: 280073985}
+  - component: {fileID: 280073994}
+  - component: {fileID: 280073973}
+  - component: {fileID: 280073995}
   m_Layer: 0
   m_Name: Chaos
   m_TagString: Untagged
@@ -100,24 +103,6 @@ MonoBehaviour:
   Upforce: 0.1
   MinMaxMineAmount: {x: 100, y: 200}
   mineSpawnDelay: 0.1
---- !u!114 &280073973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560614081498238431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: CameraSpin SLOW
-  announcerClip: {fileID: 0}
-  announcerOneLiner: SpinLock Slow
-  cameraAxis: {fileID: 0}
-  minMaxRotateSpeed: {x: 100, y: 300}
-  waitTime: 0
 --- !u!114 &280073974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +183,79 @@ MonoBehaviour:
   spawnDelay: 1
   prefab: {fileID: 2419559627912604930, guid: 05c53d2790dc0eb46b360a6c9e94a66d, type: 3}
   maxHeight: 3.32
+--- !u!114 &280073985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf63888026206b4f924f0cad1b289ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: Popcorn
+  announcerClip: {fileID: 0}
+  announcerOneLiner: Skiddy Bop Bop
+  force: 25
+  speed: 150
+  waitTime: 0.5
+  minMaxAngle: {x: 15, y: 45}
+  platform: {fileID: 0}
+--- !u!114 &280073994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4870ee004d9bd0042ba14356d2dcdc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: nothing
+  announcerClip: {fileID: 0}
+  announcerOneLiner: 
+  waitTime: 5
+  canvasPrefab: {fileID: 326670497887740645, guid: 758281e884ba5cb49b866894680505c8,
+    type: 3}
+  platform: {fileID: 0}
+--- !u!114 &280073973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef2db70105ca848b9133e44fe2e9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: CameraSpin SLOW
+  announcerClip: {fileID: 0}
+  announcerOneLiner: SpinLock Slow
+  cameraAxis: {fileID: 0}
+  minMaxRotateSpeed: {x: 100, y: 300}
+  waitTime: 0
+--- !u!114 &280073995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560614081498238431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02648c940f03616419855eb587a22b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaosName: Peaceful
+  announcerClip: {fileID: 0}
+  announcerOneLiner: Sike!
+  numUnwantedChoas: 3
 --- !u!1 &4560614081519077151
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,11 +339,11 @@ MonoBehaviour:
   waitTime: 3
   MaxNumberOfVoteRounds: 1
   votingInterval: 1
-  chaosTime: 30
+  chaosTime: 20
   WinninngChaosColor: {r: 0.058089018, g: 1, b: 0, a: 1}
   AnnouncerPanel: {fileID: 0}
   OverrideVote: 1
-  ChaosOverride: 7
+  ChaosOverride: 9
 --- !u!1001 &7198121422223257875
 PrefabInstance:
   m_ObjectHideFlags: 0

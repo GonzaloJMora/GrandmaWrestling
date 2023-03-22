@@ -22,6 +22,11 @@ public class MinesExplosion : MonoBehaviour
         Gizmos.color = Color.white;
     }
 
+    private void Update()
+    {
+        if(transform.position.y < -100f) { Explode(); }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

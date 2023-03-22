@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 475479852}
+    - target: {fileID: 280073985, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: platform
+      value: 
+      objectReference: {fileID: 1685487211}
+    - target: {fileID: 280073994, guid: ed65046a9985c724d9e53dd12124df6e, type: 3}
+      propertyPath: platform
+      value: 
+      objectReference: {fileID: 1685487211}
     - target: {fileID: 3315793446952898412, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: cameraAxis
@@ -247,26 +255,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Systems
       objectReference: {fileID: 0}
-    - target: {fileID: 4560614081519077151, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: chaosTime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: votePanel
       value: 
       objectReference: {fileID: 1382271714}
-    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
-        type: 3}
-      propertyPath: OverrideVote
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: AnnouncerPanel
@@ -286,51 +279,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 280073970}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &280073973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4560614081498238431, guid: ed65046a9985c724d9e53dd12124df6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 280073970}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &280073985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280073973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf63888026206b4f924f0cad1b289ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: Popcorn
-  announcerClip: {fileID: 0}
-  announcerOneLiner: Skiddy Bop Bop
-  force: 25
-  speed: 150
-  waitTime: 0.5
-  minMaxAngle: {x: 15, y: 45}
-  platform: {fileID: 1685487211}
---- !u!114 &280073994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280073973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4870ee004d9bd0042ba14356d2dcdc4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaosName: nothing
-  announcerClip: {fileID: 0}
-  announcerOneLiner: 
-  waitTime: 5
-  canvasPrefab: {fileID: 326670497887740645, guid: 758281e884ba5cb49b866894680505c8,
-    type: 3}
-  platform: {fileID: 1685487211}
 --- !u!1 &475479852
 GameObject:
   m_ObjectHideFlags: 0

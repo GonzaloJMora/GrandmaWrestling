@@ -34,7 +34,7 @@ public class ThwompMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(state);
+        //Debug.Log(state);
         if (state == ThwompStates.Moving)
         {
             float dist = Mathf.Abs(Vector3.Distance(targetPos, transform.position));
@@ -102,7 +102,8 @@ public class ThwompMovement : MonoBehaviour
     private void NewTargetPos()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log(players.Length);  
+        if(players.Length == 0) { targetPos = new Vector3(0f, maxHeight, 0f); return; }
+        //Debug.Log(players.Length);  
         int targetIndex = Random.Range(0, players.Length);
         Vector3 t = players[targetIndex].transform.position;
         targetPos = new Vector3(t.x, maxHeight, t.z);

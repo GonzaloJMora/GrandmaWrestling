@@ -48,7 +48,7 @@ public class Ads : Chaos
     {
         int spawnAmount = Random.Range(minMaxSpawnAmount.x, minMaxSpawnAmount.y + 1);
         par = Instantiate(canvas);
-        Debug.Log("HERE1" + spawnAmount);
+        //Debug.Log("HERE1" + spawnAmount);
         StartCoroutine(IncreaseRevenue(spawnAmount, par));
         //throw new System.NotImplementedException();
     }
@@ -58,7 +58,7 @@ public class Ads : Chaos
         float sf = p.GetComponent<Canvas>().scaleFactor;
         for (int i = 0; i < spawnAmount; i += 1)
         {
-            Debug.Log("HERE2");
+
             float randY = Random.Range(0, 1080) * sf;
             float randX = Random.Range(0, 1920) * sf;
 
