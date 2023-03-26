@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     //list of players
-    private List<PlayerInput> players = new List<PlayerInput>();
+    public List<PlayerInput> players = new List<PlayerInput>();
 
     //spawn points of players
-    [SerializeField]
-    private List<Transform> startingPoints;
+    //[SerializeField]
+    public List<Transform> startingPoints;
 
     //unused (might remove if i dont find a use for it)
     [SerializeField]
@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour
 
     //list of player numbers that can currently be spawned in
     private bool[] availablePlayers = { true, true, true, true };
+
+    public int numPlayers = 0;
 
     //reference to our input manager
     private PlayerInputManager playerInputManager;
@@ -71,6 +73,7 @@ public class PlayerManager : MonoBehaviour
                 meshRenderer.material.color = colors[i];
                 player.transform.position = startingPoints[i].position;
                 availablePlayers[i] = false;
+                numPlayers++;
                 break;
             }
         }

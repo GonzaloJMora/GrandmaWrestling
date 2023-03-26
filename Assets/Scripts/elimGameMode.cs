@@ -13,7 +13,21 @@ public class elimGameMode : MonoBehaviour
     [SerializeField]
     private GameObject gameModeCanvas, win;
     private TMP_Text timer, p1, p2, p3, p4, winner;
+
+    [SerializeField]
+    private GameObject playerManager;
+    private BackToLobby lobbyWarp;
+
+    [SerializeField]
+    private GameObject chaosSystem;
+
     public int[] scores = {0, 0, 0, 0};
+
+    //initialization
+    private void Awake()
+    {
+        lobbyWarp = playerManager.GetComponent<BackToLobby>();
+    }
 
     //initialization
     void Start() 
@@ -56,6 +70,8 @@ public class elimGameMode : MonoBehaviour
             timer.text = "0:" + temp + Mathf.Floor(timeRemaining);
         }
         else {
+            chaosSystem.SetActive(false);
+
             //winner is displayed when timer expires
             int max = scores[0];
             for (int i = 1; i < 4; i++) {
@@ -109,6 +125,8 @@ public class elimGameMode : MonoBehaviour
                 }
 
                 win.SetActive(false);
+
+                lobbyWarp.toLobby();
             }
         }
     }
