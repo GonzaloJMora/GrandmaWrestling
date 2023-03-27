@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384f6b95ba3e29244955513752b24f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  o: {fileID: 0}
 --- !u!1 &2488375128752220365
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d523b78e8ce32ff4e95473b519ca96a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  o: {fileID: 0}
 --- !u!1 &3030705814643825018
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315cd232a665ee041afb600ca4b35cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  o: {fileID: 0}
 --- !u!1 &8636606766178771760
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,13 +665,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1228e6cf979af046b867ae8605a1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Friction: 6
+  m_Gravity: 20
+  m_JumpForce: 8
+  m_GroundSettings:
+    MaxSpeed: 5
+    Acceleration: 14
+    Deceleration: 5
+  m_AirSettings:
+    MaxSpeed: 7
+    Acceleration: 2
+    Deceleration: 2
+  m_PlayerVelocity: {x: 0, y: 0, z: 0}
+  m_MoveDirectionNorm: {x: 0, y: 0, z: 0}
+  m_JumpNeeded: 0
   swipeBox: {fileID: 65628349817785166}
   jabBox: {fileID: 2783657242830453414}
   blockBox: {fileID: 3030705814643825018}
   movementForce: 1
   jumpForce: 7.5
   maxSpeed: 3
+  isBlocking: 0
+  canAct: 1
+  inAirStun: 0
+  hitCount: 0
+  hitNorm: 3
   cam: {fileID: 0}
+  o: {fileID: 0}
 --- !u!114 &8460081811369877538
 MonoBehaviour:
   m_ObjectHideFlags: 0
