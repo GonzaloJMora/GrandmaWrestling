@@ -258,12 +258,12 @@ PrefabInstance:
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: waitTime
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: chaosTime
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
@@ -273,7 +273,12 @@ PrefabInstance:
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: OverrideVote
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
+        type: 3}
+      propertyPath: ChaosOverride
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
