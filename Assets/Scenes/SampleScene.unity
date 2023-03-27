@@ -273,12 +273,12 @@ PrefabInstance:
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: OverrideVote
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: ChaosOverride
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
