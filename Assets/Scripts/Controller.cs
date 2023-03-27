@@ -174,7 +174,8 @@ public class Controller : MonoBehaviour
         //only gives the player control when they are not off of the map (will need to fix this later most likely but works for now)
         //joystick direction to movement is based off of the camera position
         //m_MoveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        if (!isOffMap())
+        //if (!isOffMap())
+        if (true)
         {
             forceDir += movement.ReadValue<Vector2>().x * GetCameraRight(cam) * movementForce;
             forceDir += movement.ReadValue<Vector2>().y * GetCameraForward(cam) * movementForce;
@@ -203,20 +204,20 @@ public class Controller : MonoBehaviour
             fallLock = true;
         }
 
-        //if player is off the map, the previous force will be constantly applied
-        else
-        {
-            //Debug.Log(rb.velocity.y);
-            if (fallLock && lastForce.x == 0 && lastForce.z == 0) {
-                lastForce.x = -rb.position.x; 
-                lastForce.z = -rb.position.z;
-                fallLock = false;
-            } 
+        // //if player is off the map, the previous force will be constantly applied
+        // else
+        // {
+        //     //Debug.Log(rb.velocity.y);
+        //     if (fallLock && lastForce.x == 0 && lastForce.z == 0) {
+        //         lastForce.x = -rb.position.x; 
+        //         lastForce.z = -rb.position.z;
+        //         fallLock = false;
+        //     } 
 
-            //rb.AddForce(lastForce, ForceMode.Impulse);
+        //     //rb.AddForce(lastForce, ForceMode.Impulse);
 
-            lastForce = Vector3.zero;
-        }
+        //     lastForce = Vector3.zero;
+        // }
 
         LookAt();
     }
@@ -327,7 +328,7 @@ public class Controller : MonoBehaviour
             //forceDir += Vector3.up * jumpForce;
             //signal the fixed update that a jump should be performed on the next update
             m_JumpNeeded = true;
-            Debug.Log("DoJump entered");
+            //Debug.Log("DoJump entered");
             //m_PlayerVelocity.y = m_JumpForce;
             Invoke("resetLastCollision", 0.75f);
         }
@@ -586,6 +587,11 @@ public class Controller : MonoBehaviour
         m_PlayerVelocity.x *= newSpeed;
         // playerVelocity.y *= newSpeed;
         m_PlayerVelocity.z *= newSpeed;
+    }
+
+    public void ResetPhysics()
+    {
+        m_PlayerVelocity = Vector3.zero;
     }
 
 }

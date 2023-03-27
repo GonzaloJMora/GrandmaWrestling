@@ -258,12 +258,12 @@ PrefabInstance:
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: waitTime
-      value: 300
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
       propertyPath: chaosTime
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4560614081724666196, guid: ed65046a9985c724d9e53dd12124df6e,
         type: 3}
@@ -771,24 +771,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1377972345}
   m_PrefabAsset: {fileID: 0}
---- !u!143 &1333826873
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333826865}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.9999999
-  m_Radius: 0.49999997
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1377972345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -818,26 +800,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1950266257}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_JumpForce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_MoveAccel
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_GroundSettings.Deceleration
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8460081811369877538, guid: 78b1697676959df4ca7af086c7f51d90,
         type: 3}
       propertyPath: m_Camera
@@ -902,11 +864,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8636606766178771761, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78b1697676959df4ca7af086c7f51d90, type: 3}
