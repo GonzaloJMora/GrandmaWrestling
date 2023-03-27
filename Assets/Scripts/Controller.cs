@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
     //This is a structure for storing the max speed, acceleration, and deceleration
     //in different contexts. On the ground we may want different move settings than in air
     //also this is familiar to cameron from earlier works.
+    //this allows us to make multiple movement settings for any other reasons too, maybe a minigame!
     [System.Serializable]
     public class MovementSettings
     {
@@ -25,17 +26,14 @@ public class Controller : MonoBehaviour
         }
     }
     
-    //**************new cameron stuff************************************
+    //**************new cameron variables************************************
     [Header("Cams New Movement Stuff")]
     [SerializeField] private float m_Friction = 6;
-    [SerializeField] private float m_Drag = 2;
+    [SerializeField] private float m_Drag = 6;
     [SerializeField] private float m_Gravity = 20;
-    //[SerializeField] public float m_MoveAccel = 5; //arbitrary for now, change later
-    [SerializeField] private float m_JumpForce = 8;
-    [SerializeField] private MovementSettings m_GroundSettings = new MovementSettings(5, 14, 5);
-    [SerializeField] private MovementSettings m_AirSettings = new MovementSettings(5, 14, 5);
-    //[SerializeField] private MovementSettings m_StrafeSettings = new MovementSettings(1, 50, 50);
-
+    [SerializeField] private float m_JumpForce = 7;
+    [SerializeField] private MovementSettings m_GroundSettings = new MovementSettings(4, 14, 3);
+    [SerializeField] private MovementSettings m_AirSettings = new MovementSettings(4, 14, 3);
 
     [Header("Cams Testing")]
     [SerializeField]
@@ -47,9 +45,7 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private bool m_JumpNeeded = false;
 
-    private Transform m_Transform;
-
-    //********************end new cameron stuff******************
+    //********************end new cameron variables******************
 
     
 
@@ -89,18 +85,23 @@ public class Controller : MonoBehaviour
     private Vector3 forceDir = Vector3.zero;
 
     //stuff for fighting
-    //private Vector3 hitVec = Vector3.zero;
-    //private Vector3 bounceVec = new Vector3(0, 5, 0);
     public bool isBlocking = false;
     public bool canAct = true;
     public bool inAirStun = false;
-    public int hitCount = 0;
-    public int hitNorm = 3;
+    
+    [Header("Knockback Scaling")]
+    [Tooltip("How many 'hits' the player starts with")]
+    [SerializeField] public int hitInitial = 1;
+    [Tooltip("How many hits it takes to recieve 100% knockback")]
+    [SerializeField] public int hitNorm = 5;
+
+    private int hitCount; //update in player start
 
     //used when player is off map to not allow them to stick on walls
     private Vector3 lastForce = Vector3.zero;
 
     //camera that determines which direction we move when joystick is moved
+    [Header("Other")]
     [SerializeField]
     public Camera cam;
 
@@ -123,6 +124,7 @@ public class Controller : MonoBehaviour
     private void Start() {
         c = GetComponent<MeshRenderer>().material.color;
         m_Character = GetComponent<CharacterController>();
+        hitCount = hitInitial;
     }
 
     //also initialization but only when object becomes active
@@ -148,7 +150,7 @@ public class Controller : MonoBehaviour
 
     public void getHit(int force, Vector3 attacker_pos)
     {
-        int launchPopup = 1; //determines how much additional vertical launch the attack will cause.
+        int launchPopup = 5; //determines how much additional vertical launch the attack will cause.
 
         if (isBlocking)
         {
@@ -159,13 +161,12 @@ public class Controller : MonoBehaviour
 
         var launchVec = Vector3.Normalize(gameObject.transform.position - attacker_pos);
         
-        launchVec *= force * (hitCount/hitNorm);
+        float knockback_scale = ((float)hitCount/(float)hitNorm);
+        launchVec *= force * knockback_scale;
 
-        launchVec.y = launchPopup*force;
+        launchVec.y = launchVec.y + launchPopup;
 
         AddVelocity(launchVec);
-        //rb.AddForce(bounceVec, ForceMode.Impulse);
-        //rb.AddForce(hitVec, ForceMode.Impulse);
     }
 
     private void FixedUpdate()
@@ -177,8 +178,8 @@ public class Controller : MonoBehaviour
         {
             forceDir += movement.ReadValue<Vector2>().x * GetCameraRight(cam) * movementForce;
             forceDir += movement.ReadValue<Vector2>().y * GetCameraForward(cam) * movementForce;
+            //not touching forceDir in case it does other things elsewhere
 
-            //forceDir is the direction the player is trying to move
             //cam new stuff
             if (m_Character.isGrounded)
             {
@@ -216,20 +217,6 @@ public class Controller : MonoBehaviour
 
             lastForce = Vector3.zero;
         }
-
-        // //player will fall faster and faster if they are not grounded
-        // if (rb.velocity.y < 0f || !isGrounded())
-        // {
-        //     rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
-        // }
-
-        // //if player has reached max speed, then cap them at that speed
-        // Vector3 horizontalVel = rb.velocity;
-        // horizontalVel.y = 0f;
-        // if (horizontalVel.sqrMagnitude > maxSpeed * maxSpeed)
-        // {
-        //     rb.velocity = horizontalVel.normalized * maxSpeed + Vector3.up * rb.velocity.y;
-        // }
 
         LookAt();
     }

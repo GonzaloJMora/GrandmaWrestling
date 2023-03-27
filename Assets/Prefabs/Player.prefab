@@ -666,16 +666,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Friction: 6
+  m_Drag: 6
   m_Gravity: 20
   m_JumpForce: 8
   m_GroundSettings:
-    MaxSpeed: 5
+    MaxSpeed: 4
     Acceleration: 14
     Deceleration: 5
   m_AirSettings:
-    MaxSpeed: 7
-    Acceleration: 2
-    Deceleration: 2
+    MaxSpeed: 4
+    Acceleration: 14
+    Deceleration: 3
   m_PlayerVelocity: {x: 0, y: 0, z: 0}
   m_MoveDirectionNorm: {x: 0, y: 0, z: 0}
   m_JumpNeeded: 0
@@ -688,8 +689,9 @@ MonoBehaviour:
   isBlocking: 0
   canAct: 1
   inAirStun: 0
+  hitInitial: 1
+  hitNorm: 5
   hitCount: 0
-  hitNorm: 3
   cam: {fileID: 0}
   o: {fileID: 0}
 --- !u!114 &8460081811369877538

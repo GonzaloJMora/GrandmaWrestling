@@ -11,6 +11,19 @@ public class JabAttack : MonoBehaviour
     //which player are we (0-blue, 1-red, 2-green, 3-yellow)
     private int index;
 
+    private bool isOpponent(Collider other)
+    {
+        //if owner of the attack is same color as the what we collided with, it is ourself, not an opponent
+        if ((other.gameObject.GetComponent<MeshRenderer>().material.color) == (transform.parent.GetComponent<MeshRenderer>().material.color))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     //get script
     private void Awake()
     {
@@ -71,7 +84,7 @@ public class JabAttack : MonoBehaviour
             Debug.Log("Attack collided with another attack!");
         }
 
-        else if (other.tag == "Player")
+        else if ((other.tag == "Player") && (isOpponent(other)))
         {
             if (other.gameObject.GetComponent<Controller>().isBlocking)
             {

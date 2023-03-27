@@ -820,16 +820,6 @@ PrefabInstance:
       objectReference: {fileID: 1950266257}
     - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
         type: 3}
-      propertyPath: m_Drag
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -842,21 +832,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_MoveAccel
       value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_AirSettings.MaxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_AirSettings.Acceleration
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
-        type: 3}
-      propertyPath: m_AirSettings.Deceleration
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5736089543721849827, guid: 78b1697676959df4ca7af086c7f51d90,
         type: 3}
