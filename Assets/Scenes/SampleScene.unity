@@ -1204,6 +1204,21 @@ PrefabInstance:
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 1002970415}
+    - target: {fileID: 3096038182666022066, guid: 00bb653a32368d24fa6e31f29aeff868,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096038182666022066, guid: 00bb653a32368d24fa6e31f29aeff868,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096038182666022066, guid: 00bb653a32368d24fa6e31f29aeff868,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3096038182901468520, guid: 00bb653a32368d24fa6e31f29aeff868,
         type: 3}
       propertyPath: m_RootOrder
@@ -1383,6 +1398,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623116029258663737, guid: bc6181638ac3da14f811daefa25bff5a,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623116029258663737, guid: bc6181638ac3da14f811daefa25bff5a,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623116029258663737, guid: bc6181638ac3da14f811daefa25bff5a,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 6710419424993975034, guid: bc6181638ac3da14f811daefa25bff5a,
         type: 3}

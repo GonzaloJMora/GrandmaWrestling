@@ -153,6 +153,8 @@ public class PlayerManager : MonoBehaviour
             }
             lastCollision[3] = -1;
         }
-        other.gameObject.GetComponent<Controller>().ResetPhysics();
+        
+        //causes NullReferenceError so i commented it out since it didnt change anything -Gonzalo
+        //other.gameObject.GetComponent<Controller>().ResetPhysics();
     }
 }
