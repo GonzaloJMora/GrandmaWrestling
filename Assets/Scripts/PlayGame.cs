@@ -86,11 +86,11 @@ public class PlayGame : MonoBehaviour
         gameCanvas.SetActive(true);
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) {
         playersReady++;
     }
 
-    private void OnCollisionExit(Collision other) {
+    private void OnTriggerExit(Collider other) {
         playersReady--;
         timer = startTime;
         countdown.gameObject.SetActive(false);
