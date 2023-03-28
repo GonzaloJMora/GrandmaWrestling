@@ -87,12 +87,16 @@ public class PlayGame : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        playersReady++;
+        if (other.tag == "Player") {
+            playersReady++;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
-        playersReady--;
-        timer = startTime;
-        countdown.gameObject.SetActive(false);
+        if (other.tag == "Player") {
+            playersReady--;
+            timer = startTime;
+            countdown.gameObject.SetActive(false);
+        }
     }
 }
