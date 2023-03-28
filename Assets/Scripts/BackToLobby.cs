@@ -14,6 +14,12 @@ public class BackToLobby : MonoBehaviour
     private GameObject loadingScreen;
 
     [SerializeField]
+    private GameObject lobbyCanvas;
+
+    [SerializeField]
+    private GameObject gameCanvas;
+
+    [SerializeField]
     private GameObject playerManager;
     private PlayerManager manager;
 
@@ -27,15 +33,14 @@ public class BackToLobby : MonoBehaviour
         loadingScreen.SetActive(true);
         lobbyStuff.SetActive(true);
         gameStuff.SetActive(false);
-                
-        for(int i = 0; i < manager.numPlayers; i++) {
-            manager.players[i].transform.position = manager.startingPoints[i].position;
-        }
 
-        Invoke("deactivateLoading", 1);
+        manager.RemoveAllPlayers();
+
+        Invoke("deactivateLoading", 0.5f);
     }
 
     private void deactivateLoading() {
         loadingScreen.SetActive(false);
+        lobbyCanvas.SetActive(true);
     }
 }

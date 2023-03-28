@@ -17,6 +17,7 @@ public class elimGameMode : MonoBehaviour
     [SerializeField]
     private GameObject playerManager;
     private BackToLobby lobbyWarp;
+    private PlayerManager manager;
 
     [SerializeField]
     private GameObject chaosSystem;
@@ -27,6 +28,7 @@ public class elimGameMode : MonoBehaviour
     private void Awake()
     {
         lobbyWarp = playerManager.GetComponent<BackToLobby>();
+        manager = playerManager.GetComponent<PlayerManager>();
     }
 
     //initialization
@@ -51,30 +53,52 @@ public class elimGameMode : MonoBehaviour
         if (timeRemaining > 0) 
         {
             p1.text = "Blue: " + scores[0];
-            p2.text = "Red: " + scores[1];
-            p3.text = "Green: " + scores[2];
-            p4.text = "Yellow: " + scores[3];
+
+            if (manager.numPlayers >= 2) {
+                p2.text = "Red: " + scores[1];
+            }
+            else {
+                p2.text = "";
+            }
+
+            if (manager.numPlayers >= 3) {
+                p3.text = "Green: " + scores[2];                
+            }
+            else {
+                p3.text = "";
+            }
+
+            if (manager.numPlayers >= 4) {
+                p4.text = "Yellow: " + scores[3];
+            }
+            else {
+                p4.text = "";
+            }
+            
             timeRemaining -= Time.deltaTime;
-            //Debug.Log(Mathf.Floor(timeRemaining));
 
             if (timeRemaining < 0)
             {
                 timeRemaining = 0f;
             }
 
-            if (timeRemaining < 10) 
+            if (((int) timeRemaining) % 60 < 10) 
             {
                 temp = "0";
             }
+            else {
+                temp = "";
+            }
 
-            timer.text = "0:" + temp + Mathf.Floor(timeRemaining);
+            timer.text = (((int) timeRemaining) / 60) + ":" + temp + (((int) timeRemaining) % 60);
         }
         else {
+
             chaosSystem.SetActive(false);
 
             //winner is displayed when timer expires
             int max = scores[0];
-            for (int i = 1; i < 4; i++) {
+            for (int i = 1; i < manager.numPlayers; i++) {
                 if (scores[i] > max) {
                     max = scores[i];
                 }
@@ -86,15 +110,15 @@ public class elimGameMode : MonoBehaviour
                 winner.text += "Blue ";
             }
 
-            if (scores[1] == max) {
+            if (scores[1] == max && manager.numPlayers >= 2) {
                 winner.text += "Red ";
             }
 
-            if (scores[2] == max) {
+            if (scores[2] == max && manager.numPlayers >= 3) {
                 winner.text += "Green ";
             }
 
-            if (scores[3] == max) {
+            if (scores[3] == max && manager.numPlayers >= 4) {
                 winner.text += "Yellow ";
             }
 

@@ -79,6 +79,17 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void RemoveAllPlayers() {
+        int totPlayers = numPlayers;
+
+        for (int i = 0; i < totPlayers; i++) {
+            Destroy(players[0].gameObject);
+            players.Remove(players[0]);
+            availablePlayers[i] = true;
+            numPlayers--;
+        }
+    }
+
     //used by the plane this script is attached to
     private void OnTriggerEnter(Collider other)
     {
@@ -142,9 +153,5 @@ public class PlayerManager : MonoBehaviour
             }
             lastCollision[3] = -1;
         }
-
-        /*//remove player from list and finally destroy object
-        players.Remove(other.gameObject.GetComponent<PlayerInput>());
-        Destroy(other.gameObject);*/
     }
 }
