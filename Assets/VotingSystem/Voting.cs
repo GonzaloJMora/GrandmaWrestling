@@ -81,7 +81,7 @@ public class Voting : MonoBehaviour
 
         //Announcer Related
         ToggleAnnouncer(false);
-        Debug.Log("currChaosSize: " + currChaosSize);
+        //Debug.Log("currChaosSize: " + currChaosSize);
     }
 
     private void ResetArray(int[] a)
@@ -341,7 +341,7 @@ public class Voting : MonoBehaviour
 
     private void ChangeState(VotingState state)
     {
-        Debug.Log("Switching from " + this.state + " to " + state);
+        //Debug.Log("Switching from " + this.state + " to " + state);
         this.state = state;
     }
 

@@ -375,7 +375,7 @@ public class Controller : MonoBehaviour
             attLock = false;
             blockBox.SetActive(true);
             isBlocking = true;
-            Debug.Log("Block");
+            //Debug.Log("Block");
             Invoke("deactivateBlock", 1);
             Invoke("releaseLock", 1);
         }
@@ -397,7 +397,7 @@ public class Controller : MonoBehaviour
         if (attLock) {
             attLock = false;
             swipeBox.SetActive(true);
-            Debug.Log("Swipe");
+            //Debug.Log("Swipe");
             Invoke("deactivateSwipe", 1);
             Invoke("releaseLock", 1);
         }
@@ -418,7 +418,7 @@ public class Controller : MonoBehaviour
         if (attLock) {
             attLock = false;
             jabBox.SetActive(true);
-            Debug.Log("Jab");
+            //Debug.Log("Jab");
             Invoke("deactivateJab", 1);
             Invoke("releaseLock", 1);
         }
@@ -454,7 +454,7 @@ public class Controller : MonoBehaviour
     //method that will deactivate block hitbox called after a small delay
     private void deactivateBlock()
     {
-        Debug.Log("Deactivating block");
+        //Debug.Log("Deactivating block");
         isBlocking = false;
         blockBox.SetActive(false);
         canAct = true;
@@ -471,7 +471,7 @@ public class Controller : MonoBehaviour
     //method that will deactivate swipe hitbox called after a small delay
     private void deactivateSwipe()
     {
-        Debug.Log("Deactivating swipe");
+        //Debug.Log("Deactivating swipe");
         swipeBox.SetActive(false);
         canAct = true;
     }

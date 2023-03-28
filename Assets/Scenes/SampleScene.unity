@@ -337,6 +337,16 @@ PrefabInstance:
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 1337558382}
+    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: OverrideVote
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: ChaosOverride
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5465136243683819750, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_Name
@@ -487,6 +497,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1089110771869326346, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1089110773489585589, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: m_Height

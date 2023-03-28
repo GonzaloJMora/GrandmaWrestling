@@ -30,7 +30,6 @@ public class Wall : MonoBehaviour
     private void Start()
     {
 
-        //Debug.Log("HERE FROM WALL");
         currFreq = Random.Range(freq.x, freq.y);
         currPeak = Random.Range(peak.x, peak.y);
 

@@ -109,6 +109,16 @@ public class ThwompMovement : MonoBehaviour
         targetPos = new Vector3(t.x, maxHeight, t.z);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject g = other.transform.parent.gameObject;
+        //Debug.Log("THWOMP: " + g.name);
+        if(g.CompareTag("Player"))
+        {
+            g.transform.position = new Vector3(g.transform.position.x, -5f, g.transform.position.z);
+        }
+    }
+
     public void SetHeight(float height)
     {
         maxHeight = height;
