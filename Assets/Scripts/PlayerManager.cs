@@ -153,5 +153,13 @@ public class PlayerManager : MonoBehaviour
             }
             lastCollision[3] = -1;
         }
+<<<<<<< HEAD
+=======
+        other.gameObject.GetComponent<Controller>().ResetPhysics();
+
+        /*//remove player from list and finally destroy object
+        players.Remove(other.gameObject.GetComponent<PlayerInput>());
+        Destroy(other.gameObject);*/
+>>>>>>> cam_m3
     }
 }

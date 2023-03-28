@@ -5,6 +5,51 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
+    
+    //for cams movement settings
+    //This is a structure for storing the max speed, acceleration, and deceleration
+    //in different contexts. On the ground we may want different move settings than in air
+    //also this is familiar to cameron from earlier works.
+    //this allows us to make multiple movement settings for any other reasons too, maybe a minigame!
+    [System.Serializable]
+    public class MovementSettings
+    {
+        public float MaxSpeed;
+        public float Acceleration;
+        public float Deceleration;
+
+        public MovementSettings(float maxSpeed, float accel, float decel)
+        {
+            MaxSpeed = maxSpeed;
+            Acceleration = accel;
+            Deceleration = decel;
+        }
+    }
+    
+    //**************new cameron variables************************************
+    [Header("Cams New Movement Stuff")]
+    [SerializeField] private float m_Friction = 6;
+    [SerializeField] private float m_Drag = 6;
+    [SerializeField] private float m_Gravity = 20;
+    [SerializeField] private float m_JumpForce = 7;
+    [SerializeField] private MovementSettings m_GroundSettings = new MovementSettings(4, 14, 3);
+    [SerializeField] private MovementSettings m_AirSettings = new MovementSettings(4, 14, 3);
+
+    [Header("Cams Testing")]
+    [SerializeField]
+    public Vector3 m_PlayerVelocity = Vector3.zero;
+    [SerializeField]
+    public Vector3 m_MoveDirectionNorm = Vector3.zero;
+    private Vector3 m_MoveInput;
+    private CharacterController m_Character;
+    [SerializeField]
+    private bool m_JumpNeeded = false;
+
+    //********************end new cameron variables******************
+
+    
+
+
     //important references for input
     private InputActionAsset inputAsset;
     private InputAction movement;
@@ -12,6 +57,7 @@ public class Controller : MonoBehaviour
     private Rigidbody rb;
 
     //references to hitboxes
+    [Header("Hitboxes")]
     public GameObject swipeBox;
     public GameObject jabBox;
     public GameObject blockBox;
@@ -23,6 +69,7 @@ public class Controller : MonoBehaviour
     private bool fallLock = false;
 
     //movement values
+    [Header("Old Movement Values")]
     [SerializeField]
     public float movementForce = 1f;
     private const float cmovementForce = 1f;
@@ -31,22 +78,30 @@ public class Controller : MonoBehaviour
     [SerializeField]
     public float maxSpeed = 5f;
 
+
+
+
     //force to be applied onto player's rigidbody
     private Vector3 forceDir = Vector3.zero;
 
     //stuff for fighting
-    private Vector3 hitVec = Vector3.zero;
-    private Vector3 bounceVec = new Vector3(0, 5, 0);
     public bool isBlocking = false;
     public bool canAct = true;
     public bool inAirStun = false;
-    public int hitCount = 0;
-    public int hitNorm = 3;
+    
+    [Header("Knockback Scaling")]
+    [Tooltip("How many 'hits' the player starts with")]
+    [SerializeField] public int hitInitial = 1;
+    [Tooltip("How many hits it takes to recieve 100% knockback")]
+    [SerializeField] public int hitNorm = 5;
+
+    private int hitCount; //update in player start
 
     //used when player is off map to not allow them to stick on walls
     private Vector3 lastForce = Vector3.zero;
 
     //camera that determines which direction we move when joystick is moved
+    [Header("Other")]
     [SerializeField]
     public Camera cam;
 
@@ -68,6 +123,8 @@ public class Controller : MonoBehaviour
 
     private void Start() {
         c = GetComponent<MeshRenderer>().material.color;
+        m_Character = GetComponent<CharacterController>();
+        hitCount = hitInitial;
     }
 
     //also initialization but only when object becomes active
@@ -93,7 +150,8 @@ public class Controller : MonoBehaviour
 
     public void getHit(int force, Vector3 attacker_pos)
     {
-        //hitDir = Vector3.zero;
+        int launchPopup = 5; //determines how much additional vertical launch the attack will cause.
+
         if (isBlocking)
         {
             return;
@@ -101,76 +159,145 @@ public class Controller : MonoBehaviour
 
         hitCount++;
 
-        hitVec = Vector3.Normalize(gameObject.transform.position - attacker_pos);
-        hitVec *= force * (hitCount/hitNorm);
-        hitVec.y = 0;
-        rb.AddForce(bounceVec, ForceMode.Impulse);
-        //rb.velocity = hitVec * 5;
-        rb.AddForce(hitVec, ForceMode.Impulse);
+        var launchVec = Vector3.Normalize(gameObject.transform.position - attacker_pos);
+        
+        float knockback_scale = ((float)hitCount/(float)hitNorm);
+        launchVec *= force * knockback_scale;
+
+        launchVec.y = launchVec.y + launchPopup;
+
+        AddVelocity(launchVec);
     }
 
     private void FixedUpdate()
     {
         //only gives the player control when they are not off of the map (will need to fix this later most likely but works for now)
         //joystick direction to movement is based off of the camera position
-        if (!isOffMap())
+        //m_MoveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        //if (!isOffMap())
+        if (true)
         {
             forceDir += movement.ReadValue<Vector2>().x * GetCameraRight(cam) * movementForce;
             forceDir += movement.ReadValue<Vector2>().y * GetCameraForward(cam) * movementForce;
+            //not touching forceDir in case it does other things elsewhere
 
-            rb.AddForce(forceDir, ForceMode.Impulse);
+            //cam new stuff
+            if (m_Character.isGrounded)
+            {
+                GroundMove();
+            }
+            else
+            {
+                AirMove();
+            }
+            
+            m_Character.Move(m_PlayerVelocity * Time.deltaTime);
+
+
+
+            
+            //end cam new stuff
+
+            //rb.AddForce(forceDir, ForceMode.Impulse);
             lastForce = forceDir;
             forceDir = Vector3.zero;
             fallLock = true;
         }
 
-        //if player is off the map, the previous force will be constantly applied
-        else
-        {
-            //Debug.Log(rb.velocity.y);
-            if (fallLock && lastForce.x == 0 && lastForce.z == 0) {
-                lastForce.x = -rb.position.x; 
-                lastForce.z = -rb.position.z;
-                fallLock = false;
-            } 
+        // //if player is off the map, the previous force will be constantly applied
+        // else
+        // {
+        //     //Debug.Log(rb.velocity.y);
+        //     if (fallLock && lastForce.x == 0 && lastForce.z == 0) {
+        //         lastForce.x = -rb.position.x; 
+        //         lastForce.z = -rb.position.z;
+        //         fallLock = false;
+        //     } 
 
-            rb.AddForce(lastForce, ForceMode.Impulse);
+        //     //rb.AddForce(lastForce, ForceMode.Impulse);
 
-            lastForce = Vector3.zero;
-        }
-
-        //player will fall faster and faster if they are not grounded
-        if (rb.velocity.y < 0f || !isGrounded())
-        {
-            rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
-        }
-
-        //if player has reached max speed, then cap them at that speed
-        Vector3 horizontalVel = rb.velocity;
-        horizontalVel.y = 0f;
-        if (horizontalVel.sqrMagnitude > maxSpeed * maxSpeed)
-        {
-            rb.velocity = horizontalVel.normalized * maxSpeed + Vector3.up * rb.velocity.y;
-        }
+        //     lastForce = Vector3.zero;
+        // }
 
         LookAt();
     }
 
+
+    private void AirMove()
+    {
+        ApplyDrag(1.0f);
+        
+        var wishdir = Vector3.zero;
+        wishdir += movement.ReadValue<Vector2>().x * GetCameraRight(cam) * movementForce;
+        wishdir += movement.ReadValue<Vector2>().y * GetCameraForward(cam) * movementForce;
+
+        //wishdir.Normalize();
+        m_MoveDirectionNorm = wishdir;
+
+        var wishspeed = wishdir.magnitude;
+        wishspeed *= m_AirSettings.MaxSpeed;
+
+        Accelerate(wishdir, wishspeed, m_AirSettings.Acceleration);
+
+        // Apply gravity
+        m_PlayerVelocity.y -= m_Gravity * Time.deltaTime;
+
+    }
+    
+    // Handle ground movement.
+    private void GroundMove()
+    {
+
+        ApplyFriction(1.0f);
+
+        //var wishdir = new Vector3(m_MoveInput.x, 0, m_MoveInput.z);
+        //wishdir = m_Tran.TransformDirection(wishdir);
+
+        var wishdir = Vector3.zero;
+        wishdir += movement.ReadValue<Vector2>().x * GetCameraRight(cam) * movementForce;
+        wishdir += movement.ReadValue<Vector2>().y * GetCameraForward(cam) * movementForce;
+
+
+        //wishdir.Normalize();
+        m_MoveDirectionNorm = wishdir;
+
+        var wishspeed = wishdir.magnitude;
+        wishspeed *= m_GroundSettings.MaxSpeed;
+
+        Accelerate(wishdir, wishspeed, m_GroundSettings.Acceleration);
+
+
+
+        
+
+        // Reset the gravity velocity
+        m_PlayerVelocity.y = -m_Gravity * Time.deltaTime;
+
+        if (m_JumpNeeded)
+        {
+            m_PlayerVelocity.y = m_JumpForce;
+            m_JumpNeeded = false;
+        }
+    }
+
+
     //rotates the player so that they are facing in the direction of motion
     private void LookAt()
     {
-        Vector3 direction = rb.velocity;
+        //Vector3 direction = rb.velocity;
+        Vector3 direction = m_PlayerVelocity;
         direction.y = 0f;
 
         if (movement.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
         {
-            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
-            //gameObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            //this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
+            gameObject.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
 
         else
         {
-            rb.angularVelocity = Vector3.zero;
+            //rb.angularVelocity = Vector3.zero;
+
         }
     }
 
@@ -190,13 +317,24 @@ public class Controller : MonoBehaviour
         return forward.normalized;
     }
 
+    
     //callback that adds the jump force to the players forces
     private void DoJump(InputAction.CallbackContext obj)
     {
-        if (isGrounded())
+        //if (isGrounded())
+        if (m_Character.isGrounded)
+        //if (true)
         {
-            forceDir += Vector3.up * jumpForce;
+            //forceDir += Vector3.up * jumpForce;
+            //signal the fixed update that a jump should be performed on the next update
+            m_JumpNeeded = true;
+            //Debug.Log("DoJump entered");
+            //m_PlayerVelocity.y = m_JumpForce;
             Invoke("resetLastCollision", 0.75f);
+        }
+        else
+        {
+            Debug.Log("char was not grounded");
         }
     }
 
@@ -353,4 +491,107 @@ public class Controller : MonoBehaviour
         this.movementForce = 1f;
         //Debug.Log("STOPPED PAUSING: " + count);
     }
+
+    //Starting adding helpers for camerons physics calculations
+
+    // Calculates acceleration based on desired speed and direction.
+    private void Accelerate(Vector3 targetDir, float targetSpeed, float accel)
+    {
+        float currentspeed = Vector3.Dot(m_PlayerVelocity, targetDir);
+        float addspeed = targetSpeed - currentspeed;
+        if (addspeed <= 0)
+        {
+            return;
+        }
+
+        float accelspeed = accel * Time.deltaTime * targetSpeed;
+        if (accelspeed > addspeed)
+        {
+            accelspeed = addspeed;
+        }
+
+        m_PlayerVelocity.x += accelspeed * targetDir.x;
+        m_PlayerVelocity.z += accelspeed * targetDir.z;
+    }
+
+
+    public void AddVelocity(Vector3 vector)
+    {
+        Debug.Log("Velocity Added");
+        m_PlayerVelocity.x += vector.x;
+        m_PlayerVelocity.y += vector.y;
+        m_PlayerVelocity.z += vector.z;
+        Debug.Log("New Y: " + m_PlayerVelocity.y.ToString());
+    }
+
+    private void ApplyFriction(float t)
+    {
+        // Equivalent to VectorCopy();
+        Vector3 vec = m_PlayerVelocity; 
+        vec.y = 0;
+        float speed = vec.magnitude;
+        float drop = 0;
+
+        // Only apply friction when grounded.
+        //if (m_Character.isGrounded)
+        if (true) //temp
+        {
+            float control = speed < m_GroundSettings.Deceleration ? m_GroundSettings.Deceleration : speed;
+            drop = control * m_Friction * Time.deltaTime * t;
+        }
+
+        float newSpeed = speed - drop;
+        //m_PlayerFriction = newSpeed;
+        if (newSpeed < 0)
+        {
+            newSpeed = 0;
+        }
+
+        if (speed > 0)
+        {
+            newSpeed /= speed;
+        }
+
+        m_PlayerVelocity.x *= newSpeed;
+        // playerVelocity.y *= newSpeed;
+        m_PlayerVelocity.z *= newSpeed;
+    }
+
+    private void ApplyDrag(float t)
+    {
+        // Equivalent to VectorCopy();
+        Vector3 vec = m_PlayerVelocity; 
+        vec.y = 0;
+        float speed = vec.magnitude;
+        float drop = 0;
+
+        // Only apply drag when airborne.
+        if (!m_Character.isGrounded)
+        {
+            float control = speed < m_AirSettings.Deceleration ? m_AirSettings.Deceleration : speed;
+            drop = control * m_Drag * Time.deltaTime * t;
+        }
+
+        float newSpeed = speed - drop;
+        //m_PlayerFriction = newSpeed;
+        if (newSpeed < 0)
+        {
+            newSpeed = 0;
+        }
+
+        if (speed > 0)
+        {
+            newSpeed /= speed;
+        }
+
+        m_PlayerVelocity.x *= newSpeed;
+        // playerVelocity.y *= newSpeed;
+        m_PlayerVelocity.z *= newSpeed;
+    }
+
+    public void ResetPhysics()
+    {
+        m_PlayerVelocity = Vector3.zero;
+    }
+
 }
