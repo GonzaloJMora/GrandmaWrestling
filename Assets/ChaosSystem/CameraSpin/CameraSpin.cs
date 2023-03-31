@@ -35,7 +35,7 @@ public class CameraSpin : Chaos
             
             if(stop)
             {
-                Debug.Log("STOPING CYCLE");
+                //Debug.Log("STOPING CYCLE");
                 yield break;
             }
 
@@ -67,21 +67,31 @@ public class CameraSpin : Chaos
     }
 
     IEnumerator RotateToNewPosition(float degree, float speed)
-    {
+    { 
+        //distance to be within
         float delta = 0.01f;
+
+        //the Y quanternion of the camera
         float cameraYQaut = cameraAxis.transform.rotation.y;
+        
+        //position to be
         Quaternion target = Quaternion.Euler(Vector3.up * degree);
+
+        //if within delta of the target
         bool thing = cameraYQaut > target.y - delta && cameraYQaut < target.y + delta;
         while (!(thing))
         {
+            //distance to move
             Quaternion dist = Quaternion.RotateTowards(cameraAxis.transform.rotation, target, Time.deltaTime * speed);
             cameraAxis.transform.rotation = dist;
 
+            //update value
             cameraYQaut = cameraAxis.transform.rotation.y;
 
+            //if not called to stop
             if (stop)
             {
-                Debug.Log("STOPING Rotating");
+                //Debug.Log("STOPING Rotating");
                 yield break;
             }
 
@@ -94,15 +104,4 @@ public class CameraSpin : Chaos
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

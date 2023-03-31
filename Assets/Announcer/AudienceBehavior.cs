@@ -35,26 +35,23 @@ public class AudienceBehavior : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void  Trigger()
     {
         if(!isJumping)
         {
             isJumping = true;
             StartCoroutine(Jump());
+            //StartCoroutine(Spinner());
         }
     }
 
     private IEnumerator Jump()
     {
         float currStep = jumpStep;
+        float t = 0f;
         while(true)
         {
+            t += Time.deltaTime;
             transform.position += new Vector3(0f, currStep, 0f) * Time.deltaTime;
             if(transform.position.y > baseHeight + jumpHeight)
             {
@@ -68,9 +65,52 @@ public class AudienceBehavior : MonoBehaviour
 
             yield return null;
         }
-
+        //Debug.Log("T: " + t);
+        //Debug.Log("TD: " + Time.deltaTime);
         isJumping = false;
         yield return null;
     }
+
+    private IEnumerator Spinner()
+    {
+        foreach (Transform row in transform)
+        {
+            foreach(Transform aud in row)
+            {
+                StartCoroutine(Spin(aud));
+            }
+            yield return null;
+        }
+        yield return null;
+    }
+  
+    private IEnumerator Spin(Transform child)
+    {
+        float angle = 180;
+        float rotationTime = 2f * (jumpHeight / jumpStep);
+        float rotationSpeed = angle / rotationTime;
+
+        Quaternion target = Quaternion.Euler(Vector3.up * angle);
+
+        float t = 0f;
+        while (t < rotationTime)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        t = 0f;
+        angle = 360f;
+        target = Quaternion.Euler(Vector3.up * angle);
+        while (t < rotationTime)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = Quaternion.identity;
+        yield return null;
+    }    
 
 }

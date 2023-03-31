@@ -2598,7 +2598,7 @@ MonoBehaviour:
   - {r: 0.3803922, g: 0.44705886, b: 0.09411766, a: 1}
   floor: {fileID: 1789765670}
   jumpHeight: 2
-  jumpStep: 10
+  jumpStep: 5
 --- !u!1001 &696101274
 PrefabInstance:
   m_ObjectHideFlags: 0
