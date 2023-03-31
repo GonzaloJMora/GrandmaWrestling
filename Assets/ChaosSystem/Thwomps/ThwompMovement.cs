@@ -37,6 +37,7 @@ public class ThwompMovement : MonoBehaviour
         //Debug.Log(state);
         if (state == ThwompStates.Moving)
         {
+            //is Within a certian distance
             float dist = Mathf.Abs(Vector3.Distance(targetPos, transform.position));
             if(dist < 0.1f)
             {
