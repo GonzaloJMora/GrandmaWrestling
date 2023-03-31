@@ -33,6 +33,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private GameObject gameMode;
 
+    [SerializeField] private AudienceBehavior audience;
+
     //keeps track of the last collision that ocurred (-1 for none, 0-3 for P1-P4 respectively) (used for point incrementation)
     public int[] lastCollision = {-1, -1, -1, -1};
 
@@ -158,6 +160,7 @@ public class PlayerManager : MonoBehaviour
         Controller c = other.gameObject.GetComponentInParent<Controller>();
         if(c != null)
         {
+            audience.Trigger();
             c.ResetPhysics();
         }
     }
