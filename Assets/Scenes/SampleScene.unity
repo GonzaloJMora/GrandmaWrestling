@@ -370,7 +370,7 @@ PrefabInstance:
     - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: ChaosOverride
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5162065477725340477, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}

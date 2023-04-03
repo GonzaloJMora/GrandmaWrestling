@@ -34,7 +34,7 @@ public class Mines : Chaos
             Debug.Log("About to explode");
             me.Explode();
 
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
         }
     }
 

@@ -334,7 +334,7 @@ public class Controller : MonoBehaviour
         }
         else
         {
-            Debug.Log("char was not grounded");
+            //Debug.Log("char was not grounded");
         }
     }
 

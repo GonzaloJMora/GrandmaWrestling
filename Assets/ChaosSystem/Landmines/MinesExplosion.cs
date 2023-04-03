@@ -55,9 +55,10 @@ public class MinesExplosion : MonoBehaviour
                 Controller c = hit.GetComponent<Controller>();
                 if (c != null)
                 {
-                    StartCoroutine(c.PauseMovementForce(0.25f, count));
+                    //StartCoroutine(c.PauseMovementForce(0.25f, count));
+                    c.AddVelocity(new Vector3(0f, 100f, 0f))
                 }
-                rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
+                //rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
             }
         }
 
