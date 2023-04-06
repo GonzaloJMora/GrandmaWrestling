@@ -56,7 +56,7 @@ public class MinesExplosion : MonoBehaviour
                 if (c != null)
                 {
                     //StartCoroutine(c.PauseMovementForce(0.25f, count));
-                    c.AddVelocity(new Vector3(0f, 100f, 0f))
+                    c.AddVelocity(new Vector3(0f, 100f, 0f));
                 }
                 //rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
             }
