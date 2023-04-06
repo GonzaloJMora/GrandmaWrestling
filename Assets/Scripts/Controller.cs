@@ -34,6 +34,7 @@ public class Controller : MonoBehaviour
     [SerializeField] private float m_JumpForce = 7;
     [SerializeField] private MovementSettings m_GroundSettings = new MovementSettings(4, 14, 3);
     [SerializeField] private MovementSettings m_AirSettings = new MovementSettings(4, 14, 3);
+    public bool m_WasAirborne = false;
 
     [Header("Cams Testing")]
     [SerializeField]
@@ -188,6 +189,7 @@ public class Controller : MonoBehaviour
             }
             else
             {
+                m_WasAirborne = true;
                 AirMove();
             }
             
@@ -271,7 +273,12 @@ public class Controller : MonoBehaviour
         
 
         // Reset the gravity velocity
-        m_PlayerVelocity.y = -m_Gravity * Time.deltaTime;
+        if (m_WasAirborne)
+        {
+            m_PlayerVelocity.y = -m_Gravity * Time.deltaTime;
+            m_WasAirborne = false;
+        }
+        //m_PlayerVelocity.y = -m_Gravity * Time.deltaTime;
 
         if (m_JumpNeeded)
         {

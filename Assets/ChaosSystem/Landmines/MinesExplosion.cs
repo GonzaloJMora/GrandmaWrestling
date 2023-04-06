@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using System;
 
 public class MinesExplosion : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class MinesExplosion : MonoBehaviour
                 {
                     //StartCoroutine(c.PauseMovementForce(0.25f, count));
                     c.AddVelocity(new Vector3(0f, 100f, 0f));
+                    //Debug.Log( c.m_PlayerVelocity.ToString());
                 }
                 //rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
             }

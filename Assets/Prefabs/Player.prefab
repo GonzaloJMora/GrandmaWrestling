@@ -670,6 +670,7 @@ MonoBehaviour:
   m_Drag: 6
   m_Gravity: 20
   m_JumpForce: 7
+  m_ExplodeForce: 25
   m_GroundSettings:
     MaxSpeed: 4
     Acceleration: 14
@@ -681,6 +682,7 @@ MonoBehaviour:
   m_PlayerVelocity: {x: 0, y: 0, z: 0}
   m_MoveDirectionNorm: {x: 0, y: 0, z: 0}
   m_JumpNeeded: 0
+  m_ExplodeNeeded: 0
   swipeBox: {fileID: 1149654687108092866}
   jabBox: {fileID: 3007496327203349034}
   blockBox: {fileID: 2671327939859775990}
