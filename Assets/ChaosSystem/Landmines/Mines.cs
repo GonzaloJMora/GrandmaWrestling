@@ -11,6 +11,8 @@ public class Mines : Chaos
     [SerializeField] private Vector2Int MinMaxMineAmount;
     [SerializeField] private float mineSpawnDelay;
 
+    private IEnumerator coroutine;
+
     private GameObject par;
 
     public override void Stop()
@@ -22,6 +24,7 @@ public class Mines : Chaos
 
     IEnumerator ResetParent()
     {
+        StopCoroutine(coroutine);
         yield return ExplodeChildren(par);
         Destroy(par);
     }
@@ -44,7 +47,8 @@ public class Mines : Chaos
         int spawnAmount = Random.Range(MinMaxMineAmount.x, MinMaxMineAmount.y + 1);
         par = new GameObject();
         par.transform.position = new Vector3(0f, 10f, 0f);
-        StartCoroutine(SpawnMines(spawnAmount, par));
+        coroutine = SpawnMines(spawnAmount, par);
+        StartCoroutine(coroutine);
     }
 
     IEnumerator SpawnMines(int spawnAmount, GameObject p)
