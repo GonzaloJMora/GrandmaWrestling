@@ -92,8 +92,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    //used by the plane this script is attached to
-    private void OnTriggerEnter(Collider other)
+    //used by the hitbox this script is attached to
+    private void OnTriggerExit(Collider other)
     {
         //use the color to figure out which player fell
         Color color = other.gameObject.GetComponent<MeshRenderer>().material.color;
@@ -156,7 +156,6 @@ public class PlayerManager : MonoBehaviour
             lastCollision[3] = -1;
         }
 
-        //causes NullReferenceError so i commented it out since it didnt change anything -Gonzalo
         Controller c = other.gameObject.GetComponentInParent<Controller>();
         if(c != null)
         {

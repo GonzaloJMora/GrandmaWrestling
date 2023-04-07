@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: afee4d5e2507f7f40bd73143a3051cb1, type: 2}
-  m_sharedMaterial: {fileID: -5152647489173591610, guid: afee4d5e2507f7f40bd73143a3051cb1,
+  m_fontAsset: {fileID: 11400000, guid: 8a5c4564effba454d8de928fffc5ec46, type: 2}
+  m_sharedMaterial: {fileID: 812007226827003880, guid: 8a5c4564effba454d8de928fffc5ec46,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -453,8 +453,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Grandma Wrestling
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: afee4d5e2507f7f40bd73143a3051cb1, type: 2}
-  m_sharedMaterial: {fileID: -5152647489173591610, guid: afee4d5e2507f7f40bd73143a3051cb1,
+  m_fontAsset: {fileID: 11400000, guid: 8a5c4564effba454d8de928fffc5ec46, type: 2}
+  m_sharedMaterial: {fileID: 812007226827003880, guid: 8a5c4564effba454d8de928fffc5ec46,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.25
+  m_fontSize: 42.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1219,8 +1219,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: afee4d5e2507f7f40bd73143a3051cb1, type: 2}
-  m_sharedMaterial: {fileID: -5152647489173591610, guid: afee4d5e2507f7f40bd73143a3051cb1,
+  m_fontAsset: {fileID: 11400000, guid: 8a5c4564effba454d8de928fffc5ec46, type: 2}
+  m_sharedMaterial: {fileID: 812007226827003880, guid: 8a5c4564effba454d8de928fffc5ec46,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1453,6 +1453,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6076527993699137885, guid: ed6045b2ad07cbb48a866b13fb24dc90,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a5c4564effba454d8de928fffc5ec46,
+        type: 2}
+    - target: {fileID: 6076527993699137885, guid: ed6045b2ad07cbb48a866b13fb24dc90,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 812007226827003880, guid: 8a5c4564effba454d8de928fffc5ec46,
+        type: 2}
     - target: {fileID: 8343495022648529755, guid: ed6045b2ad07cbb48a866b13fb24dc90,
         type: 3}
       propertyPath: m_Name
