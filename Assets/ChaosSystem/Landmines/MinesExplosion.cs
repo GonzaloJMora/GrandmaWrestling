@@ -52,12 +52,14 @@ public class MinesExplosion : MonoBehaviour
             if (rb != null && hit.tag == "Player")
             {
                 Vector3 pos = transform.position;
-                pos.y = hit.transform.position.y;
+                //pos.y = hit.transform.position.y;
+                Vector3 playerPos = hit.transform.position;
+                Vector3 launchDir = playerPos - pos;
                 Controller c = hit.GetComponent<Controller>();
                 if (c != null)
                 {
                     //StartCoroutine(c.PauseMovementForce(0.25f, count));
-                    c.AddVelocity(new Vector3(0f, 100f, 0f));
+                    c.AddVelocity(new Vector3(50f * launchDir.x, 20f * launchDir.y, 50f * launchDir.z));
                     //Debug.Log( c.m_PlayerVelocity.ToString());
                 }
                 //rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
