@@ -15,6 +15,12 @@ public class Mines : Chaos
 
     private GameObject par;
 
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip mineSpawnSFX;
+
     public override void Stop()
     {
         Debug.Log("STOP FRO MINES");
@@ -60,6 +66,7 @@ public class Mines : Chaos
             Vector3 pos = new Vector3(sph.x, p.transform.position.y, sph.y);
             GameObject mine = Instantiate(minePrefab, p.transform, true);
             mine.transform.position = pos;
+            audio.PlayOneShot(mineSpawnSFX);
             
             MinesExplosion me = mine.GetComponent<MinesExplosion>();
             me.Radius = mineRadius;

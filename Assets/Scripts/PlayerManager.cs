@@ -28,6 +28,9 @@ public class PlayerManager : MonoBehaviour
     //reference to our input manager
     private PlayerInputManager playerInputManager;
 
+    [SerializeField]
+    private SoundTicketManager sound;
+
     //handles score changes to the ui
     private elimGameMode uiRef;
     [SerializeField]
@@ -35,21 +38,12 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private AudienceBehavior audience;
 
-    private AudioSource audio;
-
-    [SerializeField]
-    private List<AudioClip> joinSounds;
-
-    [SerializeField]
-    private List<int> joinSoundsTickets;
-
     //keeps track of the last collision that ocurred (-1 for none, 0-3 for P1-P4 respectively) (used for point incrementation)
     public int[] lastCollision = {-1, -1, -1, -1};
 
     //initialization
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         uiRef = gameMode.GetComponent<elimGameMode>();
     }
@@ -81,7 +75,7 @@ public class PlayerManager : MonoBehaviour
             if (availablePlayers[i])
             {
                 //set the player's color and spawn to the corresponding player's values
-                playJoinSound();
+                sound.playSound();
                 meshRenderer.material.color = colors[i];
                 player.transform.position = startingPoints[i].position;
                 availablePlayers[i] = false;
@@ -171,17 +165,6 @@ public class PlayerManager : MonoBehaviour
         {
             audience.Trigger();
             c.ResetPhysics();
-        }
-    }
-
-    private void playJoinSound() {
-        int ticket = Random.Range(0, 100);
-
-        for (int i = 0; i < joinSounds.Count; i++) {
-            if (ticket < joinSoundsTickets[i]) {
-                audio.PlayOneShot(joinSounds[i]);
-                break;
-            }
         }
     }
 }

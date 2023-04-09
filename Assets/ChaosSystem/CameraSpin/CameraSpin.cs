@@ -9,6 +9,15 @@ public class CameraSpin : Chaos
     [SerializeField] private float waitTime;
     private bool stop = false;
 
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip goSFX;
+
+    [SerializeField]
+    private AudioClip stopSFX;
+
     public override void Stop()
     {
         Debug.Log("STOP FRO CAMERASPIN");
@@ -27,12 +36,14 @@ public class CameraSpin : Chaos
 
     IEnumerator StartCyclce()
     {
+        audio.Play();
+
         while(true)
         {
             float yRotateDegree = Random.Range(-180, 180f);
             //Debug.Log(yRotateDegree);
             float speed = Random.Range(minMaxRotateSpeed.x, minMaxRotateSpeed.y);
-            
+
             if(stop)
             {
                 //Debug.Log("STOPING CYCLE");
@@ -51,6 +62,7 @@ public class CameraSpin : Chaos
         float cameraYQaut = cameraAxis.transform.rotation.y;
         Quaternion target = Quaternion.Euler(Vector3.up * degree);
         bool thing = cameraYQaut > target.y - delta && cameraYQaut < target.y + delta;
+
         while (!(thing))
         {
             Quaternion dist = Quaternion.RotateTowards(cameraAxis.transform.rotation, target, Time.deltaTime * speed);
@@ -62,8 +74,12 @@ public class CameraSpin : Chaos
 
             //Debug.Log("rotation: " + cameraYQaut + "Degree: " + target.y + " thing: " + thing);
             //Debug.Log(thing);
+
             yield return null;
         }
+
+        audio.Stop();
+        audio.PlayOneShot(stopSFX);
     }
 
     IEnumerator RotateToNewPosition(float degree, float speed)

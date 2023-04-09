@@ -1102,8 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLobby: SampleScene
-  pressPlay: {fileID: 8300000, guid: 68e8397b38369564e97025f29db6df25, type: 3}
-  pressSettings: {fileID: 8300000, guid: 0a965e40547e2464f9b22185975a8f73, type: 3}
+  pressButton: {fileID: 8300000, guid: 0a965e40547e2464f9b22185975a8f73, type: 3}
   pressQuit: {fileID: 8300000, guid: 4d4feb2203051534f966b8225d4960ce, type: 3}
 --- !u!82 &1393914485
 AudioSource:

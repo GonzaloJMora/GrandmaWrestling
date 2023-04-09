@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class MinesExplosion : MonoBehaviour
 {
-    
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip explosionSFX;
+
     public float Force { set { force = value; } }
     public float Radius { set { radius = value; } }
     public float UpForce { set { upForce = value; } }
@@ -59,6 +64,7 @@ public class MinesExplosion : MonoBehaviour
                 if (c != null)
                 {
                     //StartCoroutine(c.PauseMovementForce(0.25f, count));
+                    audio.PlayOneShot(explosionSFX);
                     c.AddVelocity(new Vector3(50f * launchDir.x, 20f * launchDir.y, 50f * launchDir.z));
                     //Debug.Log( c.m_PlayerVelocity.ToString());
                 }

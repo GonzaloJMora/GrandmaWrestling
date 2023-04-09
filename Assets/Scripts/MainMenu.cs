@@ -10,10 +10,7 @@ public class MainMenu : MonoBehaviour
     private AudioSource audio;
 
     [SerializeField]
-    private AudioClip pressPlay;
-
-    [SerializeField]
-    private AudioClip pressSettings;
+    private AudioClip pressButton;
 
     [SerializeField]
     private AudioClip pressQuit; 
@@ -25,9 +22,9 @@ public class MainMenu : MonoBehaviour
     }
 
     public void startGame() {
-        audio.PlayOneShot(pressPlay);
+        audio.PlayOneShot(pressButton);
         playGameFlag = true;
-        Invoke("toLobby", 2.5f);
+        Invoke("toLobby", 0.25f);
     }
 
     private void toLobby() {
@@ -36,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void openSettings() {
         if (!playGameFlag) {
-            audio.PlayOneShot(pressSettings);
+            audio.PlayOneShot(pressButton);
             Debug.Log("Not implemented yet.");
         }
     }
@@ -47,7 +44,7 @@ public class MainMenu : MonoBehaviour
 
     public void openCredits() {
         if (!playGameFlag) {
-            audio.PlayOneShot(pressSettings);
+            audio.PlayOneShot(pressButton);
             Debug.Log("Not implemented yet.");
         }
     }

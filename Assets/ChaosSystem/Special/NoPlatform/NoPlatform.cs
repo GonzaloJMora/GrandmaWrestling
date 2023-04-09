@@ -8,6 +8,12 @@ public class NoPlatform : Chaos
     [SerializeField] private GameObject canvasPrefab;
     [SerializeField] private GameObject platform;
 
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip honkSFX;
+
     private GameObject canvas;
     public override void Stop()
     {
@@ -34,6 +40,7 @@ public class NoPlatform : Chaos
 
     private IEnumerator HideCanvas()
     {
+        audio.PlayOneShot(honkSFX);
         canvas.SetActive(false);
         platform.SetActive(false);
         yield return new WaitForSeconds(3f);
