@@ -10,8 +10,17 @@ public class Ads : Chaos
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject[] ads;
    
-    
+    [SerializeField]
+    private AudioSource audio;
 
+    [SerializeField]
+    private AudioClip cashSFX;
+
+    [SerializeField]
+    private AudioClip appearSFX;
+
+    [SerializeField]
+    private AudioClip disappearSFX;
 
     private GameObject par;
 
@@ -36,8 +45,10 @@ public class Ads : Chaos
 
     IEnumerator LoseMoney(GameObject p)
     {
+        audio.PlayOneShot(disappearSFX);
         for (int i = 0; i < p.transform.childCount; i += 1)//while (p.transform.childCount != 0)
         {
+            audio.PlayOneShot(appearSFX);
             p.transform.GetChild(i).gameObject.SetActive(false);
 
             yield return new WaitForSeconds(spawnDelay);
@@ -64,6 +75,7 @@ public class Ads : Chaos
 
             int randIndex = Random.Range(0, ads.Length);
 
+            audio.PlayOneShot(appearSFX);
             GameObject ad = Instantiate(ads[randIndex], p.transform, true);
             RectTransform rt = ad.GetComponent<RectTransform>();
 
@@ -80,7 +92,7 @@ public class Ads : Chaos
             yield return new WaitForSeconds(spawnDelay);
         }
 
-        
+        audio.PlayOneShot(cashSFX);
     }
 
 }

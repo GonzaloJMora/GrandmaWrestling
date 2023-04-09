@@ -384,12 +384,12 @@ PrefabInstance:
     - target: {fileID: 859861028219757178, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 859861028219757178, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 996677283786328201, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -408,6 +408,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 812007226827003880, guid: 8a5c4564effba454d8de928fffc5ec46,
         type: 2}
+    - target: {fileID: 1310051837662911071, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1827097784}
+    - target: {fileID: 1310051837662911071, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: appearSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b45f9de1668cc8458b3eba45d1f6f69, type: 3}
+    - target: {fileID: 1310051837662911071, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: disappearSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: c48e757c96d062043b09ba3b0ab44dd7, type: 3}
     - target: {fileID: 1408277754133051843, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_fontAsset
@@ -467,6 +482,26 @@ PrefabInstance:
       propertyPath: cameraAxis
       value: 
       objectReference: {fileID: 1337558382}
+    - target: {fileID: 2411258103815363443, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1827097784}
+    - target: {fileID: 2411258103815363443, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: cashSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 2712a922ce954924c83304083faeeba7, type: 3}
+    - target: {fileID: 2411258103815363443, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: appearSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: f60dccd7bb91d704b905e4c78e11ace4, type: 3}
+    - target: {fileID: 2411258103815363443, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: disappearSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1183da2bcb198f940a7a265eab0ab221, type: 3}
     - target: {fileID: 2451196422104212931, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: gameLen
@@ -618,12 +653,12 @@ PrefabInstance:
     - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: OverrideVote
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: ChaosOverride
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4736296348245394972, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -655,13 +690,23 @@ PrefabInstance:
     - target: {fileID: 5465136243683819750, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5475977130225102234, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9050f0f45e3a9694dbb76cce1554be21, type: 2}
+    - target: {fileID: 5517948068933718039, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1827097784}
+    - target: {fileID: 5517948068933718039, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: popSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a12c6c07c48c3e742a352c14d5e1e633, type: 3}
     - target: {fileID: 5517948068933718039, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: platform
@@ -712,12 +757,12 @@ PrefabInstance:
     - target: {fileID: 7290907378325401541, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7290907378325401541, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7323401592457965962, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -734,23 +779,38 @@ PrefabInstance:
     - target: {fileID: 7476682144604846607, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7476682144604846607, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8202942762275388357, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8202942762275388357, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8446326322011205205, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1827097784}
+    - target: {fileID: 8446326322011205205, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: hornSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 08ca935a57987dc4abf1b4b1034f0fac, type: 3}
+    - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1827097784}
     - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: floor
@@ -768,9 +828,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
+      propertyPath: shakingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 95adb99ad227c2749874c5ee241a8a56, type: 3}
+    - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: reappearSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: c48e757c96d062043b09ba3b0ab44dd7, type: 3}
+    - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
       propertyPath: shakeAmount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: disappearSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b45f9de1668cc8458b3eba45d1f6f69, type: 3}
     - target: {fileID: 8557967060622110825, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: announcerOneLiner
@@ -1639,7 +1714,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5e77e1c974df2de4c8e2947b27ff3424, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
@@ -2033,7 +2108,7 @@ PrefabInstance:
     - target: {fileID: 3096038182901468521, guid: 00bb653a32368d24fa6e31f29aeff868,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2371749499621995711, guid: 00bb653a32368d24fa6e31f29aeff868, type: 3}

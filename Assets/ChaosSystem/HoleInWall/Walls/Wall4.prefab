@@ -242,10 +242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPosition: 0
-  wallVarity: 0
+  wallAmount: 0
   wallMovement: 0
   freq: {x: 1, y: 4}
   peak: {x: 1, y: 3}
+  isUseless: 0
 --- !u!1 &4096624585265774649
 GameObject:
   m_ObjectHideFlags: 0

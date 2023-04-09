@@ -14,10 +14,24 @@ public class RingDisperse : Chaos
     private float currTime = 0f;
     private float currShakeTime = 0f;
     private float sign = 1f;
+
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip shakingSFX;
+
+    [SerializeField]
+    private AudioClip disappearSFX;
+
+    [SerializeField]
+    private AudioClip reappearSFX;
+
     public override void Stop()
     {
         StopCoroutine(RingMovement());
-        ring.localPosition = Vector3.zero;  
+        ring.localPosition = Vector3.zero; 
+        audio.PlayOneShot(reappearSFX); 
         ring.gameObject.SetActive(true);
         //throw new System.NotImplementedException();
     }
@@ -37,6 +51,9 @@ public class RingDisperse : Chaos
 
     private IEnumerator RingMovement()
     {
+        audio.clip = shakingSFX;
+        audio.Play();
+
         while(true)
         {
             if(state == RingState.Shaking)
@@ -60,6 +77,8 @@ public class RingDisperse : Chaos
             }
             else if(state == RingState.Moving)
             {
+                audio.Stop();
+                audio.PlayOneShot(disappearSFX);
                 ring.gameObject.SetActive(false);
                 break;
             }

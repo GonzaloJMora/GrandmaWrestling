@@ -10,8 +10,19 @@ public class Thwomps : Chaos
     [SerializeField] private GameObject prefab;
     [SerializeField] private float maxHeight = 10f;
     private GameObject par;
+
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip disappearSFX;
+
+    [SerializeField]
+    private AudioClip appearSFX;
+
     public override void Stop()
     {
+        audio.PlayOneShot(disappearSFX);
         Destroy(par);
         //throw new System.NotImplementedException();
     }
@@ -32,6 +43,7 @@ public class Thwomps : Chaos
         int i = 0;
         while (i < spawnAmount)
         {
+            audio.PlayOneShot(appearSFX);
             GameObject t = Instantiate(prefab, par.transform, false);
 
             Vector3 spawnPos = Random.insideUnitCircle * radius;

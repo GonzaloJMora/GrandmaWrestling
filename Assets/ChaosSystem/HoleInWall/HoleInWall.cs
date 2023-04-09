@@ -15,6 +15,13 @@ public class HoleInWall : Chaos
     private bool isDone = false;
 
     private GameObject par;
+
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip hornSFX;
+
     public override void Stop()
     {
         isDone = false;
@@ -32,6 +39,7 @@ public class HoleInWall : Chaos
 
     public override void Trigger()
     {
+        audio.PlayOneShot(hornSFX);
         int amount = Random.Range(minMaxSpawnAmount.x, minMaxSpawnAmount.y);
         par = new GameObject();
         par.transform.position = new Vector3(0, 0, 100);

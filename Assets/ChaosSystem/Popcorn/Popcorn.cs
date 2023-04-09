@@ -16,19 +16,28 @@ public class Popcorn : Chaos
     private bool isTriggered = false;
     private bool isReady = false;
     private bool hasAppliedForce = false;
+
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip popSFX;
+
+    private bool SFXFlag = true;
+
     // Start is called before the first frame update
     void Start()
     {
         degree = Random.Range(minMaxAngle.x, minMaxAngle.y) * sign;
     }
 
-
-
     // Update is called once per frame
     void FixedUpdate()
     {
         if(!isTriggered) { isReady = true;  return; }
         isReady = false;
+
+        playSFX();
 
         currTime += Time.fixedDeltaTime;
      
@@ -120,5 +129,15 @@ public class Popcorn : Chaos
         //Debug.Log(platform.transform.rotation.eulerAngles.z);
         platform.transform.rotation = amount;
         //Debug.Log("HERE");
+        audio.Stop();
+        SFXFlag = true;
+    }
+
+    private void playSFX() {
+        if (SFXFlag) {
+            audio.clip = popSFX;
+            audio.Play();
+            SFXFlag = false;
+        }
     }
 }

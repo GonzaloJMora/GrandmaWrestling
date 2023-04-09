@@ -36,6 +36,7 @@ public class CameraSpin : Chaos
 
     IEnumerator StartCyclce()
     {
+        audio.clip = goSFX;
         audio.Play();
 
         while(true)

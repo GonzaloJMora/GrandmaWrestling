@@ -23,6 +23,18 @@ public class ThwompMovement : MonoBehaviour
     private float currShakeTime = 0f;
     private float sign = 1f;
     private float minFallHeight;
+
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip shakingSFX;
+
+    [SerializeField]
+    private AudioClip crushSFX;
+
+    private bool SFXFlag = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +60,8 @@ public class ThwompMovement : MonoBehaviour
         }
         else if(state == ThwompStates.Shaking)
         {
+            playSFX();
+
             currTime += Time.deltaTime;
             currShakeTime += Time.deltaTime;
             if (currTime > 0.05f)
@@ -65,6 +79,8 @@ public class ThwompMovement : MonoBehaviour
                 state = ThwompStates.Attacking;
                 currTime = 0f;
                 currShakeTime = 0f;
+                audio.Stop();
+                SFXFlag = true;
             }
         }
         else if(state == ThwompStates.Attacking)
@@ -72,6 +88,7 @@ public class ThwompMovement : MonoBehaviour
             //float dist = Mathf.Abs(minFallHeight - transform.position.y);
             if(transform.position.y < minFallHeight)
             {
+                audio.PlayOneShot(crushSFX);
                 state = ThwompStates.Recovering;
             }
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
@@ -125,5 +142,11 @@ public class ThwompMovement : MonoBehaviour
         maxHeight = height;
     }
 
-
+    private void playSFX() {
+        if (SFXFlag) {
+            audio.clip = shakingSFX;
+            audio.Play();
+            SFXFlag = false;
+        }
+    }
 }
