@@ -650,21 +650,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
-        type: 3}
-      propertyPath: waitTime
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
-        type: 3}
-      propertyPath: OverrideVote
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
-        type: 3}
-      propertyPath: ChaosOverride
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 4736296348245394972, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_fontAsset
