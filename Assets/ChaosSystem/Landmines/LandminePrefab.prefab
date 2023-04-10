@@ -145,6 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio: {fileID: 6684396226490574531}
   explosionSFX: {fileID: 8300000, guid: de70904755a9f8b48a4334e6cb46db96, type: 3}
+  explosionVFX: {fileID: 1828176872806910, guid: 339e4c35ffc7dd14d8e8f10b738fe878,
+    type: 3}
   force: 20
   radius: 1.98
   upForce: 0.05

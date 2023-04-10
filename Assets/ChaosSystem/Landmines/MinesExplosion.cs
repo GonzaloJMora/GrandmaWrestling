@@ -11,6 +11,9 @@ public class MinesExplosion : MonoBehaviour
     [SerializeField]
     private AudioClip explosionSFX;
 
+    [SerializeField]
+    private GameObject explosionVFX;
+
     public float Force { set { force = value; } }
     public float Radius { set { radius = value; } }
     public float UpForce { set { upForce = value; } }
@@ -78,6 +81,7 @@ public class MinesExplosion : MonoBehaviour
             c.enabled = false;
         }
         exploded = true;
+        Instantiate(explosionVFX, transform.position, Quaternion.identity);
     }
 
     IEnumerator TempPausePlayerMovement(Controller c)

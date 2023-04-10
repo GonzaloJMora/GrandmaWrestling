@@ -88,7 +88,7 @@ public class Controller : MonoBehaviour
     //stuff for fighting
     public bool isBlocking = false;
     public bool canAct = true;
-    public bool inAirStun = false;
+    public bool inLaunched = false;
     
     [Header("Knockback Scaling")]
     [Tooltip("How many 'hits' the player starts with")]
