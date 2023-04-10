@@ -571,6 +571,7 @@ Transform:
   - {fileID: 6093749936930173771}
   - {fileID: 9166876575045557046}
   - {fileID: 8184342958208232857}
+  - {fileID: 3384874908137207758}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -670,7 +671,6 @@ MonoBehaviour:
   m_Drag: 6
   m_Gravity: 20
   m_JumpForce: 7
-  m_ExplodeForce: 25
   m_GroundSettings:
     MaxSpeed: 4
     Acceleration: 14
@@ -679,10 +679,10 @@ MonoBehaviour:
     MaxSpeed: 4
     Acceleration: 14
     Deceleration: 3
+  m_WasAirborne: 0
   m_PlayerVelocity: {x: 0, y: 0, z: 0}
   m_MoveDirectionNorm: {x: 0, y: 0, z: 0}
   m_JumpNeeded: 0
-  m_ExplodeNeeded: 0
   swipeBox: {fileID: 1149654687108092866}
   jabBox: {fileID: 3007496327203349034}
   blockBox: {fileID: 2671327939859775990}
@@ -691,10 +691,12 @@ MonoBehaviour:
   maxSpeed: 3
   isBlocking: 0
   canAct: 1
-  inAirStun: 0
+  inLaunched: 0
+  smokeRemaining: 0
   hitInitial: 1
   hitNorm: 5
   cam: {fileID: 0}
+  SmokeEffect: {fileID: 227717080931570056}
   o: {fileID: 0}
 --- !u!114 &8824086518056663214
 MonoBehaviour:
@@ -745,3 +747,99 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &7889737656652546763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8702687733253372480}
+    m_Modifications:
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.80555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.80555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.80555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950253992850445123, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+        type: 3}
+      propertyPath: m_Name
+      value: SmokeTrail
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8b1f4acb4492c2c40a4f73d952b03850, type: 3}
+--- !u!1 &227717080931570056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7950253992850445123, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+    type: 3}
+  m_PrefabInstance: {fileID: 7889737656652546763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3384874908137207758 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4865162289485640965, guid: 8b1f4acb4492c2c40a4f73d952b03850,
+    type: 3}
+  m_PrefabInstance: {fileID: 7889737656652546763}
+  m_PrefabAsset: {fileID: 0}

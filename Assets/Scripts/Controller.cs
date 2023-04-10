@@ -45,6 +45,7 @@ public class Controller : MonoBehaviour
     private CharacterController m_Character;
     [SerializeField]
     private bool m_JumpNeeded = false;
+    
 
     //********************end new cameron variables******************
 
@@ -89,6 +90,7 @@ public class Controller : MonoBehaviour
     public bool isBlocking = false;
     public bool canAct = true;
     public bool inLaunched = false;
+    public int smokeRemaining = 0;
     
     [Header("Knockback Scaling")]
     [Tooltip("How many 'hits' the player starts with")]
@@ -105,6 +107,8 @@ public class Controller : MonoBehaviour
     [Header("Other")]
     [SerializeField]
     public Camera cam;
+
+    [SerializeField] private GameObject SmokeEffect;
 
     //access to lastCollision
     private PlayerManager playerManager;
@@ -152,6 +156,8 @@ public class Controller : MonoBehaviour
     public void getHit(int force, Vector3 attacker_pos)
     {
         int launchPopup = 5; //determines how much additional vertical launch the attack will cause.
+        
+        inLaunched = true; //getting hit should cause smoke effect
 
         if (isBlocking)
         {
@@ -182,7 +188,24 @@ public class Controller : MonoBehaviour
             forceDir += movement.ReadValue<Vector2>().y * GetCameraForward(cam) * movementForce;
             //not touching forceDir in case it does other things elsewhere
 
-            //cam new stuff
+            if (inLaunched)
+            {
+                smokeRemaining = 30;
+                inLaunched = false;
+                SmokeEffect.GetComponent<ParticleSystem>().Play();
+            }
+
+            if (smokeRemaining>0)
+            {
+                smokeRemaining--;
+            }
+            else
+            {
+                //var newParticles = SmokeEffect.GetComponent<ParticleSystem>();
+                SmokeEffect.GetComponent<ParticleSystem>().Stop();
+            }
+
+            //cams movement root
             if (m_Character.isGrounded)
             {
                 GroundMove();

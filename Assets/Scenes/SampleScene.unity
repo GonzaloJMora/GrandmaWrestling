@@ -650,6 +650,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: waitTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: OverrideVote
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246119466892841454, guid: a9e3bfb37620d2a45b5259cdf910d523,
+        type: 3}
+      propertyPath: ChaosOverride
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4736296348245394972, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_fontAsset
@@ -1073,6 +1088,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 417713295}
+    - target: {fileID: 8306176461175453415, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8702687733253372480, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: m_RootOrder

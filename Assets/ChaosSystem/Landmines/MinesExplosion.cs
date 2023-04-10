@@ -72,6 +72,7 @@ public class MinesExplosion : MonoBehaviour
                     //Debug.Log( c.m_PlayerVelocity.ToString());
                 }
                 //rb.AddExplosionForce(force, pos, radius, upForce, ForceMode.Impulse);
+                hit.GetComponent<Controller>().inLaunched = true;
             }
         }
 
@@ -82,6 +83,8 @@ public class MinesExplosion : MonoBehaviour
         }
         exploded = true;
         Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        //To remove the nuke effect at the end of the minigame, put the above line within the player collision block.
+        //This will prevent the explosion effect when detonating the mines at the end.
     }
 
     IEnumerator TempPausePlayerMovement(Controller c)
