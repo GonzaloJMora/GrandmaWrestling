@@ -165,6 +165,7 @@ public class PlayerManager : MonoBehaviour
         {
             audience.Trigger();
             c.ResetPhysics();
+            c.ResetHits();
         }
     }
 }

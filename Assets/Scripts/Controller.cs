@@ -624,4 +624,9 @@ public class Controller : MonoBehaviour
         m_PlayerVelocity = Vector3.zero;
     }
 
+    public void ResetHits()
+    {
+        hitCount = hitInitial;
+    }
+
 }
