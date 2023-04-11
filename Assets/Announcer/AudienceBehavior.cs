@@ -14,6 +14,12 @@ public class AudienceBehavior : MonoBehaviour
     private float baseHeight;
     private bool isJumping = false;
 
+    [SerializeField]
+    private SoundTicketManager sound;
+
+    [SerializeField]
+    private AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     { 
@@ -49,6 +55,9 @@ public class AudienceBehavior : MonoBehaviour
     {
         float currStep = jumpStep;
         float t = 0f;
+
+        sound.playSound();
+
         while(true)
         {
             t += Time.deltaTime;

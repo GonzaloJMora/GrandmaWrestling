@@ -29,7 +29,10 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager playerInputManager;
 
     [SerializeField]
-    private SoundTicketManager sound;
+    private SoundTicketManager joinSound;
+
+    [SerializeField]
+    private SoundTicketManager fallSound;
 
     //handles score changes to the ui
     private elimGameMode uiRef;
@@ -40,6 +43,14 @@ public class PlayerManager : MonoBehaviour
 
     //keeps track of the last collision that ocurred (-1 for none, 0-3 for P1-P4 respectively) (used for point incrementation)
     public int[] lastCollision = {-1, -1, -1, -1};
+
+    [SerializeField]
+    private AudioClip addPointSFX;
+
+    [SerializeField]
+    private AudioClip subPointSFX;
+
+    private bool SFXFlag = true;
 
     //initialization
     private void Awake()
@@ -80,7 +91,7 @@ public class PlayerManager : MonoBehaviour
             if (availablePlayers[i])
             {
                 //set the player's color and spawn to the corresponding player's values
-                sound.playSound();
+                joinSound.playSound();
                 meshRenderer.material.color = colors[i];
                 player.transform.position = startingPoints[i].position;
                 availablePlayers[i] = false;
@@ -114,13 +125,17 @@ public class PlayerManager : MonoBehaviour
             other.transform.position = startingPoints[0].position;
 
             //update score
-            if (lastCollision[0] == -1) {
-                uiRef.scores[0] -= 1;
+            if (!uiRef.isGameOver) {
+                if (lastCollision[0] == -1) {
+                    uiRef.scores[0] -= 1;
+                    uiRef.audio.PlayOneShot(subPointSFX);
+                }
+                else {
+                    uiRef.scores[lastCollision[0]] += 1;
+                    uiRef.audio.PlayOneShot(addPointSFX);
+                }
+                lastCollision[0] = -1;
             }
-            else {
-                uiRef.scores[lastCollision[0]] += 1;
-            }
-            lastCollision[0] = -1;
         }
         else if (color == Color.red)
         {
@@ -128,13 +143,17 @@ public class PlayerManager : MonoBehaviour
             other.transform.position = startingPoints[1].position;
 
             //update score
-            if (lastCollision[1] == -1) {
-                uiRef.scores[1] -= 1;
+            if (!uiRef.isGameOver) {
+                if (lastCollision[1] == -1) {
+                    uiRef.scores[1] -= 1;
+                    uiRef.audio.PlayOneShot(subPointSFX);
+                }
+                else {
+                    uiRef.scores[lastCollision[1]] += 1;
+                    uiRef.audio.PlayOneShot(addPointSFX);
+                }
+                lastCollision[1] = -1;
             }
-            else {
-                uiRef.scores[lastCollision[1]] += 1;
-            }
-            lastCollision[1] = -1;
         }
         else if (color == Color.green)
         {
@@ -142,13 +161,17 @@ public class PlayerManager : MonoBehaviour
             other.transform.position = startingPoints[2].position;
 
             //update score
-            if (lastCollision[2] == -1) {
-                uiRef.scores[2] -= 1;
+            if (!uiRef.isGameOver) {
+                if (lastCollision[2] == -1) {
+                    uiRef.scores[2] -= 1;
+                    uiRef.audio.PlayOneShot(subPointSFX);
+                }
+                else {
+                    uiRef.scores[lastCollision[2]] += 1;
+                    uiRef.audio.PlayOneShot(addPointSFX);
+                }
+                lastCollision[2] = -1;
             }
-            else {
-                uiRef.scores[lastCollision[2]] += 1;
-            }
-            lastCollision[2] = -1;
         }
         else if (color == Color.yellow)
         {
@@ -156,18 +179,29 @@ public class PlayerManager : MonoBehaviour
             other.transform.position = startingPoints[3].position;
 
             //update score
-            if (lastCollision[3] == -1) {
-                uiRef.scores[3] -= 1;
+            if (!uiRef.isGameOver) {
+                if (lastCollision[3] == -1) {
+                    uiRef.scores[3] -= 1;
+                    uiRef.audio.PlayOneShot(subPointSFX);
+                }
+                else {
+                    uiRef.scores[lastCollision[3]] += 1;
+                    uiRef.audio.PlayOneShot(addPointSFX);
+                }
+                lastCollision[3] = -1;
             }
-            else {
-                uiRef.scores[lastCollision[3]] += 1;
-            }
-            lastCollision[3] = -1;
         }
 
         Controller c = other.gameObject.GetComponentInParent<Controller>();
         if(c != null)
         {
+            if (SFXFlag) {
+                fallSound.playSound();
+                SFXFlag = false;
+            }
+            else {
+                SFXFlag = true;
+            }
             audience.Trigger();
             c.ResetPhysics();
             c.ResetHits();

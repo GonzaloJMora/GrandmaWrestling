@@ -24,6 +24,32 @@ public class elimGameMode : MonoBehaviour
 
     public int[] scores = {0, 0, 0, 0};
 
+    public bool isGameOver = false;
+
+    [SerializeField]
+    private AudioSource audienceAudio;
+
+    [SerializeField]
+    public AudioSource audio;
+
+    [SerializeField]
+    private AudioClip audienceIdle;
+
+    [SerializeField]
+    private AudioClip audienceCheer;
+
+    [SerializeField]
+    private AudioClip gameOverSFX;
+
+    [SerializeField]
+    private AudioClip gameOverMusic;
+
+    [SerializeField]
+    private AudioClip timerLowSFX;
+
+    private bool SFXFlag = true;
+    private bool timerLowFlag = true;
+
     //initialization
     private void Awake()
     {
@@ -77,6 +103,11 @@ public class elimGameMode : MonoBehaviour
             
             timeRemaining -= Time.deltaTime;
 
+            if (Mathf.Floor(timeRemaining) == 15 && timerLowFlag) {
+                audio.PlayOneShot(timerLowSFX);
+                timerLowFlag = false;
+            }
+
             if (timeRemaining < 0)
             {
                 timeRemaining = 0f;
@@ -93,8 +124,17 @@ public class elimGameMode : MonoBehaviour
             timer.text = (((int) timeRemaining) / 60) + ":" + temp + (((int) timeRemaining) % 60);
         }
         else {
-
+            isGameOver = true;
             chaosSystem.SetActive(false);
+
+            if (SFXFlag) {
+                audio.PlayOneShot(gameOverSFX);
+                audio.clip = gameOverMusic;
+                audio.Play();
+                audienceAudio.clip = audienceCheer;
+                audienceAudio.Play();
+                SFXFlag = false;
+            }
 
             //winner is displayed when timer expires
             int max = scores[0];
@@ -149,6 +189,10 @@ public class elimGameMode : MonoBehaviour
                 }
 
                 win.SetActive(false);
+                audienceAudio.clip = audienceIdle;
+                SFXFlag = true;
+                timerLowFlag = true;
+                isGameOver = false;
 
                 lobbyWarp.toLobby();
             }

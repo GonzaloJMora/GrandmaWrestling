@@ -54,9 +54,6 @@ public class PlayGame : MonoBehaviour
     [SerializeField]
     private AudioClip timerOne;
 
-    [SerializeField]
-    private AudioClip toGame;
-
     //initialization
     private void Awake()
     {
@@ -65,7 +62,6 @@ public class PlayGame : MonoBehaviour
 
     void Start() {
         audio = GetComponent<AudioSource>();
-        audio.PlayOneShot(toGame);
         timer = startTime;
         readyPlayers = lobbyCanvas.transform.Find("ReadyPlayers").GetComponent<TMP_Text>();
         countdown = lobbyCanvas.transform.Find("Countdown").GetComponent<TMP_Text>();

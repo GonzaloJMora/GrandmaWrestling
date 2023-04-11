@@ -8,6 +8,12 @@ public class BlockMove : MonoBehaviour
     private PlayerManager playerManager;
     [SerializeField] private GameObject o;
 
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip blockSFX;
+
     //index of who we are (0-blue, 1-red, 2-green, 3-yellow)
     private int index;
 
@@ -65,6 +71,7 @@ public class BlockMove : MonoBehaviour
                 playerManager.lastCollision[3] = index;
             }
 
+            audio.PlayOneShot(blockSFX);
             Debug.Log("You just blocked an attack!");
         }
 

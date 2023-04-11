@@ -80,9 +80,6 @@ public class Controller : MonoBehaviour
     [SerializeField]
     public float maxSpeed = 5f;
 
-
-
-
     //force to be applied onto player's rigidbody
     private Vector3 forceDir = Vector3.zero;
 
@@ -116,6 +113,21 @@ public class Controller : MonoBehaviour
 
     //what player are we
     private Color c;
+
+    [SerializeField]
+    private SoundTicketManager attackSound;
+
+    [SerializeField]
+    private SoundTicketManager hitSound;
+
+    [SerializeField]
+    private AudioSource audio;
+
+    [SerializeField]
+    private AudioClip jumpSFX;
+
+    [SerializeField]
+    private AudioClip blockUpSFX;
 
     //initialization
     private void Awake()
@@ -155,6 +167,8 @@ public class Controller : MonoBehaviour
 
     public void getHit(int force, Vector3 attacker_pos)
     {
+        hitSound.playSound();
+
         int launchPopup = 5; //determines how much additional vertical launch the attack will cause.
         
         inLaunched = true; //getting hit should cause smoke effect
@@ -355,9 +369,10 @@ public class Controller : MonoBehaviour
         if (m_Character.isGrounded)
         //if (true)
         {
-            //forceDir += Vector3.up * jumpForce;
+            //forceDir += Vector3.up *  jumpForce;
             //signal the fixed update that a jump should be performed on the next update
             m_JumpNeeded = true;
+            audio.PlayOneShot(jumpSFX);
             //Debug.Log("DoJump entered");
             //m_PlayerVelocity.y = m_JumpForce;
             Invoke("resetLastCollision", 0.75f);
@@ -404,6 +419,7 @@ public class Controller : MonoBehaviour
         if (attLock) {
             attLock = false;
             blockBox.SetActive(true);
+            audio.PlayOneShot(blockUpSFX);
             isBlocking = true;
             //Debug.Log("Block");
             Invoke("deactivateBlock", 1);
@@ -427,6 +443,7 @@ public class Controller : MonoBehaviour
         if (attLock) {
             attLock = false;
             swipeBox.SetActive(true);
+            attackSound.playSound();
             //Debug.Log("Swipe");
             Invoke("deactivateSwipe", 1);
             Invoke("releaseLock", 1);
@@ -448,6 +465,7 @@ public class Controller : MonoBehaviour
         if (attLock) {
             attLock = false;
             jabBox.SetActive(true);
+            attackSound.playSound();
             //Debug.Log("Jab");
             Invoke("deactivateJab", 1);
             Invoke("releaseLock", 1);
