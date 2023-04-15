@@ -391,12 +391,12 @@ PrefabInstance:
     - target: {fileID: 859861028219757178, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 859861028219757178, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 996677283786328201, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -752,7 +752,7 @@ PrefabInstance:
     - target: {fileID: 5465136243683819750, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5475977130225102234, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -839,12 +839,12 @@ PrefabInstance:
     - target: {fileID: 7290907378325401541, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7290907378325401541, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7323401592457965962, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -881,22 +881,22 @@ PrefabInstance:
     - target: {fileID: 7476682144604846607, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7476682144604846607, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8202942762275388357, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8202942762275388357, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8209875553008977561, guid: a9e3bfb37620d2a45b5259cdf910d523,
         type: 3}
@@ -1542,6 +1542,16 @@ PrefabInstance:
       propertyPath: o
       value: 
       objectReference: {fileID: 1002970415}
+    - target: {fileID: 1149654687108092866, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007496327203349034, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: o
@@ -1564,6 +1574,11 @@ PrefabInstance:
       objectReference: {fileID: 549066873}
     - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
+      propertyPath: jabBox
+      value: 
+      objectReference: {fileID: 1494206064}
+    - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
       propertyPath: jumpSFX
       value: 
       objectReference: {fileID: 8300000, guid: f012aeb36f7cb14448f9797f94315a27, type: 3}
@@ -1574,6 +1589,11 @@ PrefabInstance:
       objectReference: {fileID: 907760664}
     - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
       propertyPath: blockUpSFX
       value: 
       objectReference: {fileID: 8300000, guid: fa49766ccdf73a24d90b545187d9cccc, type: 3}
@@ -1582,6 +1602,11 @@ PrefabInstance:
       propertyPath: attackSound
       value: 
       objectReference: {fileID: 549066873}
+    - target: {fileID: 5857546180406720579, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8306176461175453415, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: playOnAwake
@@ -1647,11 +1672,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8702687733253372860, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8824086518056663214, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 417713295}
+    - target: {fileID: 9006738529697246374, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: o
+      value: 
+      objectReference: {fileID: 1002970415}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c6eedfaf7b035842a20dcfb79eeffe4, type: 3}
 --- !u!1 &549066864 stripped
@@ -2544,6 +2579,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1494206064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5857546180406720579, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+    type: 3}
+  m_PrefabInstance: {fileID: 469738032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1566466063 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5406351245274440788, guid: a9e3bfb37620d2a45b5259cdf910d523,
@@ -3206,7 +3247,7 @@ PrefabInstance:
     - target: {fileID: 3096038182901468521, guid: 00bb653a32368d24fa6e31f29aeff868,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2371749499621995711, guid: 00bb653a32368d24fa6e31f29aeff868, type: 3}
