@@ -7,19 +7,22 @@ public class MainMenu : MonoBehaviour
 {
     public string playerLobby;
 
+    [SerializeField]
     private AudioSource audio;
 
     [SerializeField]
     private AudioClip pressButton;
 
     [SerializeField]
-    private AudioClip pressQuit; 
+    private AudioClip pressQuit;
+
+    [SerializeField]
+    private GameObject creditsCanvas; 
+
+    [SerializeField]
+    private GameObject menuCanvas; 
 
     private bool playGameFlag = false;
-
-    void Start() {
-        audio = GetComponent<AudioSource>();
-    }
 
     public void startGame() {
         audio.PlayOneShot(pressButton);
@@ -45,12 +48,9 @@ public class MainMenu : MonoBehaviour
     public void openCredits() {
         if (!playGameFlag) {
             audio.PlayOneShot(pressButton);
-            Debug.Log("Not implemented yet.");
+            creditsCanvas.SetActive(true);
+            menuCanvas.SetActive(false);
         }
-    }
-
-    public void closeCredits() {
-        Debug.Log("You should not see this message cause it's not linked to anything.");
     }
 
     public void quitGame() {
