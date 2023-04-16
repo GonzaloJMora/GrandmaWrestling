@@ -2128,24 +2128,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cc8e8864435af4680e0adcdc59face, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numPlayers: 0
   players: []
   startingPoints:
   - {fileID: 1332707629}
   - {fileID: 1996611562}
   - {fileID: 1746263446}
   - {fileID: 679423425}
-  playerLayers: []
   colors:
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  numPlayers: 0
-  joinSound: {fileID: 1002970425}
-  fallSound: {fileID: 254417215}
+  lastCollision: ffffffffffffffffffffffffffffffff
   gameMode: {fileID: 1566466063}
   audience: {fileID: 682921703}
-  lastCollision: ffffffffffffffffffffffffffffffff
+  joinSound: {fileID: 1002970425}
+  fallSound: {fileID: 254417215}
   addPointSFX: {fileID: 8300000, guid: 3621c2df26516af41912273866bf2e86, type: 3}
   subPointSFX: {fileID: 8300000, guid: 593370fefda733f468a16048cc53e6f9, type: 3}
 --- !u!114 &1002970423
