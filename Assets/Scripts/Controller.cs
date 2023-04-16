@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
-    
     //for cams movement settings
     //This is a structure for storing the max speed, acceleration, and deceleration
     //in different contexts. On the ground we may want different move settings than in air
@@ -48,9 +47,6 @@ public class Controller : MonoBehaviour
     
 
     //********************end new cameron variables******************
-
-    
-
 
     //important references for input
     private InputActionAsset inputAsset;
@@ -101,19 +97,21 @@ public class Controller : MonoBehaviour
     private Vector3 lastForce = Vector3.zero;
 
     //camera that determines which direction we move when joystick is moved
-    [Header("Other")]
+    [Header("Camera")]
     [SerializeField]
     public Camera cam;
 
+    [Header("Effects")]
     [SerializeField] private GameObject SmokeEffect;
 
+    [Header("Player Manager")]
     //access to lastCollision
-    private PlayerManager playerManager;
-    [SerializeField] private GameObject o;
+    [SerializeField] private PlayerManager playerManager;
 
     //what player are we
     private Color c;
 
+    [Header("Audio")]
     [SerializeField]
     private SoundTicketManager attackSound;
 
@@ -135,7 +133,6 @@ public class Controller : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         inputAsset = this.GetComponent<PlayerInput>().actions;
         player = inputAsset.FindActionMap("Player");
-        playerManager = o.GetComponent<PlayerManager>();
     }
 
     private void Start() {

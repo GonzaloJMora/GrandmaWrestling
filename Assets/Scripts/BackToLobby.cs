@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BackToLobby : MonoBehaviour
 {
+    [Header("Transition Stuff")]
     [SerializeField]
     private GameObject lobbyStuff;
 
@@ -19,16 +20,12 @@ public class BackToLobby : MonoBehaviour
     [SerializeField]
     private GameObject gameCanvas;
 
+    [Header("Player Manager")]
+    //used to reset player count to 0
     [SerializeField]
-    private GameObject playerManager;
     private PlayerManager manager;
 
-    //initialization
-    private void Awake()
-    {
-        manager = playerManager.GetComponent<PlayerManager>();
-    }
-
+    //game to loading screen transition
     public void toLobby() {
         loadingScreen.SetActive(true);
         lobbyStuff.SetActive(true);
@@ -39,6 +36,7 @@ public class BackToLobby : MonoBehaviour
         Invoke("deactivateLoading", 0.5f);
     }
 
+    //loading screen to lobby transition
     private void deactivateLoading() {
         loadingScreen.SetActive(false);
         lobbyCanvas.SetActive(true);

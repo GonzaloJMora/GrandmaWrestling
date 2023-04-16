@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Player Data")]
+    public int numPlayers = 0;
+
     //list of players
     public List<PlayerInput> players = new List<PlayerInput>();
 
@@ -12,37 +15,35 @@ public class PlayerManager : MonoBehaviour
     //[SerializeField]
     public List<Transform> startingPoints;
 
-    //unused (might remove if i dont find a use for it)
-    [SerializeField]
-    private List<LayerMask> playerLayers;
-
     //list of colors to help differentiate players
     [SerializeField]
     private List<Color> colors = new List<Color> {Color.blue, Color.red, Color.green, Color.yellow};
 
+    //keeps track of the last collision that ocurred (-1 for none, 0-3 for P1-P4 respectively) (used for point incrementation)
+    public int[] lastCollision = {-1, -1, -1, -1};
+
     //list of player numbers that can currently be spawned in
     private bool[] availablePlayers = { true, true, true, true };
-
-    public int numPlayers = 0;
 
     //reference to our input manager
     private PlayerInputManager playerInputManager;
 
+    //handles score changes to the ui
+    private elimGameMode uiRef;
+
+    [Header("Game Mode")]
+    [SerializeField]
+    private GameObject gameMode;
+
+    [Header("Audience")]
+    [SerializeField] private AudienceBehavior audience;
+
+    [Header("Audio")]
     [SerializeField]
     private SoundTicketManager joinSound;
 
     [SerializeField]
     private SoundTicketManager fallSound;
-
-    //handles score changes to the ui
-    private elimGameMode uiRef;
-    [SerializeField]
-    private GameObject gameMode;
-
-    [SerializeField] private AudienceBehavior audience;
-
-    //keeps track of the last collision that ocurred (-1 for none, 0-3 for P1-P4 respectively) (used for point incrementation)
-    public int[] lastCollision = {-1, -1, -1, -1};
 
     [SerializeField]
     private AudioClip addPointSFX;
@@ -101,6 +102,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    //get rid of all players when returning to the lobby from the game
     public void RemoveAllPlayers() {
         int totPlayers = numPlayers;
 

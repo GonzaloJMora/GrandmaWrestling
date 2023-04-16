@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BlockMove : MonoBehaviour
 {
+    [Header("Player Manager")]
     //access to lastCollision
-    private PlayerManager playerManager;
-    [SerializeField] private GameObject o;
+    [SerializeField] private PlayerManager playerManager;
 
+    [Header("Audio")]
     [SerializeField]
     private AudioSource audio;
 
@@ -16,12 +17,6 @@ public class BlockMove : MonoBehaviour
 
     //index of who we are (0-blue, 1-red, 2-green, 3-yellow)
     private int index;
-
-    //get playermanager script
-    private void Awake()
-    {
-        playerManager = o.GetComponent<PlayerManager>();
-    }
 
     //find out who we are
     private void Start() {

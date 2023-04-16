@@ -1522,6 +1522,11 @@ PrefabInstance:
       propertyPath: o
       value: 
       objectReference: {fileID: 1002970415}
+    - target: {fileID: 1089110773831526409, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1002970421}
     - target: {fileID: 1089110773831526413, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: o
@@ -1537,11 +1542,26 @@ PrefabInstance:
       propertyPath: blockSFX
       value: 
       objectReference: {fileID: 8300000, guid: eef1f7741389b664e85b42a8b442471d, type: 3}
+    - target: {fileID: 1089110773831526413, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1002970421}
     - target: {fileID: 1089110773831526641, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: o
       value: 
       objectReference: {fileID: 1002970415}
+    - target: {fileID: 1089110773831526641, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1002970415}
+    - target: {fileID: 1089110773831526641, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1002970421}
     - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: o
@@ -1582,6 +1602,11 @@ PrefabInstance:
       propertyPath: attackSound
       value: 
       objectReference: {fileID: 549066873}
+    - target: {fileID: 4649935239118506863, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
+        type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1002970421}
     - target: {fileID: 8306176461175453415, guid: 6c6eedfaf7b035842a20dcfb79eeffe4,
         type: 3}
       propertyPath: playOnAwake
@@ -2140,7 +2165,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 8219135790398794233}
   lobbyCanvas: {fileID: 2051164038}
   gameCanvas: {fileID: 157126770}
-  playerManager: {fileID: 1002970415}
+  manager: {fileID: 1002970421}
 --- !u!82 &1002970424
 AudioSource:
   m_ObjectHideFlags: 0

@@ -6,26 +6,38 @@ using TMPro;
 
 public class elimGameMode : MonoBehaviour
 {
-    private float timeRemaining;
+    [Header("Game Length (in seconds)")]
     public float gameLen = 60;
+
+    //current time remaining for game
+    private float timeRemaining;
+
+    //reset timer
     private float reset = 5;
 
+    [Header("Game Canvas")]
     [SerializeField]
     private GameObject gameModeCanvas, win;
     private TMP_Text timer, p1, p2, p3, p4, winner;
 
+    [Header("Player Manager")]
     [SerializeField]
     private GameObject playerManager;
-    private BackToLobby lobbyWarp;
     private PlayerManager manager;
 
+    //reference to game to lobby transition script
+    private BackToLobby lobbyWarp;
+
+    [Header("Chaos")]
     [SerializeField]
     private GameObject chaosSystem;
 
+    [Header("Game Information")]
     public int[] scores = {0, 0, 0, 0};
 
     public bool isGameOver = false;
 
+    [Header("Audio")]
     [SerializeField]
     private AudioSource audienceAudio;
 

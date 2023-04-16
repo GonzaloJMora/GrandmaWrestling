@@ -6,6 +6,7 @@ using TMPro;
 
 public class PlayGame : MonoBehaviour
 {    
+    [Header("Transition Stuff")]
     [SerializeField]
     private GameObject lobbyStuff;
 
@@ -15,13 +16,16 @@ public class PlayGame : MonoBehaviour
     [SerializeField]
     private GameObject loadingScreen;
 
+    [Header("Player Manager")]
     [SerializeField]
     private GameObject playerManager;
     private PlayerManager manager;
 
+    [Header("Chaos")]
     [SerializeField]
     private GameObject chaosSystem;
 
+    [Header("Canvases")]
     [SerializeField]
     private GameObject lobbyCanvas;
     private TMP_Text readyPlayers, countdown;
@@ -29,13 +33,18 @@ public class PlayGame : MonoBehaviour
     [SerializeField]
     private GameObject gameCanvas;
 
+    //player currently ready
     private int playersReady = 0;
 
+    [Header("Timers (in seconds)")]
     public float startTime = 3f;
+
+    //current time (used for startTime)
     private float timer;
 
     private AudioSource audio;
 
+    [Header("Audio")]
     [SerializeField]
     private AudioClip playerReadyUp;
 
@@ -70,10 +79,12 @@ public class PlayGame : MonoBehaviour
     void Update() {
         readyPlayers.text = "Players Ready: " + playersReady + "/" + manager.numPlayers;
 
+        //if all players are currently ready
         if (manager.numPlayers > 0 && playersReady == manager.numPlayers) {
             countdown.gameObject.SetActive(true);
             int temp = (int) Mathf.Floor(timer);
 
+            //startTime countdown
             if (timer > 0) {
                 timer -= Time.deltaTime;
 
@@ -97,6 +108,7 @@ public class PlayGame : MonoBehaviour
                     }
                 }
             }
+            //lobby to loading transition
             else {
                 countdown.gameObject.SetActive(false);
                 loadingScreen.SetActive(true);
@@ -117,11 +129,13 @@ public class PlayGame : MonoBehaviour
         }
     }
 
+    //loading to game transition
     private void deactivateLoading() {
         loadingScreen.SetActive(false);
         gameCanvas.SetActive(true);
     }
 
+    //player stands on red square to ready up
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             playersReady++;
@@ -129,15 +143,18 @@ public class PlayGame : MonoBehaviour
         }
     }
 
+    //player leaves the red square
     private void OnTriggerExit(Collider other) {
         if (other.tag == "Player") {
             playersReady--;
 
+            //if the countdown had already started
             if (countdown.gameObject.activeSelf) {
                 timer = startTime;
                 countdown.gameObject.SetActive(false);
                 audio.PlayOneShot(timerInterrupted);
             }
+            //if not everyone was readied up already
             else {
                 audio.PlayOneShot(playerUnready);
             }

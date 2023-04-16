@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Game Scene")]
+    //game scene
     public string playerLobby;
 
+    [Header("Audio")]
     [SerializeField]
     private AudioSource audio;
 
@@ -16,24 +19,29 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private AudioClip pressQuit;
 
+    [Header("Transition Stuff")]
     [SerializeField]
     private GameObject creditsCanvas; 
 
     [SerializeField]
     private GameObject menuCanvas; 
 
+    //used to not allow any other buttons to be pressed when play button is clicked
     private bool playGameFlag = false;
 
+    //play sound when play button is pressed
     public void startGame() {
         audio.PlayOneShot(pressButton);
         playGameFlag = true;
         Invoke("toLobby", 0.25f);
     }
 
+    //transition from main menu to lobby
     private void toLobby() {
         SceneManager.LoadScene(playerLobby);
     }
 
+    //transition from main menu to settings
     public void openSettings() {
         if (!playGameFlag) {
             audio.PlayOneShot(pressButton);
@@ -41,10 +49,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void closeSettings() {
-        Debug.Log("You should not see this message cause it's not linked to anything.");
-    }
-
+    //transition from main menu to credits
     public void openCredits() {
         if (!playGameFlag) {
             audio.PlayOneShot(pressButton);
@@ -53,6 +58,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //plays sound when quit button is pressed
     public void quitGame() {
         if (!playGameFlag) {
             audio.PlayOneShot(pressQuit);
@@ -61,6 +67,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //app is closed
     private void closeApp() {
         Debug.Log("App has quit");
         Application.Quit();

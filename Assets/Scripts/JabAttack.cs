@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class JabAttack : MonoBehaviour
 {
+    [Header("Player Manager")]
     //access to lastCollision
-    private PlayerManager playerManager;
-    [SerializeField] private GameObject o;
+    [SerializeField] private PlayerManager playerManager;
 
     //which player are we (0-blue, 1-red, 2-green, 3-yellow)
     private int index;
@@ -22,12 +22,6 @@ public class JabAttack : MonoBehaviour
         {
             return true;
         }
-    }
-
-    //get script
-    private void Awake()
-    {
-        playerManager = o.GetComponent<PlayerManager>();
     }
 
     //figure out what player we are
