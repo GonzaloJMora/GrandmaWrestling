@@ -24,6 +24,9 @@ public class MainMenu : MonoBehaviour
     private GameObject creditsCanvas; 
 
     [SerializeField]
+    private GameObject controlsCanvas; 
+
+    [SerializeField]
     private GameObject menuCanvas; 
 
     //used to not allow any other buttons to be pressed when play button is clicked
@@ -41,11 +44,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(playerLobby);
     }
 
-    //transition from main menu to settings
-    public void openSettings() {
+    //transition from main menu to controls
+    public void openControls() {
         if (!playGameFlag) {
             audio.PlayOneShot(pressButton);
-            Debug.Log("Not implemented yet.");
+            controlsCanvas.SetActive(true);
+            menuCanvas.SetActive(false);
         }
     }
 
