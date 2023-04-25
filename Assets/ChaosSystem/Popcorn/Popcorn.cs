@@ -85,7 +85,7 @@ public class Popcorn : Chaos
                     continue;
                 }
 
-                rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+                c.AddVelocity(direction.normalized * force, ForceMode.Impulse);
             }
         }
         
