@@ -16,8 +16,10 @@ public class elimGameMode : MonoBehaviour
     private float reset = 5;
 
     [Header("Game Canvas")]
-    [SerializeField]
-    private GameObject gameModeCanvas, win;
+    [SerializeField] private GameObject gameModeCanvas;
+    [SerializeField] private GameObject win;
+    [SerializeField] private GameObject scoreBoards;
+
     private TMP_Text timer, p1, p2, p3, p4, winner;
 
     [Header("Player Manager")]
@@ -67,16 +69,19 @@ public class elimGameMode : MonoBehaviour
     {
         lobbyWarp = playerManager.GetComponent<BackToLobby>();
         manager = playerManager.GetComponent<PlayerManager>();
+        
     }
 
     //initialization
     void Start() 
     {
         timer = gameModeCanvas.transform.Find("Timer").GetComponent<TMP_Text>();
-        p1 = gameModeCanvas.transform.Find("P1").GetComponent<TMP_Text>();
-        p2 = gameModeCanvas.transform.Find("P2").GetComponent<TMP_Text>();
-        p3 = gameModeCanvas.transform.Find("P3").GetComponent<TMP_Text>();
-        p4 = gameModeCanvas.transform.Find("P4").GetComponent<TMP_Text>();
+        p1 = scoreBoards.transform.Find("P1").GetComponentInChildren<TMP_Text>();
+        p2 = scoreBoards.transform.Find("P2").GetComponentInChildren<TMP_Text>();
+        p3 = scoreBoards.transform.Find("P3").GetComponentInChildren<TMP_Text>();
+        p4 = scoreBoards.transform.Find("P4").GetComponentInChildren<TMP_Text>();
+
+
         winner = gameModeCanvas.transform.Find("Winner").GetComponent<TMP_Text>();
         win = gameModeCanvas.transform.Find("Winner").gameObject;
         timeRemaining = gameLen;
@@ -90,27 +95,33 @@ public class elimGameMode : MonoBehaviour
         //scores and time are updated if the timer is greater than 0
         if (timeRemaining > 0) 
         {
-            p1.text = "Blue: " + scores[0];
+            p1.text = "Blue:\n" + scores[0];
 
             if (manager.numPlayers >= 2) {
-                p2.text = "Red: " + scores[1];
+                p2.transform.parent.gameObject.SetActive(true);
+                p2.text = "Red:\n" + scores[1];
             }
             else {
                 p2.text = "";
+                p2.transform.parent.gameObject.SetActive(false);
             }
 
             if (manager.numPlayers >= 3) {
-                p3.text = "Green: " + scores[2];                
+                p3.transform.parent.gameObject.SetActive(true);
+                p3.text = "Green:\n" + scores[2];                
             }
             else {
                 p3.text = "";
+                p3.transform.parent.gameObject.SetActive(false);
             }
 
             if (manager.numPlayers >= 4) {
-                p4.text = "Yellow: " + scores[3];
+                p4.transform.parent.gameObject.SetActive(true);
+                p4.text = "Yellow:\n" + scores[3];
             }
             else {
                 p4.text = "";
+                p4.transform.parent.gameObject.SetActive(false);
             }
             
             timeRemaining -= Time.deltaTime;

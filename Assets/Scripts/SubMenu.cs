@@ -23,5 +23,7 @@ public class SubMenu : MonoBehaviour
         audio.PlayOneShot(pressButton);
         mainCanvas.SetActive(true);
         subCanvas.SetActive(false);
+
+        
     }
 }
