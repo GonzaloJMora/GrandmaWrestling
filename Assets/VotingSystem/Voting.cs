@@ -144,14 +144,15 @@ public class Voting : MonoBehaviour
                 audio.PlayOneShot(voiceLines[chosenChaosIndex]);
             }
 
-            Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
-
+            //Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
+            startChaos();
             //ch[chosenChaosIndex].Trigger();
             state = VotingState.Chaos;
             return;
         }
 
         currTime += Time.deltaTime;
+
         if(state == VotingState.Waiting)
         {
             ToggleSliderPanel(false);
@@ -208,8 +209,8 @@ public class Voting : MonoBehaviour
                 audio.PlayOneShot(voiceLines[chosenChaosIndex]);
             }
 
-            Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
-
+            //Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
+            startChaos();
             // ch[chosenChaosIndex].Trigger();
             // ChangeState(VotingState.Chaos);
             // currTime = 0f;
