@@ -55,7 +55,7 @@ public class Voting : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(new Vector3(0f, 0f, 0f), Chaos.radius);
+        //Gizmos.DrawWireSphere(new Vector3(0f, 0f, 0f), Chaos.radius);
     }
 
     // Start is called before the first frame update
