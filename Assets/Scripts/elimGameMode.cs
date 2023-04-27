@@ -32,14 +32,12 @@ public class elimGameMode : MonoBehaviour
     //reference to game to lobby transition script
     private BackToLobby lobbyWarp;
 
-    [Header("Chaos")]
-    [SerializeField]
-    private GameObject chaosSystem;
-
     [Header("Game Information")]
     public int[] scores = {0, 0, 0, 0};
 
     public bool isGameOver = false;
+
+    public bool canStartVoting = true;
 
     [Header("Audio")]
     [SerializeField]
@@ -128,6 +126,10 @@ public class elimGameMode : MonoBehaviour
                 timerLowFlag = false;
             }
 
+            if (Mathf.Floor(timeRemaining) < 25) {
+                canStartVoting = false;
+            }
+
             if (timeRemaining < 0)
             {
                 timeRemaining = 0f;
@@ -145,7 +147,6 @@ public class elimGameMode : MonoBehaviour
         }
         else {
             isGameOver = true;
-            chaosSystem.SetActive(false);
 
             if (SFXFlag) {
                 audio.PlayOneShot(gameOverSFX);
@@ -195,6 +196,7 @@ public class elimGameMode : MonoBehaviour
             {
                 timeRemaining = gameLen;
                 reset = 5;
+                canStartVoting = true;
                 
                 float minutes = Mathf.Floor(timeRemaining) / 60, seconds = Mathf.Floor(timeRemaining) % 60;
                 if (seconds < 10) {

@@ -80,7 +80,7 @@ public class PlayerManager : MonoBehaviour
     //callback used to add a new player
     public void AddPlayer(PlayerInput player)
     {
-        if (numPlayers >= 4 && !(isGameStarted)) {
+        if (numPlayers >= 4 || isGameStarted) {
             Destroy(player);
             return;
         }

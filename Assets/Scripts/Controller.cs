@@ -508,7 +508,7 @@ public class Controller : MonoBehaviour
     //method that will deactivate jab hitbox called after a small delay
     private void deactivateJab()
     {
-        Debug.Log("Deactivating jab");
+        //Debug.Log("Deactivating jab");
         jabBox.SetActive(false);
         canAct = true;
     }
@@ -562,11 +562,11 @@ public class Controller : MonoBehaviour
 
     public void AddVelocity(Vector3 vector)
     {
-        Debug.Log("Velocity Added");
+        //Debug.Log("Velocity Added");
         m_PlayerVelocity.x += vector.x;
         m_PlayerVelocity.y += vector.y;
         m_PlayerVelocity.z += vector.z;
-        Debug.Log("New Y: " + m_PlayerVelocity.y.ToString());
+        //Debug.Log("New Y: " + m_PlayerVelocity.y.ToString());
     }
 
     private void ApplyFriction(float t)

@@ -24,6 +24,7 @@ public class Voting : MonoBehaviour
     [Header("Chaos Related")]
     [SerializeField] private GameObject chaosSystem; //object with all the chaos types
     private Chaos[] ch;
+    [SerializeField] private float[] chVoiceLineDelay;
     private int maxChaosSize;
     private int currChaosSize;
     private int[] usedChaosListIndex; //list of already chosen chaos
@@ -41,7 +42,12 @@ public class Voting : MonoBehaviour
 
     [Header("Announcer Related")]
     [SerializeField] private GameObject AnnouncerPanel;
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioClip[] voiceLines;
+    [SerializeField] private SoundTicketManager honkAudio;
 
+    [Header("Game Mode Related")]
+    [SerializeField] private elimGameMode gamemode;
 
     [Header("Testing")]
     [SerializeField] private bool OverrideVote = false;
@@ -53,7 +59,7 @@ public class Voting : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         //Voting Related
@@ -97,7 +103,7 @@ public class Voting : MonoBehaviour
         for (int i = 0; i < usedChaosListIndex.Length; i += 1)
         {
             if(usedChaosListIndex[i] == -1) { continue; }
-            Debug.Log(ch[usedChaosListIndex[i]]);
+            //Debug.Log(ch[usedChaosListIndex[i]]);
         }
     }
 
@@ -108,11 +114,39 @@ public class Voting : MonoBehaviour
     {
         //Debug.Log("currChaosSize: " + currChaosSize);
         //Debug.Log("Inside of ChooseVotingChaos");
+
+        if (gamemode.isGameOver) {
+                //ch[chosenChaosIndex].Stop();
+                ToggleSliderPanel(false);
+                ToggleAnnouncer(false);
+                ResetSliders();
+                ResetArray(usedChaosListIndex);
+                ResetArray(votingChaosIndex);
+                currChaosSize = maxChaosSize;
+                currTime = 0f;
+                currVoteRound = 0;
+                ChangeState(VotingState.Waiting);
+        }
+
+        if (!gamemode.canStartVoting && state == VotingState.Waiting) {
+            return;
+        }
+
         if (OverrideVote && state == VotingState.Voted)
         {
             chosenChaosIndex = ChaosOverride;
             //state = VotingState.Chaos;
-            ch[chosenChaosIndex].Trigger();
+
+            if (chosenChaosIndex == 7) {
+                honkAudio.playSound();
+            }
+            else {
+                audio.PlayOneShot(voiceLines[chosenChaosIndex]);
+            }
+
+            Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
+
+            //ch[chosenChaosIndex].Trigger();
             state = VotingState.Chaos;
             return;
         }
@@ -128,8 +162,6 @@ public class Voting : MonoBehaviour
                 ChangeSliderName();
                 ChangeState(VotingState.Voting);
             }
-            
-
         }
         else if(state == VotingState.Voting)
         {
@@ -169,9 +201,18 @@ public class Voting : MonoBehaviour
             PrintUsedChaosIndex();
             ResetArray(votingChaosIndex);
 
-            ch[chosenChaosIndex].Trigger();
-            ChangeState(VotingState.Chaos);
-            currTime = 0f;
+            if (chosenChaosIndex == 7) {
+                honkAudio.playSound();
+            }
+            else {
+                audio.PlayOneShot(voiceLines[chosenChaosIndex]);
+            }
+
+            Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
+
+            // ch[chosenChaosIndex].Trigger();
+            // ChangeState(VotingState.Chaos);
+            // currTime = 0f;
         }
         else if (state == VotingState.Chaos)
         {
@@ -187,10 +228,15 @@ public class Voting : MonoBehaviour
                 currTime = 0f;
                 ch[chosenChaosIndex].Stop();
                 ChangeState(VotingState.Waiting);
-               
             }
         }
 
+    }
+
+    private void startChaos() {
+        ch[chosenChaosIndex].Trigger();
+        ChangeState(VotingState.Chaos);
+        currTime = 0f;
     }
 
     private void ChangeSliderName()
