@@ -40,5 +40,6 @@ public class BackToLobby : MonoBehaviour
     private void deactivateLoading() {
         loadingScreen.SetActive(false);
         lobbyCanvas.SetActive(true);
+        manager.isGameStarted = false;
     }
 }

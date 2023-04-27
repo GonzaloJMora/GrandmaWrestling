@@ -110,6 +110,7 @@ public class PlayGame : MonoBehaviour
             }
             //lobby to loading transition
             else {
+                manager.isGameStarted = true;
                 countdown.gameObject.SetActive(false);
                 loadingScreen.SetActive(true);
                 gameStuff.SetActive(true);

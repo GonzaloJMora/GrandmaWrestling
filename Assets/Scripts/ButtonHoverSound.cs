@@ -16,7 +16,4 @@ public class ButtonHoverSound : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData) {
         audio.PlayOneShot(buttonHover);
     }
-    
-    
-    
 }

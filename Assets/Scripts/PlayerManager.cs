@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Game Mode")]
     [SerializeField]
     private GameObject gameMode;
+    public bool isGameStarted = false;
 
     [Header("Audience")]
     [SerializeField] private AudienceBehavior audience;
@@ -52,6 +53,10 @@ public class PlayerManager : MonoBehaviour
     private AudioClip subPointSFX;
 
     private bool SFXFlag = true;
+
+    [Header("Visual Effects")]
+    [SerializeField]
+    private GameObject explosionVFX;
 
     //initialization
     private void Awake()
@@ -75,7 +80,7 @@ public class PlayerManager : MonoBehaviour
     //callback used to add a new player
     public void AddPlayer(PlayerInput player)
     {
-        if (numPlayers >= 4) {
+        if (numPlayers >= 4 && !(isGameStarted)) {
             Destroy(player);
             return;
         }
@@ -94,6 +99,7 @@ public class PlayerManager : MonoBehaviour
                 //set the player's color and spawn to the corresponding player's values
                 joinSound.playSound();
                 meshRenderer.material.color = colors[i];
+                Instantiate(explosionVFX, startingPoints[i].position, Quaternion.identity);
                 player.transform.position = startingPoints[i].position;
                 availablePlayers[i] = false;
                 numPlayers++;
@@ -125,6 +131,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[0] = true;
             other.transform.position = startingPoints[0].position;
+            Instantiate(explosionVFX, startingPoints[0].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {
@@ -143,6 +150,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[1] = true;
             other.transform.position = startingPoints[1].position;
+            Instantiate(explosionVFX, startingPoints[1].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {
@@ -161,6 +169,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[2] = true;
             other.transform.position = startingPoints[2].position;
+            Instantiate(explosionVFX, startingPoints[2].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {
@@ -179,6 +188,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[3] = true;
             other.transform.position = startingPoints[3].position;
+            Instantiate(explosionVFX, startingPoints[3].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {

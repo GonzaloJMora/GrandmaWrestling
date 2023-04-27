@@ -352,12 +352,12 @@ public class Voting : MonoBehaviour
 
     private void ToggleAnnouncer(bool isVisible)
     {
-        if(isVisible)
+        /*if(isVisible)
         {
             TMP_Text mp = AnnouncerPanel.GetComponentInChildren<TMP_Text>();
             mp.text = ch[chosenChaosIndex].GetOneliner();
             //ch[chosenChaosIndex].PlayAnnouncerClip();
-        }
+        }*/
         AnnouncerPanel.SetActive(isVisible);
 
     }
