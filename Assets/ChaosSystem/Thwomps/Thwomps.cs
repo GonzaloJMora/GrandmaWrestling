@@ -9,6 +9,8 @@ public class Thwomps : Chaos
     [SerializeField] private float spawnDelay;
     [SerializeField] private GameObject prefab;
     [SerializeField] private float maxHeight = 10f;
+
+    [SerializeField] private Texture[] bens;
     private GameObject par;
 
     [SerializeField]
@@ -45,7 +47,7 @@ public class Thwomps : Chaos
         {
             audio.PlayOneShot(appearSFX);
             GameObject t = Instantiate(prefab, par.transform, false);
-
+            t.GetComponent<Renderer>().material.mainTexture = bens[i % bens.Length];
             Vector3 spawnPos = Random.insideUnitCircle * radius;
             t.transform.position = spawnPos + new Vector3(0f, maxHeight, 0f);
             ThwompMovement tm = t.GetComponent<ThwompMovement>();

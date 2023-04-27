@@ -312,7 +312,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 2100000, guid: 78f3017a0f72df34f8bb17ee309cf717, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9015,6 +9016,11 @@ MonoBehaviour:
   spawnDelay: 1
   prefab: {fileID: 2419559627912604930, guid: 05c53d2790dc0eb46b360a6c9e94a66d, type: 3}
   maxHeight: 3.32
+  bens:
+  - {fileID: 2800000, guid: b0fee1f78689c4547b77c76b808556fa, type: 3}
+  - {fileID: 2800000, guid: c5d2fcdcd7da7a6438053ba9b384ca4a, type: 3}
+  - {fileID: 2800000, guid: ebd954fb93754db40a96d35b429a86c1, type: 3}
+  - {fileID: 2800000, guid: 8ece57b1eb9779a409aa1aa486f9b612, type: 3}
   audio: {fileID: 1827097784}
   disappearSFX: {fileID: 8300000, guid: c48e757c96d062043b09ba3b0ab44dd7, type: 3}
   appearSFX: {fileID: 8300000, guid: 9b45f9de1668cc8458b3eba45d1f6f69, type: 3}
@@ -10184,11 +10190,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d10e1dd8bd9299247988ce04e4d8c04a, type: 2}
+      objectReference: {fileID: 2100000, guid: 78f3017a0f72df34f8bb17ee309cf717, type: 2}
     - target: {fileID: 4952576955827544295, guid: 00bb653a32368d24fa6e31f29aeff868,
         type: 3}
       propertyPath: m_LocalScale.y
       value: -9.979026
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952576955827544295, guid: 00bb653a32368d24fa6e31f29aeff868,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952576955827544295, guid: 00bb653a32368d24fa6e31f29aeff868,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952576955827544295, guid: 00bb653a32368d24fa6e31f29aeff868,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4952576955930113433, guid: 00bb653a32368d24fa6e31f29aeff868,
         type: 3}
@@ -10866,8 +10887,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c55d929e7e6e58545925ffaf1a596428, type: 3}
   honkAudio: {fileID: 5012112190784644645}
   gamemode: {fileID: 2451196421989692851}
-  OverrideVote: 0
-  ChaosOverride: 10
+  OverrideVote: 1
+  ChaosOverride: 4
 --- !u!222 &4493416616518224915
 CanvasRenderer:
   m_ObjectHideFlags: 0

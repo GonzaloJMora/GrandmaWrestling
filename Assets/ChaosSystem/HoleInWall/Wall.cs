@@ -5,7 +5,7 @@ using UnityEngine;
 public enum WallPosition { Any, Center, Side }
 public enum WallAmount { Any, Single, Multiple}
 
-public enum WallMovement { Any, Stable, Sin, SparaticSin}
+public enum WallMovement { Any, Stable, Sin}
 
 public class Wall : MonoBehaviour
 {
@@ -54,15 +54,6 @@ public class Wall : MonoBehaviour
         else if(wallMovement == WallMovement.Stable)
         {
             //don't move
-        }
-        else if(wallMovement == WallMovement.SparaticSin)
-        {
-            if(spaTime > 1f)
-            {
-                transform.localPosition = startPos + new Vector3(Mathf.Sin(currTime * currFreq), 0, 0) * currPeak;
-                spaTime = 0f;
-            }
-            
         }
 
 
