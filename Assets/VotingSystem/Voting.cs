@@ -144,8 +144,8 @@ public class Voting : MonoBehaviour
                 audio.PlayOneShot(voiceLines[chosenChaosIndex]);
             }
 
-            //Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
-            startChaos();
+            Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
+            //startChaos();
             //ch[chosenChaosIndex].Trigger();
             state = VotingState.Chaos;
             return;
@@ -209,8 +209,9 @@ public class Voting : MonoBehaviour
                 audio.PlayOneShot(voiceLines[chosenChaosIndex]);
             }
 
-            //Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
-            startChaos();
+            ChangeState(VotingState.Chaos);
+            Invoke("startChaos", chVoiceLineDelay[chosenChaosIndex]);
+            //startChaos();
             // ch[chosenChaosIndex].Trigger();
             // ChangeState(VotingState.Chaos);
             // currTime = 0f;
@@ -236,7 +237,6 @@ public class Voting : MonoBehaviour
 
     private void startChaos() {
         ch[chosenChaosIndex].Trigger();
-        ChangeState(VotingState.Chaos);
         currTime = 0f;
     }
 
