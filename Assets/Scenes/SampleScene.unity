@@ -3027,12 +3027,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1228320484}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &640417017 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2444134461139603147, guid: b84eb6ba9cafc474ba94f0004ddb419d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3254456039691059550}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &656729094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4527,9 +4521,6 @@ MonoBehaviour:
   subPointSFX: {fileID: 8300000, guid: 593370fefda733f468a16048cc53e6f9, type: 3}
   explosionVFX: {fileID: 1828176872806910, guid: 339e4c35ffc7dd14d8e8f10b738fe878,
     type: 3}
-  Jab: {fileID: 640417017}
-  Swipe: {fileID: 1222824598}
-  Block: {fileID: 2024244906}
 --- !u!114 &1002970423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5230,12 +5221,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05cc5ce2241c3d047a2aa2427397e055, type: 3}
---- !u!1 &1222824598 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 617681214373146197, guid: b84eb6ba9cafc474ba94f0004ddb419d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3254456039691059550}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1228320484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7777,12 +7762,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6853345464063050475, guid: 05cc5ce2241c3d047a2aa2427397e055,
     type: 3}
   m_PrefabInstance: {fileID: 2066772307}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2024244906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4633648339427417356, guid: b84eb6ba9cafc474ba94f0004ddb419d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3254456039691059550}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2033699011
 PrefabInstance:
@@ -10887,7 +10866,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c55d929e7e6e58545925ffaf1a596428, type: 3}
   honkAudio: {fileID: 5012112190784644645}
   gamemode: {fileID: 2451196421989692851}
-  OverrideVote: 1
+  OverrideVote: 0
   ChaosOverride: 4
 --- !u!222 &4493416616518224915
 CanvasRenderer:
