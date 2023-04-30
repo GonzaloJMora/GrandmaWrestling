@@ -218,12 +218,12 @@ public class Voting : MonoBehaviour
         }
         else if (state == VotingState.Chaos)
         {
-            if(currTime > chaosTime/4f)
+            /*if(currTime > chaosTime/4f)
             {
                 ToggleSliderPanel(false);
                 ResetSliders();
                 ToggleAnnouncer(false);
-            }
+            }*/
 
             if(currTime >= chaosTime)
             {
@@ -238,6 +238,9 @@ public class Voting : MonoBehaviour
     private void startChaos() {
         ch[chosenChaosIndex].Trigger();
         currTime = 0f;
+        ToggleSliderPanel(false);
+        ResetSliders();
+        ToggleAnnouncer(false);
     }
 
     private void ChangeSliderName()

@@ -58,8 +58,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private GameObject explosionVFX;
 
-    [SerializeField]
-    private SkinnedMeshRenderer shirt;
+    /*[SerializeField]
+    private SkinnedMeshRenderer shirt;*/
 
     //initialization
     private void Awake()
@@ -90,6 +90,8 @@ public class PlayerManager : MonoBehaviour
 
         //get reference to the new player's mesh renderer
         MeshRenderer meshRenderer = player.GetComponent<MeshRenderer>();
+
+        SkinnedMeshRenderer shirt = player.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>();
 
         //add new player to player list
         players.Add(player);
