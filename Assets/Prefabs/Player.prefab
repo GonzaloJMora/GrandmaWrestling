@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6682926269118418679
 Transform:
   m_ObjectHideFlags: 0
@@ -59,6 +59,7 @@ MonoBehaviour:
   playerManager: {fileID: 0}
   audio: {fileID: 3254456039144364324}
   blockSFX: {fileID: 8300000, guid: eef1f7741389b664e85b42a8b442471d, type: 3}
+  isSweet: 0
 --- !u!65 &8628767095195156290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -536,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191339960656845102
 Transform:
   m_ObjectHideFlags: 0

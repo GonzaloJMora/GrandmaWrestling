@@ -173,10 +173,10 @@ public class Controller : MonoBehaviour
         
         inLaunched = true; //getting hit should cause smoke effect
 
-        if (isBlocking)
-        {
-            return;
-        }
+        // if (isBlocking)
+        // {
+        //     return;
+        // }
 
         hitCount++;
 
