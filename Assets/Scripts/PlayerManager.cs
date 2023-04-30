@@ -58,6 +58,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private GameObject explosionVFX;
 
+    [SerializeField]
+    private SkinnedMeshRenderer shirt;
+
     //initialization
     private void Awake()
     {
@@ -99,6 +102,7 @@ public class PlayerManager : MonoBehaviour
                 //set the player's color and spawn to the corresponding player's values
                 joinSound.playSound();
                 meshRenderer.material.color = colors[i];
+                shirt.material.color = colors[i];
                 player.transform.Find("CaneSwipe").GetComponent<MeshRenderer>().materials[1].SetColor("_Outline_Color", colors[i]);
                 player.transform.Find("CaneJab").GetComponent<MeshRenderer>().materials[1].SetColor("_Outline_Color", colors[i]);
                 player.transform.Find("BlockBox").Find("Pan").GetComponent<MeshRenderer>().materials[2].SetColor("_Outline_Color", colors[i]);

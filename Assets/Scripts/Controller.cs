@@ -303,6 +303,17 @@ public class Controller : MonoBehaviour
         Accelerate(wishdir, wishspeed, m_GroundSettings.Acceleration);
 
 
+        //animate walk
+        if (wishspeed > 0)
+        {
+            gameObject.transform.Find("grandma").GetComponent<Animator>().SetFloat("Speed", 0.5f);
+        }
+        else
+        {
+            gameObject.transform.Find("grandma").GetComponent<Animator>().SetFloat("Speed", 0.0f);
+        }
+
+
 
         
 
