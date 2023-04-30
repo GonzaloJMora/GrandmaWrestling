@@ -120,6 +120,8 @@ public class PlayGame : MonoBehaviour
 
                 for(int i = 0; i < manager.numPlayers; i++) {
                     manager.players[i].transform.position = manager.startingPoints[i].position;
+                    manager.players[i].gameObject.GetComponent<Controller>().ResetHits();
+                    manager.players[i].gameObject.GetComponent<Controller>().ResetPhysics();
                 }
 
                 timer = startTime;
