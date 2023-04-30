@@ -80,7 +80,7 @@ public class PlayGame : MonoBehaviour
         readyPlayers.text = "Players Ready: " + playersReady + "/" + manager.numPlayers;
 
         //if all players are currently ready
-        if (manager.numPlayers > 0 && playersReady == manager.numPlayers) {
+        if (manager.numPlayers > 1 && playersReady == manager.numPlayers) {
             countdown.gameObject.SetActive(true);
             int temp = (int) Mathf.Floor(timer);
 
