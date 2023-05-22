@@ -20,7 +20,7 @@ public class CameraSpin : Chaos
 
     public override void Stop()
     {
-        Debug.Log("STOP FRO CAMERASPIN");
+        //Debug.Log("STOP FRO CAMERASPIN");
         stop = true;
         
         StartCoroutine(ResetCamera(0f, Random.Range(minMaxRotateSpeed.x, minMaxRotateSpeed.y)));
@@ -58,7 +58,7 @@ public class CameraSpin : Chaos
 
     IEnumerator ResetCamera(float degree, float speed)
     {
-        Debug.Log("RESETTING CAMERA");
+        //Debug.Log("RESETTING CAMERA");
         float delta = 0.01f;
         float cameraYQaut = cameraAxis.transform.rotation.y;
         Quaternion target = Quaternion.Euler(Vector3.up * degree);

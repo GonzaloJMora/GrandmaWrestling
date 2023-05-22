@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreditsMenu : MonoBehaviour
+public class SubMenu : MonoBehaviour
 {
     [Header("Transition Stuff")]
     [SerializeField]
-    private GameObject creditsCanvas; 
+    private GameObject subCanvas; 
 
     [SerializeField]
-    private GameObject menuCanvas;
+    private GameObject mainCanvas;
 
     [Header("Audio")]
     [SerializeField]
@@ -18,10 +18,10 @@ public class CreditsMenu : MonoBehaviour
     [SerializeField]
     private AudioClip pressButton;
 
-    //transition from credits to main menu
-    public void closeCredits() {
+    //transition from sub menu to main menu
+    public void closeSubMenu() {
         audio.PlayOneShot(pressButton);
-        menuCanvas.SetActive(true);
-        creditsCanvas.SetActive(false);
+        mainCanvas.SetActive(true);
+        subCanvas.SetActive(false);
     }
 }

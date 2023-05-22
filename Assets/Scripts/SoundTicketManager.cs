@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundTicketManager : MonoBehaviour
 {
     [Header("Audio")]
+    [SerializeField]
     private AudioSource audio;
 
     [SerializeField]
@@ -12,12 +13,6 @@ public class SoundTicketManager : MonoBehaviour
 
     [SerializeField]
     private List<int> soundTickets;
-
-    //get the audio source
-    void Start()
-    {
-        audio = GetComponent<AudioSource>();
-    }
 
     //iterates through the sounds after picking a number (0-99 inclusive)
     //choice is made if the value of ticket < the current sound's highest ticket number

@@ -18,6 +18,9 @@ public class BlockMove : MonoBehaviour
     //index of who we are (0-blue, 1-red, 2-green, 3-yellow)
     private int index;
 
+    public bool isSweet = false;
+    public bool isVulnerable = false;
+
     //find out who we are
     private void Start() {
         Color c = transform.parent.GetComponent<MeshRenderer>().material.color;

@@ -21,10 +21,16 @@ public class Mines : Chaos
     [SerializeField]
     private AudioClip mineSpawnSFX;
 
+    [SerializeField]
+    private AudioClip explosionSFX;
+
     public override void Stop()
     {
-        Debug.Log("STOP FRO MINES");
-        StartCoroutine(ResetParent());
+        //Debug.Log("STOP FRO MINES");
+        if (par != null) {
+            audio.PlayOneShot(explosionSFX);
+            StartCoroutine(ResetParent());
+        }
 
     }
 
@@ -40,11 +46,11 @@ public class Mines : Chaos
         for(int i = 0; i<p.transform.childCount; i += 1)//while (p.transform.childCount != 0)
         {
             MinesExplosion me = p.transform.GetChild(i).gameObject.GetComponent<MinesExplosion>();
-            Debug.Log("About to explode");
+            //Debug.Log("About to explode");
             me.Explode();
 
             yield return null;
-        }
+        }       
     }
 
     public override void Trigger()

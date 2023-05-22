@@ -69,20 +69,34 @@ public class JabAttack : MonoBehaviour
         
         if (other.tag == "Block")
         {
-            Debug.Log("Attack has been blocked!");
+            //Debug.Log("Attack has been blocked!");
         }
 
         //remove this if you dont want attacks to block each other
         else if (other.tag == "Attack")
         {
-            Debug.Log("Attack collided with another attack!");
+            //Debug.Log("Attack collided with another attack!");
         }
 
         else if ((other.tag == "Player") && (isOpponent(other)))
         {
             if (other.gameObject.GetComponent<Controller>().isBlocking)
             {
-                gameObject.transform.parent.GetComponent<Controller>().getHit(50, other.gameObject.transform.position);
+                if (other.transform.Find("BlockBox").GetComponent<BlockMove>().isSweet)
+                {
+                    gameObject.transform.parent.GetComponent<Controller>().getHit((int)(25*1.5), other.gameObject.transform.position); //damage is reflected to you
+                    Debug.Log("Sweet Parry!");
+                }
+                else if (other.transform.Find("BlockBox").GetComponent<BlockMove>().isVulnerable)
+                {
+                    Debug.Log("Missed Block!");
+                    other.gameObject.GetComponent<Controller>().getHit((int)(25), gameObject.transform.position); //opponent take full knockback
+                }
+                else
+                {
+                    Debug.Log("Weak Block");
+                    other.gameObject.GetComponent<Controller>().getHit((int)(25/3), gameObject.transform.position); //opponent take reduced knockback
+                }
                 return;
             }
             updateCollision(other.gameObject.GetComponent<MeshRenderer>().material.color);

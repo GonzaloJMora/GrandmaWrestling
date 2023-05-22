@@ -81,7 +81,22 @@ public class SwipeAttack : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Controller>().isBlocking)
             {
-                gameObject.transform.parent.GetComponent<Controller>().getHit(50, other.gameObject.transform.position);
+                
+                if (other.transform.Find("BlockBox").GetComponent<BlockMove>().isSweet)
+                {
+                    gameObject.transform.parent.GetComponent<Controller>().getHit((int)(10*1.5), other.gameObject.transform.position); //damage is reflected to you
+                    Debug.Log("Sweet Parry!");
+                }
+                else if (other.transform.Find("BlockBox").GetComponent<BlockMove>().isVulnerable)
+                {
+                    Debug.Log("Missed Block!");
+                    other.gameObject.GetComponent<Controller>().getHit((int)(10), gameObject.transform.position); //opponent take full knockback
+                }
+                else
+                {
+                    Debug.Log("Weak Block");
+                    other.gameObject.GetComponent<Controller>().getHit((int)(10/3), gameObject.transform.position); //opponent take reduced knockback
+                }
                 return;
             }
             updateCollision(other.gameObject.GetComponent<MeshRenderer>().material.color);

@@ -55,7 +55,7 @@ public class Popcorn : Chaos
             //loop through all the players
             for(int i = 0; i < players.Length; i += 1)
             {
-                Debug.Log("POP: " + players[i].name);
+                //Debug.Log("POP: " + players[i].name);
                 //if player in the air, dont add force
                 Controller c = players[i].GetComponent<Controller>();
                 if(!c.isGrounded()) { continue; }
@@ -85,7 +85,7 @@ public class Popcorn : Chaos
                     continue;
                 }
 
-                rb.AddForce(direction.normalized * force, ForceMode.Impulse);
+                c.AddVelocity(direction.normalized * force);
             }
         }
         

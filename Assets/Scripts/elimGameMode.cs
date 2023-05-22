@@ -16,9 +16,13 @@ public class elimGameMode : MonoBehaviour
     private float reset = 5;
 
     [Header("Game Canvas")]
-    [SerializeField]
-    private GameObject gameModeCanvas, win;
-    private TMP_Text timer, p1, p2, p3, p4, winner;
+    [SerializeField] private GameObject gameModeCanvas;
+    [SerializeField] private GameObject win;
+    [SerializeField] private GameObject scoreBoards;
+    [SerializeField] private TMP_Text timer;
+    [SerializeField] private TMP_Text winnerText;
+    
+    private TMP_Text p1, p2, p3, p4;
 
     [Header("Player Manager")]
     [SerializeField]
@@ -28,14 +32,12 @@ public class elimGameMode : MonoBehaviour
     //reference to game to lobby transition script
     private BackToLobby lobbyWarp;
 
-    [Header("Chaos")]
-    [SerializeField]
-    private GameObject chaosSystem;
-
     [Header("Game Information")]
     public int[] scores = {0, 0, 0, 0};
 
     public bool isGameOver = false;
+
+    public bool canStartVoting = true;
 
     [Header("Audio")]
     [SerializeField]
@@ -72,13 +74,11 @@ public class elimGameMode : MonoBehaviour
     //initialization
     void Start() 
     {
-        timer = gameModeCanvas.transform.Find("Timer").GetComponent<TMP_Text>();
-        p1 = gameModeCanvas.transform.Find("P1").GetComponent<TMP_Text>();
-        p2 = gameModeCanvas.transform.Find("P2").GetComponent<TMP_Text>();
-        p3 = gameModeCanvas.transform.Find("P3").GetComponent<TMP_Text>();
-        p4 = gameModeCanvas.transform.Find("P4").GetComponent<TMP_Text>();
-        winner = gameModeCanvas.transform.Find("Winner").GetComponent<TMP_Text>();
-        win = gameModeCanvas.transform.Find("Winner").gameObject;
+        p1 = scoreBoards.transform.Find("P1").GetComponentInChildren<TMP_Text>();
+        p2 = scoreBoards.transform.Find("P2").GetComponentInChildren<TMP_Text>();
+        p3 = scoreBoards.transform.Find("P3").GetComponentInChildren<TMP_Text>();
+        p4 = scoreBoards.transform.Find("P4").GetComponentInChildren<TMP_Text>();
+
         timeRemaining = gameLen;
     }
 
@@ -90,27 +90,33 @@ public class elimGameMode : MonoBehaviour
         //scores and time are updated if the timer is greater than 0
         if (timeRemaining > 0) 
         {
-            p1.text = "Blue: " + scores[0];
+            p1.text = "" + scores[0];
 
             if (manager.numPlayers >= 2) {
-                p2.text = "Red: " + scores[1];
+                p2.transform.parent.gameObject.SetActive(true);
+                p2.text = "" + scores[1];
             }
             else {
                 p2.text = "";
+                p2.transform.parent.gameObject.SetActive(false);
             }
 
             if (manager.numPlayers >= 3) {
-                p3.text = "Green: " + scores[2];                
+                p3.transform.parent.gameObject.SetActive(true);
+                p3.text = "" + scores[2];                
             }
             else {
                 p3.text = "";
+                p3.transform.parent.gameObject.SetActive(false);
             }
 
             if (manager.numPlayers >= 4) {
-                p4.text = "Yellow: " + scores[3];
+                p4.transform.parent.gameObject.SetActive(true);
+                p4.text = "" + scores[3];
             }
             else {
                 p4.text = "";
+                p4.transform.parent.gameObject.SetActive(false);
             }
             
             timeRemaining -= Time.deltaTime;
@@ -118,6 +124,10 @@ public class elimGameMode : MonoBehaviour
             if (Mathf.Floor(timeRemaining) == 15 && timerLowFlag) {
                 audio.PlayOneShot(timerLowSFX);
                 timerLowFlag = false;
+            }
+
+            if (Mathf.Floor(timeRemaining) < 25) {
+                canStartVoting = false;
             }
 
             if (timeRemaining < 0)
@@ -137,7 +147,6 @@ public class elimGameMode : MonoBehaviour
         }
         else {
             isGameOver = true;
-            chaosSystem.SetActive(false);
 
             if (SFXFlag) {
                 audio.PlayOneShot(gameOverSFX);
@@ -156,22 +165,22 @@ public class elimGameMode : MonoBehaviour
                 }
             }
 
-            winner.text = "#1 Victory Royale\n";
+            winnerText.text = "#1 Victory Royale\n";
 
             if (scores[0] == max) {
-                winner.text += "Blue ";
+                winnerText.text += "Blue ";
             }
 
             if (scores[1] == max && manager.numPlayers >= 2) {
-                winner.text += "Red ";
+                winnerText.text += "Red ";
             }
 
             if (scores[2] == max && manager.numPlayers >= 3) {
-                winner.text += "Green ";
+                winnerText.text += "Green ";
             }
 
             if (scores[3] == max && manager.numPlayers >= 4) {
-                winner.text += "Yellow ";
+                winnerText.text += "Yellow ";
             }
 
             win.SetActive(true);
@@ -187,6 +196,7 @@ public class elimGameMode : MonoBehaviour
             {
                 timeRemaining = gameLen;
                 reset = 5;
+                canStartVoting = true;
                 
                 float minutes = Mathf.Floor(timeRemaining) / 60, seconds = Mathf.Floor(timeRemaining) % 60;
                 if (seconds < 10) {

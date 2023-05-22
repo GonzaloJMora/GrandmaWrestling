@@ -53,6 +53,8 @@ public class MinesExplosion : MonoBehaviour
         this.GetComponent<MeshRenderer>().enabled = false;
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
+        
+
         foreach (Collider hit in colliders)
         {
             Rigidbody rb = hit.GetComponent<Rigidbody>();

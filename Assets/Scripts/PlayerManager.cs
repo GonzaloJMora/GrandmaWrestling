@@ -34,6 +34,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Game Mode")]
     [SerializeField]
     private GameObject gameMode;
+    public bool isGameStarted = false;
 
     [Header("Audience")]
     [SerializeField] private AudienceBehavior audience;
@@ -52,6 +53,13 @@ public class PlayerManager : MonoBehaviour
     private AudioClip subPointSFX;
 
     private bool SFXFlag = true;
+
+    [Header("Visual Effects")]
+    [SerializeField]
+    private GameObject explosionVFX;
+
+    /*[SerializeField]
+    private SkinnedMeshRenderer shirt;*/
 
     //initialization
     private void Awake()
@@ -75,13 +83,15 @@ public class PlayerManager : MonoBehaviour
     //callback used to add a new player
     public void AddPlayer(PlayerInput player)
     {
-        if (numPlayers >= 4) {
+        if (numPlayers >= 4 || isGameStarted) {
             Destroy(player);
             return;
         }
 
         //get reference to the new player's mesh renderer
         MeshRenderer meshRenderer = player.GetComponent<MeshRenderer>();
+
+        SkinnedMeshRenderer shirt = player.transform.GetChild(6).GetChild(0).GetChild(0).GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>();
 
         //add new player to player list
         players.Add(player);
@@ -94,6 +104,11 @@ public class PlayerManager : MonoBehaviour
                 //set the player's color and spawn to the corresponding player's values
                 joinSound.playSound();
                 meshRenderer.material.color = colors[i];
+                shirt.material.color = colors[i];
+                player.transform.Find("CaneSwipe").GetComponent<MeshRenderer>().materials[1].SetColor("_Outline_Color", colors[i]);
+                player.transform.Find("CaneJab").GetComponent<MeshRenderer>().materials[1].SetColor("_Outline_Color", colors[i]);
+                player.transform.Find("BlockBox").Find("Pan").GetComponent<MeshRenderer>().materials[2].SetColor("_Outline_Color", colors[i]);
+                Instantiate(explosionVFX, startingPoints[i].position, Quaternion.identity);
                 player.transform.position = startingPoints[i].position;
                 availablePlayers[i] = false;
                 numPlayers++;
@@ -125,6 +140,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[0] = true;
             other.transform.position = startingPoints[0].position;
+            Instantiate(explosionVFX, startingPoints[0].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {
@@ -143,6 +159,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[1] = true;
             other.transform.position = startingPoints[1].position;
+            Instantiate(explosionVFX, startingPoints[1].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {
@@ -161,6 +178,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[2] = true;
             other.transform.position = startingPoints[2].position;
+            Instantiate(explosionVFX, startingPoints[2].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {
@@ -179,6 +197,7 @@ public class PlayerManager : MonoBehaviour
         {
             //availablePlayers[3] = true;
             other.transform.position = startingPoints[3].position;
+            Instantiate(explosionVFX, startingPoints[3].position, Quaternion.identity);
 
             //update score
             if (!uiRef.isGameOver) {

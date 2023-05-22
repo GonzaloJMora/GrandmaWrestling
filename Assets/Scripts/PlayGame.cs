@@ -80,7 +80,7 @@ public class PlayGame : MonoBehaviour
         readyPlayers.text = "Players Ready: " + playersReady + "/" + manager.numPlayers;
 
         //if all players are currently ready
-        if (manager.numPlayers > 0 && playersReady == manager.numPlayers) {
+        if (manager.numPlayers > 1 && playersReady == manager.numPlayers) {
             countdown.gameObject.SetActive(true);
             int temp = (int) Mathf.Floor(timer);
 
@@ -110,6 +110,7 @@ public class PlayGame : MonoBehaviour
             }
             //lobby to loading transition
             else {
+                manager.isGameStarted = true;
                 countdown.gameObject.SetActive(false);
                 loadingScreen.SetActive(true);
                 gameStuff.SetActive(true);
@@ -119,6 +120,8 @@ public class PlayGame : MonoBehaviour
 
                 for(int i = 0; i < manager.numPlayers; i++) {
                     manager.players[i].transform.position = manager.startingPoints[i].position;
+                    manager.players[i].gameObject.GetComponent<Controller>().ResetHits();
+                    manager.players[i].gameObject.GetComponent<Controller>().ResetPhysics();
                 }
 
                 timer = startTime;

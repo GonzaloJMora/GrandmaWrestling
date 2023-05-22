@@ -31,7 +31,7 @@ public class Ads : Chaos
 
     public override void Stop()
     {
-        Debug.Log("STOP FROM ADS");
+        //Debug.Log("STOP FROM ADS");
         StartCoroutine(ResetParent());
         //throw new System.NotImplementedException();
     }

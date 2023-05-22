@@ -127,6 +127,9 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private AudioClip blockUpSFX;
 
+    [SerializeField]
+    private GameObject grandma;
+
     //initialization
     private void Awake()
     {
@@ -170,10 +173,10 @@ public class Controller : MonoBehaviour
         
         inLaunched = true; //getting hit should cause smoke effect
 
-        if (isBlocking)
-        {
-            return;
-        }
+        // if (isBlocking)
+        // {
+        //     return;
+        // }
 
         hitCount++;
 
@@ -303,6 +306,17 @@ public class Controller : MonoBehaviour
         Accelerate(wishdir, wishspeed, m_GroundSettings.Acceleration);
 
 
+        //animate walk
+        if (wishspeed > 0)
+        {
+            grandma.GetComponent<Animator>().SetFloat("Speed", 0.5f);
+        }
+        else
+        {
+            grandma.GetComponent<Animator>().SetFloat("Speed", 0.0f);
+        }
+
+
 
         
 
@@ -414,6 +428,7 @@ public class Controller : MonoBehaviour
 
 
         if (attLock) {
+            grandma.GetComponent<Animator>().SetBool("isAttacking", true);
             attLock = false;
             blockBox.SetActive(true);
             audio.PlayOneShot(blockUpSFX);
@@ -438,6 +453,7 @@ public class Controller : MonoBehaviour
         }*/
 
         if (attLock) {
+            grandma.GetComponent<Animator>().SetBool("isAttacking", true);
             attLock = false;
             swipeBox.SetActive(true);
             attackSound.playSound();
@@ -460,10 +476,11 @@ public class Controller : MonoBehaviour
         }*/
 
         if (attLock) {
+            grandma.GetComponent<Animator>().SetBool("isAttacking", true);
             attLock = false;
             jabBox.SetActive(true);
             attackSound.playSound();
-            //Debug.Log("Jab");
+            Debug.Log("Jab");
             Invoke("deactivateJab", 1);
             Invoke("releaseLock", 1);
         }
@@ -500,6 +517,7 @@ public class Controller : MonoBehaviour
     private void deactivateBlock()
     {
         //Debug.Log("Deactivating block");
+        grandma.GetComponent<Animator>().SetBool("isAttacking", false);
         isBlocking = false;
         blockBox.SetActive(false);
         canAct = true;
@@ -509,6 +527,7 @@ public class Controller : MonoBehaviour
     private void deactivateJab()
     {
         Debug.Log("Deactivating jab");
+        grandma.GetComponent<Animator>().SetBool("isAttacking", false);
         jabBox.SetActive(false);
         canAct = true;
     }
@@ -517,6 +536,7 @@ public class Controller : MonoBehaviour
     private void deactivateSwipe()
     {
         //Debug.Log("Deactivating swipe");
+        grandma.GetComponent<Animator>().SetBool("isAttacking", false);
         swipeBox.SetActive(false);
         canAct = true;
     }
@@ -562,11 +582,11 @@ public class Controller : MonoBehaviour
 
     public void AddVelocity(Vector3 vector)
     {
-        Debug.Log("Velocity Added");
+        //Debug.Log("Velocity Added");
         m_PlayerVelocity.x += vector.x;
         m_PlayerVelocity.y += vector.y;
         m_PlayerVelocity.z += vector.z;
-        Debug.Log("New Y: " + m_PlayerVelocity.y.ToString());
+        //Debug.Log("New Y: " + m_PlayerVelocity.y.ToString());
     }
 
     private void ApplyFriction(float t)
